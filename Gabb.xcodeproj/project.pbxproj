@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */; };
+		D240F3F71CA5EC0000B1AE57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F3F61CA5EC0000B1AE57 /* ViewController.swift */; };
+		D240F3FA1CA5EC0000B1AE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D240F3F81CA5EC0000B1AE57 /* Main.storyboard */; };
+		D240F3FC1CA5EC0000B1AE57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D240F3FB1CA5EC0000B1AE57 /* Assets.xcassets */; };
+		D240F3FF1CA5EC0000B1AE57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D240F3FD1CA5EC0000B1AE57 /* LaunchScreen.storyboard */; };
+		D240F40A1CA5EC0100B1AE57 /* GabbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4091CA5EC0100B1AE57 /* GabbTests.swift */; };
+		D240F4151CA5EC0100B1AE57 /* GabbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4141CA5EC0100B1AE57 /* GabbUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D240F4061CA5EC0100B1AE57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D240F3E91CA5EC0000B1AE57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D240F3F01CA5EC0000B1AE57;
+			remoteInfo = Gabb;
+		};
+		D240F4111CA5EC0100B1AE57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D240F3E91CA5EC0000B1AE57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D240F3F01CA5EC0000B1AE57;
+			remoteInfo = Gabb;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D240F3F11CA5EC0000B1AE57 /* Gabb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gabb.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D240F3F61CA5EC0000B1AE57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D240F3F91CA5EC0000B1AE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D240F3FB1CA5EC0000B1AE57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D240F3FE1CA5EC0000B1AE57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D240F4001CA5EC0000B1AE57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D240F4051CA5EC0100B1AE57 /* GabbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GabbTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D240F4091CA5EC0100B1AE57 /* GabbTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GabbTests.swift; sourceTree = "<group>"; };
+		D240F40B1CA5EC0100B1AE57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D240F4101CA5EC0100B1AE57 /* GabbUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GabbUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D240F4141CA5EC0100B1AE57 /* GabbUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GabbUITests.swift; sourceTree = "<group>"; };
+		D240F4161CA5EC0100B1AE57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D240F3EE1CA5EC0000B1AE57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D240F4021CA5EC0100B1AE57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D240F40D1CA5EC0100B1AE57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D240F3E81CA5EC0000B1AE57 = {
+			isa = PBXGroup;
+			children = (
+				D240F3F31CA5EC0000B1AE57 /* Gabb */,
+				D240F4081CA5EC0100B1AE57 /* GabbTests */,
+				D240F4131CA5EC0100B1AE57 /* GabbUITests */,
+				D240F3F21CA5EC0000B1AE57 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D240F3F21CA5EC0000B1AE57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D240F3F11CA5EC0000B1AE57 /* Gabb.app */,
+				D240F4051CA5EC0100B1AE57 /* GabbTests.xctest */,
+				D240F4101CA5EC0100B1AE57 /* GabbUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D240F3F31CA5EC0000B1AE57 /* Gabb */ = {
+			isa = PBXGroup;
+			children = (
+				D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */,
+				D240F3F61CA5EC0000B1AE57 /* ViewController.swift */,
+				D240F3F81CA5EC0000B1AE57 /* Main.storyboard */,
+				D240F3FB1CA5EC0000B1AE57 /* Assets.xcassets */,
+				D240F3FD1CA5EC0000B1AE57 /* LaunchScreen.storyboard */,
+				D240F4001CA5EC0000B1AE57 /* Info.plist */,
+			);
+			path = Gabb;
+			sourceTree = "<group>";
+		};
+		D240F4081CA5EC0100B1AE57 /* GabbTests */ = {
+			isa = PBXGroup;
+			children = (
+				D240F4091CA5EC0100B1AE57 /* GabbTests.swift */,
+				D240F40B1CA5EC0100B1AE57 /* Info.plist */,
+			);
+			path = GabbTests;
+			sourceTree = "<group>";
+		};
+		D240F4131CA5EC0100B1AE57 /* GabbUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D240F4141CA5EC0100B1AE57 /* GabbUITests.swift */,
+				D240F4161CA5EC0100B1AE57 /* Info.plist */,
+			);
+			path = GabbUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D240F3F01CA5EC0000B1AE57 /* Gabb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D240F4191CA5EC0100B1AE57 /* Build configuration list for PBXNativeTarget "Gabb" */;
+			buildPhases = (
+				D240F3ED1CA5EC0000B1AE57 /* Sources */,
+				D240F3EE1CA5EC0000B1AE57 /* Frameworks */,
+				D240F3EF1CA5EC0000B1AE57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gabb;
+			productName = Gabb;
+			productReference = D240F3F11CA5EC0000B1AE57 /* Gabb.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D240F4041CA5EC0100B1AE57 /* GabbTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D240F41C1CA5EC0100B1AE57 /* Build configuration list for PBXNativeTarget "GabbTests" */;
+			buildPhases = (
+				D240F4011CA5EC0100B1AE57 /* Sources */,
+				D240F4021CA5EC0100B1AE57 /* Frameworks */,
+				D240F4031CA5EC0100B1AE57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D240F4071CA5EC0100B1AE57 /* PBXTargetDependency */,
+			);
+			name = GabbTests;
+			productName = GabbTests;
+			productReference = D240F4051CA5EC0100B1AE57 /* GabbTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D240F40F1CA5EC0100B1AE57 /* GabbUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D240F41F1CA5EC0100B1AE57 /* Build configuration list for PBXNativeTarget "GabbUITests" */;
+			buildPhases = (
+				D240F40C1CA5EC0100B1AE57 /* Sources */,
+				D240F40D1CA5EC0100B1AE57 /* Frameworks */,
+				D240F40E1CA5EC0100B1AE57 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D240F4121CA5EC0100B1AE57 /* PBXTargetDependency */,
+			);
+			name = GabbUITests;
+			productName = GabbUITests;
+			productReference = D240F4101CA5EC0100B1AE57 /* GabbUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D240F3E91CA5EC0000B1AE57 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Evan Waters";
+				TargetAttributes = {
+					D240F3F01CA5EC0000B1AE57 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					D240F4041CA5EC0100B1AE57 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = D240F3F01CA5EC0000B1AE57;
+					};
+					D240F40F1CA5EC0100B1AE57 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = D240F3F01CA5EC0000B1AE57;
+					};
+				};
+			};
+			buildConfigurationList = D240F3EC1CA5EC0000B1AE57 /* Build configuration list for PBXProject "Gabb" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D240F3E81CA5EC0000B1AE57;
+			productRefGroup = D240F3F21CA5EC0000B1AE57 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D240F3F01CA5EC0000B1AE57 /* Gabb */,
+				D240F4041CA5EC0100B1AE57 /* GabbTests */,
+				D240F40F1CA5EC0100B1AE57 /* GabbUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D240F3EF1CA5EC0000B1AE57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D240F3FF1CA5EC0000B1AE57 /* LaunchScreen.storyboard in Resources */,
+				D240F3FC1CA5EC0000B1AE57 /* Assets.xcassets in Resources */,
+				D240F3FA1CA5EC0000B1AE57 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D240F4031CA5EC0100B1AE57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D240F40E1CA5EC0100B1AE57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D240F3ED1CA5EC0000B1AE57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D240F3F71CA5EC0000B1AE57 /* ViewController.swift in Sources */,
+				D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D240F4011CA5EC0100B1AE57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D240F40A1CA5EC0100B1AE57 /* GabbTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D240F40C1CA5EC0100B1AE57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D240F4151CA5EC0100B1AE57 /* GabbUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D240F4071CA5EC0100B1AE57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D240F3F01CA5EC0000B1AE57 /* Gabb */;
+			targetProxy = D240F4061CA5EC0100B1AE57 /* PBXContainerItemProxy */;
+		};
+		D240F4121CA5EC0100B1AE57 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D240F3F01CA5EC0000B1AE57 /* Gabb */;
+			targetProxy = D240F4111CA5EC0100B1AE57 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D240F3F81CA5EC0000B1AE57 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D240F3F91CA5EC0000B1AE57 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D240F3FD1CA5EC0000B1AE57 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D240F3FE1CA5EC0000B1AE57 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D240F4171CA5EC0100B1AE57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D240F4181CA5EC0100B1AE57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D240F41A1CA5EC0100B1AE57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Gabb/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.Gabb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D240F41B1CA5EC0100B1AE57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Gabb/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.Gabb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D240F41D1CA5EC0100B1AE57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GabbTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.GabbTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gabb.app/Gabb";
+			};
+			name = Debug;
+		};
+		D240F41E1CA5EC0100B1AE57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = GabbTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.GabbTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gabb.app/Gabb";
+			};
+			name = Release;
+		};
+		D240F4201CA5EC0100B1AE57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GabbUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.GabbUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Gabb;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D240F4211CA5EC0100B1AE57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GabbUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.GabbUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Gabb;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D240F3EC1CA5EC0000B1AE57 /* Build configuration list for PBXProject "Gabb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D240F4171CA5EC0100B1AE57 /* Debug */,
+				D240F4181CA5EC0100B1AE57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D240F4191CA5EC0100B1AE57 /* Build configuration list for PBXNativeTarget "Gabb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D240F41A1CA5EC0100B1AE57 /* Debug */,
+				D240F41B1CA5EC0100B1AE57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D240F41C1CA5EC0100B1AE57 /* Build configuration list for PBXNativeTarget "GabbTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D240F41D1CA5EC0100B1AE57 /* Debug */,
+				D240F41E1CA5EC0100B1AE57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D240F41F1CA5EC0100B1AE57 /* Build configuration list for PBXNativeTarget "GabbUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D240F4201CA5EC0100B1AE57 /* Debug */,
+				D240F4211CA5EC0100B1AE57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D240F3E91CA5EC0000B1AE57 /* Project object */;
+}
