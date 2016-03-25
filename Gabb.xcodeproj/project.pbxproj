@@ -15,6 +15,7 @@
 		D240F3FF1CA5EC0000B1AE57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D240F3FD1CA5EC0000B1AE57 /* LaunchScreen.storyboard */; };
 		D240F40A1CA5EC0100B1AE57 /* GabbTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4091CA5EC0100B1AE57 /* GabbTests.swift */; };
 		D240F4151CA5EC0100B1AE57 /* GabbUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4141CA5EC0100B1AE57 /* GabbUITests.swift */; };
+		D240F4241CA5F29200B1AE57 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4231CA5F29200B1AE57 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		D240F4101CA5EC0100B1AE57 /* GabbUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GabbUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D240F4141CA5EC0100B1AE57 /* GabbUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GabbUITests.swift; sourceTree = "<group>"; };
 		D240F4161CA5EC0100B1AE57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D240F4231CA5F29200B1AE57 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gabb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gabb/Pods-Gabb.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 		D240F3F31CA5EC0000B1AE57 /* Gabb */ = {
 			isa = PBXGroup;
 			children = (
+				D240F4221CA5F20C00B1AE57 /* extensions */,
 				D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */,
 				D240F3F61CA5EC0000B1AE57 /* ViewController.swift */,
 				D240F3F81CA5EC0000B1AE57 /* Main.storyboard */,
@@ -147,6 +150,14 @@
 				D240F4161CA5EC0100B1AE57 /* Info.plist */,
 			);
 			path = GabbUITests;
+			sourceTree = "<group>";
+		};
+		D240F4221CA5F20C00B1AE57 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D240F4231CA5F29200B1AE57 /* Extensions.swift */,
+			);
+			name = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D240F3F71CA5EC0000B1AE57 /* ViewController.swift in Sources */,
+				D240F4241CA5F29200B1AE57 /* Extensions.swift in Sources */,
 				D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
