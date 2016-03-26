@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07EDB20D659604144F60C1EC /* Pods_Gabb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91D7F651DC23FBA1CCFD856A /* Pods_Gabb.framework */; };
 		D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */; };
 		D240F3F71CA5EC0000B1AE57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F3F61CA5EC0000B1AE57 /* ViewController.swift */; };
 		D240F3FA1CA5EC0000B1AE57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D240F3F81CA5EC0000B1AE57 /* Main.storyboard */; };
@@ -20,6 +19,8 @@
 		D240F42D1CA6075000B1AE57 /* Amatic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D240F42A1CA6075000B1AE57 /* Amatic-Bold.ttf */; };
 		D240F42E1CA6075000B1AE57 /* AmaticSC-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D240F42B1CA6075000B1AE57 /* AmaticSC-Regular.ttf */; };
 		D240F42F1CA6075000B1AE57 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D240F42C1CA6075000B1AE57 /* SIL Open Font License.txt */; };
+		D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4311CA73EF700B1AE57 /* RestService.swift */; };
+		D240F4381CA7412400B1AE57 /* Pods_Gabb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,10 @@
 		D240F42A1CA6075000B1AE57 /* Amatic-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Amatic-Bold.ttf"; sourceTree = "<group>"; };
 		D240F42B1CA6075000B1AE57 /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
 		D240F42C1CA6075000B1AE57 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		D240F4311CA73EF700B1AE57 /* RestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
+		D240F4331CA7410000B1AE57 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Release-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		D240F4351CA7410500B1AE57 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Gabb.framework; path = "Pods/../build/Debug-iphoneos/Pods_Gabb.framework"; sourceTree = "<group>"; };
 		ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gabb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gabb/Pods-Gabb.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07EDB20D659604144F60C1EC /* Pods_Gabb.framework in Frameworks */,
+				D240F4381CA7412400B1AE57 /* Pods_Gabb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +97,9 @@
 		44C000523EF89A4154E001FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */,
+				D240F4351CA7410500B1AE57 /* SwiftyJSON.framework */,
+				D240F4331CA7410000B1AE57 /* Alamofire.framework */,
 				91D7F651DC23FBA1CCFD856A /* Pods_Gabb.framework */,
 			);
 			name = Frameworks;
@@ -131,6 +139,7 @@
 		D240F3F31CA5EC0000B1AE57 /* Gabb */ = {
 			isa = PBXGroup;
 			children = (
+				D240F4301CA73EE600B1AE57 /* Services */,
 				D240F4281CA6073900B1AE57 /* Resources */,
 				D240F4221CA5F20C00B1AE57 /* Extensions */,
 				D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */,
@@ -186,6 +195,14 @@
 				D240F42C1CA6075000B1AE57 /* SIL Open Font License.txt */,
 			);
 			path = amatic;
+			sourceTree = "<group>";
+		};
+		D240F4301CA73EE600B1AE57 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D240F4311CA73EF700B1AE57 /* RestService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +394,7 @@
 				D240F3F71CA5EC0000B1AE57 /* ViewController.swift in Sources */,
 				D240F4241CA5F29200B1AE57 /* Colors.swift in Sources */,
 				D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */,
+				D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +535,11 @@
 			baseConfigurationReference = 72DA137B91621F46197418B8 /* Pods-Gabb.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Gabb/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.Gabb;
@@ -529,6 +552,11 @@
 			baseConfigurationReference = ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Release-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = Gabb/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.Gabb;
