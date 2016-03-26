@@ -10,9 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var logoLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.gabbPrimaryColor()
+        self.view.backgroundColor = UIColor.gabbRedColor()
+        logoLabel.font = UIFont.logoLarge()
+        logoLabel.textColor = UIColor.whiteColor()
     }
 
     override func didReceiveMemoryWarning() {

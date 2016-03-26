@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  Colors.swift
 //  Gabb
 //
 //  Created by Evan Waters on 3/25/16.
@@ -11,8 +11,24 @@ import UIKit
 
 extension UIColor {
     
-    class func gabbPrimaryColor() -> UIColor {
+    class func gabbRedColor() -> UIColor {
         return UIColor.colorWithHexString("#f55d4b")
+    }
+    
+    class func gabbDarkRedColor() -> UIColor {
+        return UIColor.colorWithHexString("#AF4236")
+    }
+    
+    class func gabbBlackColor() -> UIColor {
+        return UIColor.colorWithHexString("#0B0B0B")
+    }
+    
+    class func gabbDarkGreyColor() -> UIColor {
+        return UIColor.colorWithHexString("#3E4F4F")
+    }
+    
+    class func gabbLightGreyColor() -> UIColor {
+        return UIColor.colorWithHexString("#95A5A6")
     }
     
     private class func colorComponentFrom(string: String, start: Int, length: Int) -> CGFloat {
@@ -70,46 +86,5 @@ extension UIColor {
         return UIColor.init(red: red, green: green, blue: blue, alpha: alpha)
 
     }
-    
-
-    
-//    + (UIColor *) colorWithHexString: (NSString *) hexString {
-//    /*borrowed from http://stackoverflow.com/a/7180905
-//    I've got a solution that is 100% compatible with the hex format strings used by Android, which I found very helpful when doing cross-platform mobile development. It lets me use one color palate for both platforms. Feel free to reuse without attribution, or under the Apache license if you prefer.
-//    by - http://stackoverflow.com/users/590840/micah-hainline
-//    */
-//    NSString *colorString = [[hexString stringByReplacingOccurrencesOfString: @"#" withString: @""] uppercaseString];
-//    CGFloat alpha, red, blue, green;
-//    switch ([colorString length]) {
-//    case 3: // #RGB
-//    alpha = 1.0f;
-//    red   = [self colorComponentFrom: colorString start: 0 length: 1];
-//    green = [self colorComponentFrom: colorString start: 1 length: 1];
-//    blue  = [self colorComponentFrom: colorString start: 2 length: 1];
-//    break;
-//    case 4: // #ARGB
-//    alpha = [self colorComponentFrom: colorString start: 0 length: 1];
-//    red   = [self colorComponentFrom: colorString start: 1 length: 1];
-//    green = [self colorComponentFrom: colorString start: 2 length: 1];
-//    blue  = [self colorComponentFrom: colorString start: 3 length: 1];
-//    break;
-//    case 6: // #RRGGBB
-//    alpha = 1.0f;
-//    red   = [self colorComponentFrom: colorString start: 0 length: 2];
-//    green = [self colorComponentFrom: colorString start: 2 length: 2];
-//    blue  = [self colorComponentFrom: colorString start: 4 length: 2];
-//    break;
-//    case 8: // #AARRGGBB
-//    alpha = [self colorComponentFrom: colorString start: 0 length: 2];
-//    red   = [self colorComponentFrom: colorString start: 2 length: 2];
-//    green = [self colorComponentFrom: colorString start: 4 length: 2];
-//    blue  = [self colorComponentFrom: colorString start: 6 length: 2];
-//    break;
-//    default:
-//    [NSException raise:@"Invalid color value" format: @"Color value %@ is invalid.  It should be a hex value of the form #RBG, #ARGB, #RRGGBB, or #AARRGGBB", hexString];
-//    break;
-//    }
-//    return [UIColor colorWithRed: red green: green blue: blue alpha: alpha];
-//    }
     
 }
