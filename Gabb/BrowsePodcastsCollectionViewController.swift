@@ -12,14 +12,10 @@ private let reuseIdentifier = "PodcastCell"
 
 class BrowsePodcastsCollectionViewController: UICollectionViewController {
     
-    var podcastArray:[NSDictionary]!
+    var podcasts:[NSDictionary]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
     }
 
     // MARK: UICollectionViewDataSource
@@ -30,19 +26,19 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return podcastArray.count
+        return podcasts.count
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
         let cellWidth = (screenSize.width - 8) / 3
         return CGSize.init(width: cellWidth, height: cellWidth)
-
-        
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PodcastCollectionViewCell
         cell.backgroundColor = UIColor.lightGrayColor()
+        cell.podcast = podcasts[indexPath.row]
+        cell.setImage()
         return cell
     }
 

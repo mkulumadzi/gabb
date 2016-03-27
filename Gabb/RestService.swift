@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 
 class RestService {
     
@@ -28,6 +29,25 @@ class RestService {
                     }
                 }
         }
+    }
+    
+    class func downloadImage(imageURL:String, completion: (result: UIImage?) -> Void) {
+        Alamofire.request(.GET, imageURL)
+            .responseImage { response in
+                debugPrint(response)
+                
+                print(response.request)
+                print(response.response)
+                debugPrint(response.result)
+                
+                if let image = response.result.value {
+                    completion(result: image)
+                }
+                else {
+                    completion(result: nil)
+                }
+        }
+        
     }
     
     class func postRequest(requestURL:String, parameters: [String: AnyObject]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
