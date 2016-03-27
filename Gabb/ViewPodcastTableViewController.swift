@@ -14,15 +14,30 @@ private let podcastEpisodeCell = "PodcastEpisode"
 class ViewPodcastTableViewController: UITableViewController {
     
     var podcast:NSMutableDictionary!
+    var episodes = [NSDictionary]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         formatView()
+        getPodcastEpisodes()
     }
     
     func formatView() {
         tableView.estimatedRowHeight = 200.0
         tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    // MARK: - Downloading podcast episodes
+    
+    func getPodcastEpisodes() {
+        if let podcast_id = podcast.valueForKey("podcast_id") as? NSInteger {
+            PodcastService.getEpisodesForPodcast(podcast_id, completion: {(episodeArray) -> Void in
+                if let episodeArray = episodeArray {
+                    self.episodes = episodeArray
+                    self.tableView.reloadData()
+                }
+            })
+        }
     }
 
     // MARK: - Table view data source
@@ -36,7 +51,7 @@ class ViewPodcastTableViewController: UITableViewController {
         case 0:
             return 1
         default:
-            return 1
+            return episodes.count
         }
     }
     
@@ -60,6 +75,10 @@ class ViewPodcastTableViewController: UITableViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier(podcastEpisodeCell, forIndexPath: indexPath)
+            let episode = episodes[indexPath.row]
+            if let episodeTitle = episode.valueForKey("title") as? String {
+                cell.textLabel?.text = episodeTitle
+            }
             return cell
         }
     }
