@@ -13,10 +13,24 @@ private let viewPodcast = "ViewPodcast"
 
 class BrowsePodcastsCollectionViewController: UICollectionViewController {
     
-    var podcasts:[NSDictionary]!
+    var podcasts:[NSMutableDictionary]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getPodcastImages()
+    }
+    
+    func getPodcastImages() {
+        for podcast in podcasts {
+            if let imageURL = podcast.valueForKey("image_url") as? String {
+                RestService.downloadImage(imageURL, completion: {(image) -> Void in
+                    if let image = image {
+                        podcast.setValue(image, forKey: "image")
+                        self.collectionView?.reloadData()
+                    }
+                })
+            }
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -39,7 +53,12 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PodcastCollectionViewCell
         cell.backgroundColor = UIColor.lightGrayColor()
         cell.podcast = podcasts[indexPath.row]
-        if cell.imageView.image == nil { cell.setImage() }
+        if let image = cell.podcast["image"] as? UIImage {
+            cell.imageView.image = image
+        }
+        else {
+            cell.imageView.image = nil
+        }
         return cell
     }
 
@@ -53,7 +72,6 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
             if let vc = segue.destinationViewController as? ViewPodcastTableViewController {
                 if let cell = sender as? PodcastCollectionViewCell {
                     vc.podcast = cell.podcast
-                    vc.podcastImage = cell.imageView.image
                 }
             }
             

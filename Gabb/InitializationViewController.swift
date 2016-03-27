@@ -15,7 +15,7 @@ let screenSize: CGRect = UIScreen.mainScreen().bounds
 class InitializationViewController: UIViewController {
 
     @IBOutlet weak var logoLabel: UILabel!
-    var podcasts:[NSDictionary]!
+    var podcasts = [NSMutableDictionary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,10 @@ class InitializationViewController: UIViewController {
         
         PodcastService.getPopularPodcasts({(podcastArray) -> Void in
             if let podcastArray = podcastArray {
-                self.podcasts = podcastArray
+                for dict in podcastArray {
+                    let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
+                    self.podcasts.append(mutableCopy)
+                }
                 self.performSegueWithIdentifier(kSEGUE_BROWSE_PODCASTS, sender: nil)
             }
         })

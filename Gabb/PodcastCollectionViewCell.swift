@@ -11,18 +11,6 @@ import UIKit
 class PodcastCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
-    
-    var podcast: NSDictionary!
-    
-    func setImage() {
-        if let imageURL = podcast.valueForKey("image_url") as? String {
-            RestService.downloadImage(imageURL, completion: {(image) -> Void in
-                if let image = image {
-                    self.imageView.image = image
-                }
-            })
-        }
-    }
-    
+    var podcast: NSMutableDictionary!
     
 }

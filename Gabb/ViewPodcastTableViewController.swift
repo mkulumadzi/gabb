@@ -13,8 +13,7 @@ private let podcastEpisodeCell = "PodcastEpisode"
 
 class ViewPodcastTableViewController: UITableViewController {
     
-    var podcast:NSDictionary!
-    var podcastImage:UIImage!
+    var podcast:NSMutableDictionary!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +44,9 @@ class ViewPodcastTableViewController: UITableViewController {
         switch (indexPath.section) {
         case 0:
             let cell = tableView.dequeueReusableCellWithIdentifier(podcastHeaderCell) as! PodcastHeaderCell
-            cell.podcastImageView.image = podcastImage
+            if let image = podcast["image"] as? UIImage {
+                cell.podcastImageView.image = image
+            }
             if let podcastTitle = podcast["title"] as? String {
                 cell.podcastTitleLabel.text = podcastTitle
                 cell.podcastTitleLabel.backgroundColor = UIColor.gabbBlackColor()
