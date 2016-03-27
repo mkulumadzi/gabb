@@ -21,6 +21,7 @@
 		D240F42F1CA6075000B1AE57 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D240F42C1CA6075000B1AE57 /* SIL Open Font License.txt */; };
 		D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4311CA73EF700B1AE57 /* RestService.swift */; };
 		D240F4381CA7412400B1AE57 /* Pods_Gabb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CFA7351CA752BC001743E6 /* PodcastService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		D240F4331CA7410000B1AE57 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Release-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		D240F4351CA7410500B1AE57 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Gabb.framework; path = "Pods/../build/Debug-iphoneos/Pods_Gabb.framework"; sourceTree = "<group>"; };
+		D2CFA7351CA752BC001743E6 /* PodcastService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastService.swift; sourceTree = "<group>"; };
 		ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gabb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gabb/Pods-Gabb.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				D240F4311CA73EF700B1AE57 /* RestService.swift */,
+				D2CFA7351CA752BC001743E6 /* PodcastService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			files = (
 				D240F4271CA6062E00B1AE57 /* Fonts.swift in Sources */,
 				D240F3F71CA5EC0000B1AE57 /* ViewController.swift in Sources */,
+				D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */,
 				D240F4241CA5F29200B1AE57 /* Colors.swift in Sources */,
 				D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */,
 				D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */,

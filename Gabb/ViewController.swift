@@ -17,13 +17,14 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor.gabbRedColor()
         logoLabel.font = UIFont.logoLarge()
         logoLabel.textColor = UIColor.whiteColor()
+        
+        
+        PodcastService.getPopularPodcasts({(podcastArray) -> Void in
+            if let podcastArray = podcastArray {
+                print(podcastArray)
+            }
+        })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 import Alamofire
 
 class RestService {
@@ -18,18 +17,15 @@ class RestService {
             .responseJSON { (response) in
                 switch response.result {
                 case .Success (let result):
-                    if let dataArray = result as? [AnyObject] {
-                        completion(error: nil, result: dataArray)
+                    completion(error: nil, result: result)
+                case .Failure(let error):
+                    print(error)
+                    if let statusCode = response.response?.statusCode {
+                        completion(error: error, result: statusCode)
                     }
                     else {
-                        completion(error: nil, result: result)
+                        completion(error: error, result: nil)
                     }
-                case .Failure(let error):
-                    var statusCode:Int!
-                    if let response = response.response {
-                        statusCode = response.statusCode
-                    }
-                    completion(error: error, result: statusCode)
                 }
         }
     }
