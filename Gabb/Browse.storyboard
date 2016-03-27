@@ -50,10 +50,92 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="xCA-7r-aIK"/>
+                    <connections>
+                        <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="CPa-gN-ZIL"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q69-E4-3VX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="441" y="307"/>
+        </scene>
+        <!--View Podcast Table View Controller-->
+        <scene sceneID="FXe-79-9EC">
+            <objects>
+                <tableViewController id="hIz-vF-BGh" customClass="ViewPodcastTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uTR-93-3eD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PodcastHeader" rowHeight="200" id="zo3-ya-cii" customClass="PodcastHeaderCell" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zo3-ya-cii" id="XeS-id-sUr">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PNm-p2-mlT">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="199" id="apC-MO-k6e"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="podcastTitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="he5-Gi-R8X">
+                                            <rect key="frame" x="481" y="154" width="95" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="he5-Gi-R8X" secondAttribute="bottom" constant="24" id="1T1-ZX-aIe"/>
+                                        <constraint firstItem="PNm-p2-mlT" firstAttribute="top" secondItem="XeS-id-sUr" secondAttribute="top" id="5oV-xJ-L7o"/>
+                                        <constraint firstItem="he5-Gi-R8X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XeS-id-sUr" secondAttribute="leading" constant="24" id="6PV-OO-uob"/>
+                                        <constraint firstAttribute="trailing" secondItem="he5-Gi-R8X" secondAttribute="trailing" constant="24" id="ZFt-kf-8Qd"/>
+                                        <constraint firstAttribute="trailing" secondItem="PNm-p2-mlT" secondAttribute="trailing" id="dK8-9E-WFS"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PNm-p2-mlT" secondAttribute="bottom" id="fA8-bG-ecv"/>
+                                        <constraint firstItem="PNm-p2-mlT" firstAttribute="leading" secondItem="XeS-id-sUr" secondAttribute="leading" id="kO5-RD-UXy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="podcastImageView" destination="PNm-p2-mlT" id="7GY-EU-2dc"/>
+                                    <outlet property="podcastTitleLabel" destination="he5-Gi-R8X" id="fWj-4G-EqA"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PodcastEpisode" textLabel="8cr-ry-lYq" detailTextLabel="yk3-vs-T8H" style="IBUITableViewCellStyleSubtitle" id="geq-vv-Tek">
+                                <rect key="frame" x="0.0" y="292" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="geq-vv-Tek" id="o8l-Yg-hzN">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8cr-ry-lYq">
+                                            <rect key="frame" x="15" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yk3-vs-T8H">
+                                            <rect key="frame" x="15" y="25" width="41" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hIz-vF-BGh" id="6uv-5T-0jm"/>
+                            <outlet property="delegate" destination="hIz-vF-BGh" id="hMI-Og-Dzy"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zGN-Ud-1GG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1135" y="307"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4AO-A2-QcA">

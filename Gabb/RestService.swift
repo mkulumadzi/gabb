@@ -34,12 +34,6 @@ class RestService {
     class func downloadImage(imageURL:String, completion: (result: UIImage?) -> Void) {
         Alamofire.request(.GET, imageURL)
             .responseImage { response in
-                debugPrint(response)
-                
-                print(response.request)
-                print(response.response)
-                debugPrint(response.result)
-                
                 if let image = response.result.value {
                     completion(result: image)
                 }

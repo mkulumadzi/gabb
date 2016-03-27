@@ -9,6 +9,7 @@
 import UIKit
 
 private let reuseIdentifier = "PodcastCell"
+private let viewPodcast = "ViewPodcast"
 
 class BrowsePodcastsCollectionViewController: UICollectionViewController {
     
@@ -38,8 +39,26 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PodcastCollectionViewCell
         cell.backgroundColor = UIColor.lightGrayColor()
         cell.podcast = podcasts[indexPath.row]
-        cell.setImage()
+        if cell.imageView.image == nil { cell.setImage() }
         return cell
+    }
+
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PodcastCollectionViewCell
+        self.performSegueWithIdentifier(viewPodcast, sender: cell)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == viewPodcast {
+            if let vc = segue.destinationViewController as? ViewPodcastTableViewController {
+                if let cell = sender as? PodcastCollectionViewCell {
+                    vc.podcast = cell.podcast
+                    vc.podcastImage = cell.imageView.image
+                }
+            }
+            
+            
+        }
     }
 
 }
