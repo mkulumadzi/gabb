@@ -22,6 +22,7 @@
 		D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4311CA73EF700B1AE57 /* RestService.swift */; };
 		D240F4381CA7412400B1AE57 /* Pods_Gabb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D2BC4EA71CA88254006A66AA /* ViewPodcastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */; };
+		D2BC4EA91CA8A950006A66AA /* PlayEpisodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */; };
 		D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CFA7351CA752BC001743E6 /* PodcastService.swift */; };
 		D2CFA73C1CA75E80001743E6 /* Browse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2CFA73B1CA75E80001743E6 /* Browse.storyboard */; };
 		D2CFA73E1CA75EA2001743E6 /* BrowsePodcastsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CFA73D1CA75EA2001743E6 /* BrowsePodcastsCollectionViewController.swift */; };
@@ -71,6 +72,7 @@
 		D240F4351CA7410500B1AE57 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Gabb.framework; path = "Pods/../build/Debug-iphoneos/Pods_Gabb.framework"; sourceTree = "<group>"; };
 		D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPodcastTableViewController.swift; sourceTree = "<group>"; };
+		D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayEpisodeTableViewController.swift; sourceTree = "<group>"; };
 		D2CFA7351CA752BC001743E6 /* PodcastService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastService.swift; sourceTree = "<group>"; };
 		D2CFA73B1CA75E80001743E6 /* Browse.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Browse.storyboard; sourceTree = "<group>"; };
 		D2CFA73D1CA75EA2001743E6 /* BrowsePodcastsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsePodcastsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				D2CFA73D1CA75EA2001743E6 /* BrowsePodcastsCollectionViewController.swift */,
 				D2CFA73F1CA7627D001743E6 /* PodcastCollectionViewCell.swift */,
 				D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */,
+				D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */,
 			);
 			name = Browse;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */,
 				D240F4241CA5F29200B1AE57 /* Colors.swift in Sources */,
 				D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */,
+				D2BC4EA91CA8A950006A66AA /* PlayEpisodeTableViewController.swift in Sources */,
 				D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */,
 				D2CFA7401CA7627D001743E6 /* PodcastCollectionViewCell.swift in Sources */,
 			);

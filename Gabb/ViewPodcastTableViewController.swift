@@ -10,6 +10,7 @@ import UIKit
 
 private let podcastHeaderCell = "PodcastHeader"
 private let podcastEpisodeCell = "PodcastEpisode"
+private let playEpisode = "PlayEpisode"
 
 class ViewPodcastTableViewController: UITableViewController {
     
@@ -43,43 +44,56 @@ class ViewPodcastTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch (section) {
-        case 0:
-            return 1
-        default:
-            return episodes.count
+        return episodes.count
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 120.0
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCellWithIdentifier(podcastHeaderCell) as! PodcastHeaderCell
+        if let image = podcast["image"] as? UIImage {
+            cell.podcastImageView.image = image
         }
+        if let podcastTitle = podcast["title"] as? String {
+            cell.podcastTitleLabel.text = podcastTitle
+            cell.podcastTitleLabel.backgroundColor = UIColor.gabbBlackColor()
+            cell.podcastTitleLabel.textColor = UIColor.whiteColor()
+            cell.podcastTitleLabel.font = UIFont.systemFontOfSize(24.0)
+            cell.podcastTitleLabel.alpha = 0.8
+        }
+        else {
+            cell.podcastTitleLabel.text = ""
+        }
+        return cell
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch (indexPath.section) {
-        case 0:
-            let cell = tableView.dequeueReusableCellWithIdentifier(podcastHeaderCell) as! PodcastHeaderCell
-            if let image = podcast["image"] as? UIImage {
-                cell.podcastImageView.image = image
+        let cell = tableView.dequeueReusableCellWithIdentifier(podcastEpisodeCell, forIndexPath: indexPath)
+        let episode = episodes[indexPath.row]
+        if let episodeTitle = episode.valueForKey("title") as? String {
+            cell.textLabel?.text = episodeTitle
+            cell.textLabel?.numberOfLines = 0
+        }
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier(playEpisode, sender: indexPath)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == playEpisode {
+            if let indexPath = sender as? NSIndexPath {
+                let vc = segue.destinationViewController as! PlayEpisodeTableViewController
+                vc.podcast = podcast
+                vc.episode = episodes[indexPath.row]
             }
-            if let podcastTitle = podcast["title"] as? String {
-                cell.podcastTitleLabel.text = podcastTitle
-                cell.podcastTitleLabel.backgroundColor = UIColor.gabbBlackColor()
-                cell.podcastTitleLabel.textColor = UIColor.whiteColor()
-                cell.podcastTitleLabel.font = UIFont.systemFontOfSize(24.0)
-                cell.podcastTitleLabel.alpha = 0.8
-            }
-            else {
-                cell.podcastTitleLabel.text = ""
-            }
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(podcastEpisodeCell, forIndexPath: indexPath)
-            let episode = episodes[indexPath.row]
-            if let episodeTitle = episode.valueForKey("title") as? String {
-                cell.textLabel?.text = episodeTitle
-            }
-            return cell
         }
     }
 

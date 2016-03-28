@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let kSEGUE_BROWSE_PODCASTS = "BrowsePodcasts"
+private let browsePodcasts = "BrowsePodcasts"
 
 let screenSize: CGRect = UIScreen.mainScreen().bounds
 
@@ -30,13 +30,13 @@ class InitializationViewController: UIViewController {
                     let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
                     self.podcasts.append(mutableCopy)
                 }
-                self.performSegueWithIdentifier(kSEGUE_BROWSE_PODCASTS, sender: nil)
+                self.performSegueWithIdentifier(browsePodcasts, sender: nil)
             }
         })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == kSEGUE_BROWSE_PODCASTS) {
+        if (segue.identifier == browsePodcasts) {
             if let nav = segue.destinationViewController as? UINavigationController {
                 if let browseVc = nav.viewControllers.first as? BrowsePodcastsCollectionViewController {
                     browseVc.podcasts = self.podcasts
