@@ -138,18 +138,19 @@
         <scene sceneID="iHJ-wv-9im">
             <objects>
                 <tableViewController id="2CD-FD-2VC" customClass="PlayEpisodeTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Eed-Eu-dda">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Eed-Eu-dda">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="8a1-0M-RxN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="601" id="umV-RK-3Tb" userLabel="PodcastImage">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="601"/>
+                                        <rect key="frame" x="0.0" y="99" width="600" height="601"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="umV-RK-3Tb" id="trY-Ny-SNf">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="601"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-9z-Ayt">
@@ -173,10 +174,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="E5u-Hd-rDr" userLabel="EpisodeDetails">
-                                        <rect key="frame" x="0.0" y="665" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="700" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E5u-Hd-rDr" id="oJZ-YG-yco">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="podcastTitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5u6-7C-BhH">
@@ -204,11 +205,28 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="Dhu-4f-W6C" userLabel="PodcastControls">
-                                        <rect key="frame" x="0.0" y="745" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="780" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dhu-4f-W6C" id="wFb-cm-bwo">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8C-Pa-IDh">
+                                                    <rect key="frame" x="280" y="20" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="DcF-77-1Kl"/>
+                                                        <constraint firstAttribute="height" constant="40" id="ZOZ-pz-qjG"/>
+                                                    </constraints>
+                                                    <state key="normal" image="play"/>
+                                                    <connections>
+                                                        <action selector="playButtonTapped:" destination="2CD-FD-2VC" eventType="touchUpInside" id="NAM-og-2Oq"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerX" secondItem="wFb-cm-bwo" secondAttribute="centerX" id="Q4g-y0-5Ug"/>
+                                                <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerY" secondItem="wFb-cm-bwo" secondAttribute="centerY" id="y7b-P3-FjW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -223,6 +241,7 @@
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
                         <outlet property="episodeTitle" destination="v88-C9-9PB" id="LVg-cV-7qN"/>
+                        <outlet property="playButton" destination="q8C-Pa-IDh" id="Tiq-kG-oh7"/>
                         <outlet property="podcastImageView" destination="2jX-9z-Ayt" id="fg6-sY-Xhl"/>
                         <outlet property="podcastTitle" destination="5u6-7C-BhH" id="tEJ-Nw-lhO"/>
                     </connections>
@@ -248,4 +267,7 @@
             <point key="canvasLocation" x="-244" y="307"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play" width="24" height="24"/>
+    </resources>
 </document>
