@@ -23,12 +23,19 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
     func getPodcastImages() {
         for podcast in podcasts {
             if let imageURL = podcast.valueForKey("image_url") as? String {
-                RestService.downloadImage(imageURL, completion: {(image) -> Void in
-                    if let image = image {
-                        podcast.setValue(image, forKey: "image")
-                        self.collectionView?.reloadData()
-                    }
-                })
+                if let image = FileService.getImageFromDirectory(imageURL) {
+                    podcast.setValue(image, forKey: "image")
+                    self.collectionView?.reloadData()
+                }
+                else {
+                    RestService.downloadImage(imageURL, completion: {(image) -> Void in
+                        if let image = image {
+                            podcast.setValue(image, forKey: "image")
+                            FileService.saveImageToDirectory(image, fileName: imageURL)
+                            self.collectionView?.reloadData()
+                        }
+                    })
+                }
             }
         }
     }
