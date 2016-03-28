@@ -329,6 +329,7 @@
 				TargetAttributes = {
 					D240F3F01CA5EC0000B1AE57 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = X9T7R56238;
 					};
 					D240F4041CA5EC0100B1AE57 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -595,6 +596,7 @@
 			baseConfigurationReference = 72DA137B91621F46197418B8 /* Pods-Gabb.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
@@ -612,6 +614,7 @@
 			baseConfigurationReference = ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Release-iphoneos",
