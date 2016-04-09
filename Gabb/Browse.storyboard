@@ -146,35 +146,30 @@
                         <sections>
                             <tableViewSection id="8a1-0M-RxN">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="601" id="umV-RK-3Tb" userLabel="PodcastImage">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="601"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="600" id="umV-RK-3Tb" userLabel="PodcastImage">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="600"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="umV-RK-3Tb" id="trY-Ny-SNf">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="601"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-9z-Ayt">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQp-XX-DKQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="2jX-9z-Ayt" secondAttribute="height" multiplier="1:1" id="XL3-3x-oHj"/>
+                                                        <constraint firstAttribute="width" secondItem="yQp-XX-DKQ" secondAttribute="height" multiplier="1:1" id="am2-l5-etr"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="2jX-9z-Ayt" secondAttribute="trailing" id="Nud-nF-yfD"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2jX-9z-Ayt" secondAttribute="bottom" id="TJv-pU-l7I"/>
-                                                <constraint firstItem="2jX-9z-Ayt" firstAttribute="top" secondItem="trY-Ny-SNf" secondAttribute="top" id="vzh-f3-anJ"/>
-                                                <constraint firstItem="2jX-9z-Ayt" firstAttribute="leading" secondItem="trY-Ny-SNf" secondAttribute="leading" id="yKC-d2-c3F"/>
+                                                <constraint firstAttribute="bottom" secondItem="yQp-XX-DKQ" secondAttribute="bottom" priority="999" id="DkD-Hb-TBK"/>
+                                                <constraint firstAttribute="trailing" secondItem="yQp-XX-DKQ" secondAttribute="trailing" id="FY0-ag-HIw"/>
+                                                <constraint firstItem="yQp-XX-DKQ" firstAttribute="top" secondItem="trY-Ny-SNf" secondAttribute="top" id="N8M-KK-EYq"/>
+                                                <constraint firstItem="yQp-XX-DKQ" firstAttribute="leading" secondItem="trY-Ny-SNf" secondAttribute="leading" id="a3K-za-zDz"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="TJv-pU-l7I"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="E5u-Hd-rDr" userLabel="EpisodeDetails">
-                                        <rect key="frame" x="0.0" y="700" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="699" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E5u-Hd-rDr" id="oJZ-YG-yco">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
@@ -204,11 +199,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="Dhu-4f-W6C" userLabel="PodcastControls">
-                                        <rect key="frame" x="0.0" y="780" width="600" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="Dhu-4f-W6C" userLabel="PodcastControls">
+                                        <rect key="frame" x="0.0" y="779" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dhu-4f-W6C" id="wFb-cm-bwo">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8C-Pa-IDh">
@@ -222,11 +217,24 @@
                                                         <action selector="playButtonTapped:" destination="2CD-FD-2VC" eventType="touchUpInside" id="NAM-og-2Oq"/>
                                                     </connections>
                                                 </button>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tvt-jK-JGg">
+                                                    <rect key="frame" x="38" y="70" width="524" height="31"/>
+                                                </slider>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="tvt-jK-JGg" secondAttribute="bottom" constant="20" id="Brg-Vg-Xki"/>
+                                                <constraint firstItem="q8C-Pa-IDh" firstAttribute="top" secondItem="wFb-cm-bwo" secondAttribute="top" constant="20" id="KaR-25-UWY"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerX" secondItem="wFb-cm-bwo" secondAttribute="centerX" id="Q4g-y0-5Ug"/>
+                                                <constraint firstItem="tvt-jK-JGg" firstAttribute="leading" secondItem="wFb-cm-bwo" secondAttribute="leading" constant="40" id="pus-v1-N6Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="tvt-jK-JGg" secondAttribute="trailing" constant="40" id="ugp-tT-sXG"/>
+                                                <constraint firstItem="tvt-jK-JGg" firstAttribute="top" secondItem="q8C-Pa-IDh" secondAttribute="bottom" constant="10" id="vfV-yu-uj2"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerY" secondItem="wFb-cm-bwo" secondAttribute="centerY" id="y7b-P3-FjW"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="y7b-P3-FjW"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -242,7 +250,7 @@
                     <connections>
                         <outlet property="episodeTitle" destination="v88-C9-9PB" id="LVg-cV-7qN"/>
                         <outlet property="playButton" destination="q8C-Pa-IDh" id="Tiq-kG-oh7"/>
-                        <outlet property="podcastImageView" destination="2jX-9z-Ayt" id="fg6-sY-Xhl"/>
+                        <outlet property="podcastImageView" destination="yQp-XX-DKQ" id="Jcw-fu-Hfl"/>
                         <outlet property="podcastTitle" destination="5u6-7C-BhH" id="tEJ-Nw-lhO"/>
                     </connections>
                 </tableViewController>

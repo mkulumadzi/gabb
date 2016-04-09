@@ -22,12 +22,13 @@ class PlayEpisodeTableViewController: UITableViewController {
     @IBOutlet weak var playButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         formatView()
         initializePlayer()
+        super.viewDidLoad()
     }
     
     func formatView() {
+        
         if let image = podcast.valueForKey("image") as? UIImage {
             self.podcastImageView.image = image
         }
@@ -61,10 +62,15 @@ class PlayEpisodeTableViewController: UITableViewController {
         return 0
     }
     
+    // I freaking hate autolayout and table views. In any case, can't get the image cell to size correctly (it keeps setting the height to be 600), so setting the row heights manually for now.
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.row) {
         case 0:
             return screenSize.width
+        case 1:
+            return 80.0
+        case 2:
+            return 120.0
         default:
             return 80.0
         }
@@ -91,6 +97,7 @@ class PlayEpisodeTableViewController: UITableViewController {
             player.play()
             audioPlaying = true
         }
+        tableView.reloadData()
     }
     
     private func pauseEpisode() {
