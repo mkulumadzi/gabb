@@ -50,13 +50,27 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PodcastCollectionViewCell
-        cell.backgroundColor = UIColor.lightGrayColor()
         cell.podcast = podcasts[indexPath.row]
         if let image = cell.podcast["imageThumb"] as? UIImage {
+            cell.imageView.hidden = false
             cell.imageView.image = image
+            cell.titleLabel.hidden = true
+        }
+        else if (cell.podcast["image_url"] as? String) != nil {
+            cell.imageView.image = nil
+            cell.imageView.hidden = false
+            cell.titleLabel.hidden = true
         }
         else {
             cell.imageView.image = nil
+            cell.imageView.hidden = true
+            cell.titleLabel.hidden = false
+            if let podcastTitle = cell.podcast["title"] as? String {
+                cell.titleLabel.text = podcastTitle
+            }
+            else {
+                cell.titleLabel.text = ""
+            }
         }
         return cell
     }
