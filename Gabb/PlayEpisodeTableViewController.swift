@@ -46,6 +46,8 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         
         progressBar.minimumValue = 0
         progressBar.maximumValue = 100
+        
+        tableView.tableHeaderView = UIView(frame: CGRectMake(0,0,screenSize.width,0.1))
     }
     
     /*
@@ -53,6 +55,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
      If player is playing this episode, start updating the view
      If player is playing another episode, initialize the view but do not start playing
     */
+    
     func checkGabberStatus() {
         guard let gabber = gabber else {
             initializePlayer()
@@ -61,7 +64,6 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         
         if gabber.audioUrl == episode["audio_url"] as? String {
             gabber.delegate = self
-            
             if gabber.playing {
                 showPauseButton()
             }
@@ -116,11 +118,11 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         case 0:
             return screenSize.width
         case 1:
-            return 80.0
+            return 66.0
         case 2:
-            return 120.0
+            return 96.0
         default:
-            return 80.0
+            return 66.0
         }
     }
     
@@ -131,17 +133,14 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     
     @IBAction func playButtonTapped(sender: AnyObject) {
         if !gabber.playing {
-            self.showPauseButton()
             gabber.play()
         }
         else if (gabber.audioUrl != episode["audio_url"] as? String) {
             gabber.pause()
             gabber = gabbQueue
-            self.showPauseButton()
             gabber.play()
         }
         else {
-            self.showPlayButton()
             gabber.pause()
         }
     }
@@ -169,6 +168,14 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     func gabbPlayerUpdated() {
         playTime.text = gabber.playTime
         progressBar.setValue(gabber.episodeProgress, animated: true)
+    }
+    
+    func played() {
+        showPauseButton()
+    }
+    
+    func paused() {
+        showPlayButton()
     }
     
     // MARK: - Private

@@ -11,6 +11,8 @@ import AVFoundation
 
 protocol GabbPlayerDelegate {
     func gabbPlayerUpdated()
+    func played()
+    func paused()
 }
 
 class GabbPlayer: NSObject {
@@ -70,6 +72,7 @@ class GabbPlayer: NSObject {
         updater.frameInterval = 1
         updater.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
         player.play()
+        delegate?.played()
     }
     
     func pause() {
@@ -77,6 +80,7 @@ class GabbPlayer: NSObject {
             return
         }
         player.pause()
+        delegate?.paused()
         updater.invalidate()
     }
     

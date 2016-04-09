@@ -152,7 +152,7 @@
         <!--Play Episode Table View Controller-->
         <scene sceneID="iHJ-wv-9im">
             <objects>
-                <tableViewController id="2CD-FD-2VC" customClass="PlayEpisodeTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="2CD-FD-2VC" customClass="PlayEpisodeTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Eed-Eu-dda">
                         <rect key="frame" x="0.0" y="64" width="600" height="936"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -183,11 +183,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="E5u-Hd-rDr" userLabel="EpisodeDetails">
-                                        <rect key="frame" x="0.0" y="635" width="600" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="E5u-Hd-rDr" userLabel="EpisodeDetails">
+                                        <rect key="frame" x="0.0" y="635" width="600" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E5u-Hd-rDr" id="oJZ-YG-yco">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="podcastTitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5u6-7C-BhH">
@@ -197,7 +197,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episodeTitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="v88-C9-9PB">
-                                                    <rect key="frame" x="24" y="37" width="552" height="29"/>
+                                                    <rect key="frame" x="24" y="29" width="552" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -209,20 +209,20 @@
                                                 <constraint firstItem="5u6-7C-BhH" firstAttribute="leading" secondItem="oJZ-YG-yco" secondAttribute="leading" constant="24" id="TGb-fD-13G"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="v88-C9-9PB" secondAttribute="bottom" constant="8" id="ZtJ-Gv-r32"/>
                                                 <constraint firstItem="5u6-7C-BhH" firstAttribute="top" secondItem="oJZ-YG-yco" secondAttribute="top" constant="8" id="e03-TD-SjK"/>
-                                                <constraint firstItem="v88-C9-9PB" firstAttribute="top" secondItem="5u6-7C-BhH" secondAttribute="bottom" constant="8" id="hcO-24-26W"/>
+                                                <constraint firstItem="v88-C9-9PB" firstAttribute="top" secondItem="5u6-7C-BhH" secondAttribute="bottom" id="hcO-24-26W"/>
                                                 <constraint firstAttribute="trailing" secondItem="5u6-7C-BhH" secondAttribute="trailing" constant="24" id="qJd-qa-3Sd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="Dhu-4f-W6C" userLabel="PodcastControls">
-                                        <rect key="frame" x="0.0" y="715" width="600" height="120"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="96" id="Dhu-4f-W6C" userLabel="PodcastControls">
+                                        <rect key="frame" x="0.0" y="701" width="600" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dhu-4f-W6C" id="wFb-cm-bwo">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8C-Pa-IDh">
-                                                    <rect key="frame" x="280" y="20" width="40" height="40"/>
+                                                    <rect key="frame" x="280" y="8" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="DcF-77-1Kl"/>
                                                         <constraint firstAttribute="height" constant="40" id="ZOZ-pz-qjG"/>
@@ -233,20 +233,20 @@
                                                     </connections>
                                                 </button>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tvt-jK-JGg">
-                                                    <rect key="frame" x="98" y="70" width="404" height="31"/>
+                                                    <rect key="frame" x="98" y="58" width="404" height="31"/>
                                                     <connections>
                                                         <action selector="sliderEditingEnded:" destination="2CD-FD-2VC" eventType="touchUpInside" id="kKU-ev-wNA"/>
                                                         <action selector="sliderValueChanged:" destination="2CD-FD-2VC" eventType="valueChanged" id="NJU-oe-vER"/>
                                                     </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:05" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGW-Mr-mkm">
-                                                    <rect key="frame" x="10" y="76" width="80" height="18"/>
+                                                    <rect key="frame" x="10" y="64" width="80" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:45:06" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFd-I5-I7r">
-                                                    <rect key="frame" x="510" y="76" width="80" height="18"/>
+                                                    <rect key="frame" x="510" y="64" width="80" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -256,8 +256,8 @@
                                                 <constraint firstItem="tvt-jK-JGg" firstAttribute="leading" secondItem="wGW-Mr-mkm" secondAttribute="trailing" constant="10" id="4q5-QY-wwi"/>
                                                 <constraint firstItem="tvt-jK-JGg" firstAttribute="top" secondItem="wGW-Mr-mkm" secondAttribute="bottom" constant="-25" id="AWW-RW-5LJ"/>
                                                 <constraint firstItem="OFd-I5-I7r" firstAttribute="leading" secondItem="tvt-jK-JGg" secondAttribute="trailing" constant="10" id="BAn-pb-Vov"/>
-                                                <constraint firstAttribute="bottom" secondItem="tvt-jK-JGg" secondAttribute="bottom" constant="20" id="Brg-Vg-Xki"/>
-                                                <constraint firstItem="q8C-Pa-IDh" firstAttribute="top" secondItem="wFb-cm-bwo" secondAttribute="top" constant="20" id="KaR-25-UWY"/>
+                                                <constraint firstAttribute="bottom" secondItem="tvt-jK-JGg" secondAttribute="bottom" constant="8" id="Brg-Vg-Xki"/>
+                                                <constraint firstItem="q8C-Pa-IDh" firstAttribute="top" secondItem="wFb-cm-bwo" secondAttribute="top" constant="8" id="KaR-25-UWY"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerX" secondItem="wFb-cm-bwo" secondAttribute="centerX" id="Q4g-y0-5Ug"/>
                                                 <constraint firstAttribute="trailing" secondItem="OFd-I5-I7r" secondAttribute="trailing" constant="10" id="fKm-v9-frB"/>
                                                 <constraint firstItem="wGW-Mr-mkm" firstAttribute="centerY" secondItem="tvt-jK-JGg" secondAttribute="centerY" id="iHR-i3-VZt"/>
