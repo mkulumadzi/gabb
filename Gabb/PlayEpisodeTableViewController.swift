@@ -48,6 +48,10 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             self.episodeTitle.text = episodeTitle
         }
         
+        if let image = UIImage(named: "sliderBar") {
+            progressBar.setThumbImage(image, forState: .Normal)
+        }
+        
         progressBar.minimumValue = 0
         progressBar.maximumValue = 100
         progressBar.tag = noState
