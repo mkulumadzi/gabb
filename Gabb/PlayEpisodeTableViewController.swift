@@ -52,9 +52,15 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             progressBar.setThumbImage(image, forState: .Normal)
         }
         
+        playTime.text = "0:00"
+        episodeDuration.text = "0:00"
+        
         progressBar.minimumValue = 0
         progressBar.maximumValue = 100
         progressBar.tag = noState
+        progressBar.enabled = false
+        
+        playButton.enabled = false
         
         tableView.tableHeaderView = UIView(frame: CGRectMake(0,0,screenSize.width,0.1))
     }
@@ -80,6 +86,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
                 progressBar.setValue(gabber.episodeProgress, animated: false)
                 showPlayButton()
             }
+            layoutViewForGabbPlayer(gabber)
         }
         else {
             showPlayButton()
@@ -88,27 +95,36 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     }
     
     func initializePlayer() {
-        print("Starting the player at \(NSDate())")
         if let audioUrl = episode["audio_url"] as? String {
-            gabber = GabbPlayer(audioUrl: audioUrl)
-            gabber.delegate = self
-            episodeDuration.text = gabber.episodeDuration
-            playTime.text = gabber.playTime
-            progressBar.setValue(0, animated: false)
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                gabber = GabbPlayer(audioUrl: audioUrl)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.layoutViewForGabbPlayer(gabber)
+                }
+            }
         }
-        print("Finished starting the player at \(NSDate())")
     }
     
     func queueUpEpisode() {
-        print("Starting the player at \(NSDate())")
         if let audioUrl = episode["audio_url"] as? String {
-            gabbQueue = GabbPlayer(audioUrl: audioUrl)
-            gabbQueue.delegate = self
-            episodeDuration.text = gabbQueue.episodeDuration
-            playTime.text = gabbQueue.playTime
-            progressBar.setValue(0, animated: false)
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                self.gabbQueue = GabbPlayer(audioUrl: audioUrl)
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.layoutViewForGabbPlayer(self.gabbQueue)
+                }
+            }
         }
-        print("Finished starting the player at \(NSDate())")
+    }
+    
+    func layoutViewForGabbPlayer(gabbPlayer: GabbPlayer) {
+        gabbPlayer.delegate = self
+        episodeDuration.text = gabbPlayer.episodeDuration
+        playTime.text = gabbPlayer.playTime
+        progressBar.setValue(0, animated: false)
+        playButton.enabled = true
+        progressBar.enabled = true
     }
 
     // MARK: - Table view data source
