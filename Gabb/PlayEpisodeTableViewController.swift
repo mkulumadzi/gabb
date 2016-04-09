@@ -51,7 +51,7 @@ class PlayEpisodeTableViewController: UITableViewController {
             if let url = NSURL(string: audioUrl) {
                 asset = AVURLAsset(URL: url, options: nil)
                 episodeDuration.text = stringFromCMTime(asset.duration)
-                playTime.text = "00:00:00"
+                playTime.text = episodeDuration.text?.characters.count > 7 ? "0:00:00" : "00:00"
                 
                 progressBar.minimumValue = 0
                 progressBar.maximumValue = 100
@@ -63,20 +63,21 @@ class PlayEpisodeTableViewController: UITableViewController {
     }
     
     func stringFromCMTime(time: CMTime) -> String {
+        var timeString:String!
         let interval = Int(CMTimeGetSeconds(time))
         let seconds = interval % 60
         let minutes = (interval / 60 ) % 60
         let hours = (interval / 3600)
-        return String(format:"%02d:%02d:%02d", hours, minutes, seconds)
+        
+        if (hours > 0) {
+            timeString = String(format:"%d:%02d:%02d", hours, minutes, seconds)
+        }
+        else {
+            timeString = String(format:"%02d:%02d", minutes, seconds)
+        }
+        
+        return timeString
     }
-    
-//    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
-//        let interval = Int(interval)
-//        let seconds = interval % 60
-//        let minutes = (interval / 60) % 60
-//        let hours = (interval / 3600)
-//        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-//    }
 
     // MARK: - Table view data source
 
@@ -117,6 +118,25 @@ class PlayEpisodeTableViewController: UITableViewController {
         }
     }
     
+    
+    @IBAction func sliderValueChanged(sender: AnyObject) {
+        pauseEpisode()
+        let newTime = getTimeFromProgressBar()
+        playTime.text = stringFromCMTime(newTime)
+    }
+    
+    @IBAction func sliderEditingEnded(sender: AnyObject) {
+        let newTime = getTimeFromProgressBar()
+        player.seekToTime(newTime)
+        playEpisode()
+    }
+    
+    func getTimeFromProgressBar() -> CMTime {
+        let seconds = Double(Float(CMTimeGetSeconds(asset.duration)) * progressBar.value / 100)
+        let newTime = CMTime(seconds: seconds, preferredTimescale: asset.duration.timescale)
+        return newTime
+    }
+    
     // MARK: - Private
     
     private func playEpisode() {
@@ -147,49 +167,9 @@ class PlayEpisodeTableViewController: UITableViewController {
     func trackProgress() {
         playTime.text = stringFromCMTime(player.currentTime())
         let ratio = Float(CMTimeGetSeconds(player.currentTime()) / CMTimeGetSeconds(asset.duration))
-        progressBar.setValue(ratio, animated: true)
-        
-//        print(player.currentTime())
-//        print(CMTimeGetSeconds(player.currentTime()))
-//        print(asset.duration)
-//        print(CMTimeGetSeconds(asset.duration))
-//        print("")
+        progressBar.setValue(ratio * 100, animated: true)
     }
     
-//    let asset = AVURLAsset(URL: NSURL(fileURLWithPath: pathString), options: nil)
-//    let audioDuration = asset.duration
-//    let audioDurationSeconds = CMTimeGetSeconds(audioDuration)
     
-//    @IBAction func playAudio(sender: AnyObject) {
-//        playButton.selected = !(playButton.selected)
-//        if playButton.selected {
-//            updater = CADisplayLink(target: self, selector: Selector("trackAudio"))
-//            updater.frameInterval = 1
-//            updater.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
-//            let fileURL = NSURL(string: toPass)
-//            player = AVAudioPlayer(contentsOfURL: fileURL, error: nil)
-//            player.numberOfLoops = -1 // play indefinitely
-//            player.prepareToPlay()
-//            player.delegate = self
-//            player.play()
-//            startTime.text = "\(player.currentTime)"
-//            theProgressBar.minimumValue = 0
-//            theProgressBar.maximumValue = 100 // Percentage
-//        } else {
-//            player.stop()
-//        }
-//    }
-//    
-//    func trackAudio() {
-//        var normalizedTime = Float(player.currentTime * 100.0 / player.duration)
-//        theProgressBar.value = normalizedTime
-//    }
-//    
-//    @IBAction func cancelClicked(sender: AnyObject) {
-//        player.stop()
-//        updater.invalidate()
-//        dismissViewControllerAnimated(true, completion: nil)
-//        
-//    }
 
 }

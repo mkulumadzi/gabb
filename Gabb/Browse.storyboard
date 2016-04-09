@@ -219,6 +219,10 @@
                                                 </button>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tvt-jK-JGg">
                                                     <rect key="frame" x="98" y="70" width="404" height="31"/>
+                                                    <connections>
+                                                        <action selector="sliderEditingEnded:" destination="2CD-FD-2VC" eventType="touchUpInside" id="kKU-ev-wNA"/>
+                                                        <action selector="sliderValueChanged:" destination="2CD-FD-2VC" eventType="valueChanged" id="NJU-oe-vER"/>
+                                                    </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:05" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGW-Mr-mkm">
                                                     <rect key="frame" x="10" y="76" width="80" height="18"/>
