@@ -11,7 +11,7 @@
             <objects>
                 <collectionViewController id="TIk-NJ-Q3f" customClass="BrowsePodcastsCollectionViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DWM-7h-yXi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="eIr-6H-S5Z">
@@ -22,7 +22,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PodcastCell" id="wrt-uu-VZT" customClass="PodcastCollectionViewCell" customModule="Gabb" customModuleProvider="target">
-                                <rect key="frame" x="2" y="66" width="100" height="100"/>
+                                <rect key="frame" x="2" y="2" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -60,7 +60,9 @@
                             <outlet property="delegate" destination="TIk-NJ-Q3f" id="dhO-R5-OPY"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="xCA-7r-aIK"/>
+                    <navigationItem key="navigationItem" id="xCA-7r-aIK">
+                        <barButtonItem key="backBarButtonItem" title="Browse" id="jvo-dX-IqJ"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="CPa-gN-ZIL"/>
                     </connections>
@@ -74,12 +76,12 @@
             <objects>
                 <tableViewController id="hIz-vF-BGh" customClass="ViewPodcastTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uTR-93-3eD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PodcastHeader" rowHeight="120" id="zo3-ya-cii" customClass="PodcastHeaderCell" customModule="Gabb" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zo3-ya-cii" id="XeS-id-sUr">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
@@ -114,7 +116,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PodcastEpisode" textLabel="8cr-ry-lYq" style="IBUITableViewCellStyleDefault" id="geq-vv-Tek">
-                                <rect key="frame" x="0.0" y="212" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="148" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="geq-vv-Tek" id="o8l-Yg-hzN">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -136,6 +138,9 @@
                             <outlet property="delegate" destination="hIz-vF-BGh" id="hMI-Og-Dzy"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="W15-Nt-eyB">
+                        <barButtonItem key="backBarButtonItem" title="Episodes" id="1y5-91-t8y"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="2CD-FD-2VC" kind="show" identifier="PlayEpisode" id="QqH-5U-ZNK"/>
                     </connections>
@@ -149,7 +154,7 @@
             <objects>
                 <tableViewController id="2CD-FD-2VC" customClass="PlayEpisodeTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Eed-Eu-dda">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="1000"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="936"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,7 +162,7 @@
                             <tableViewSection id="8a1-0M-RxN">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="600" id="umV-RK-3Tb" userLabel="PodcastImage">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="35" width="600" height="600"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="umV-RK-3Tb" id="trY-Ny-SNf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -179,7 +184,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="E5u-Hd-rDr" userLabel="EpisodeDetails">
-                                        <rect key="frame" x="0.0" y="699" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="635" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E5u-Hd-rDr" id="oJZ-YG-yco">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
@@ -210,7 +215,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="Dhu-4f-W6C" userLabel="PodcastControls">
-                                        <rect key="frame" x="0.0" y="779" width="600" height="120"/>
+                                        <rect key="frame" x="0.0" y="715" width="600" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dhu-4f-W6C" id="wFb-cm-bwo">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
@@ -299,9 +304,14 @@
         <scene sceneID="4AO-A2-QcA">
             <objects>
                 <navigationController id="eTe-fG-vPo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4pz-hf-HRD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="4pz-hf-HRD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="TIk-NJ-Q3f" kind="relationship" relationship="rootViewController" id="ASl-yN-1ul"/>

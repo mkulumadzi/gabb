@@ -46,7 +46,6 @@ class ViewPodcastTableViewController: UITableViewController {
         if let imageURL = podcast.valueForKey("image_url") as? String {
             FileService.getFullImageForURL(imageURL, completion: {(image) -> Void in
                 if let image = image {
-                    print(image.size)
                     self.podcast.setValue(image, forKey: "image")
                     self.tableView.reloadData()
                 }

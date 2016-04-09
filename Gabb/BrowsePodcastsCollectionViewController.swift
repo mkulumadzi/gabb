@@ -17,7 +17,13 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatView()
         getPodcastImages()
+    }
+    
+    func formatView() {
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.logoSmall(), NSForegroundColorAttributeName : UIColor.gabbRedColor()]
+        navigationItem.title = "Gabb"
     }
     
     func getPodcastImages() {
