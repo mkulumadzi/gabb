@@ -12,6 +12,8 @@ private let browsePodcasts = "BrowsePodcasts"
 
 let screenSize: CGRect = UIScreen.mainScreen().bounds
 
+var podcastPlayer:PodcastPlayer!
+
 class InitializationViewController: UIViewController {
 
     @IBOutlet weak var logoLabel: UILabel!
