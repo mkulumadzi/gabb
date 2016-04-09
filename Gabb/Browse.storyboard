@@ -218,20 +218,40 @@
                                                     </connections>
                                                 </button>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tvt-jK-JGg">
-                                                    <rect key="frame" x="38" y="70" width="524" height="31"/>
+                                                    <rect key="frame" x="98" y="70" width="404" height="31"/>
                                                 </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:05" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGW-Mr-mkm">
+                                                    <rect key="frame" x="10" y="76" width="80" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:45:06" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFd-I5-I7r">
+                                                    <rect key="frame" x="510" y="76" width="80" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="tvt-jK-JGg" firstAttribute="leading" secondItem="wGW-Mr-mkm" secondAttribute="trailing" constant="10" id="4q5-QY-wwi"/>
+                                                <constraint firstItem="tvt-jK-JGg" firstAttribute="top" secondItem="wGW-Mr-mkm" secondAttribute="bottom" constant="-25" id="AWW-RW-5LJ"/>
+                                                <constraint firstItem="OFd-I5-I7r" firstAttribute="leading" secondItem="tvt-jK-JGg" secondAttribute="trailing" constant="10" id="BAn-pb-Vov"/>
                                                 <constraint firstAttribute="bottom" secondItem="tvt-jK-JGg" secondAttribute="bottom" constant="20" id="Brg-Vg-Xki"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="top" secondItem="wFb-cm-bwo" secondAttribute="top" constant="20" id="KaR-25-UWY"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerX" secondItem="wFb-cm-bwo" secondAttribute="centerX" id="Q4g-y0-5Ug"/>
-                                                <constraint firstItem="tvt-jK-JGg" firstAttribute="leading" secondItem="wFb-cm-bwo" secondAttribute="leading" constant="40" id="pus-v1-N6Q"/>
-                                                <constraint firstAttribute="trailing" secondItem="tvt-jK-JGg" secondAttribute="trailing" constant="40" id="ugp-tT-sXG"/>
+                                                <constraint firstAttribute="trailing" secondItem="OFd-I5-I7r" secondAttribute="trailing" constant="10" id="fKm-v9-frB"/>
+                                                <constraint firstItem="wGW-Mr-mkm" firstAttribute="centerY" secondItem="tvt-jK-JGg" secondAttribute="centerY" id="iHR-i3-VZt"/>
+                                                <constraint firstItem="OFd-I5-I7r" firstAttribute="centerY" secondItem="tvt-jK-JGg" secondAttribute="centerY" id="nHS-Cw-Peo"/>
+                                                <constraint firstItem="tvt-jK-JGg" firstAttribute="leading" secondItem="wFb-cm-bwo" secondAttribute="leading" constant="100" id="pus-v1-N6Q"/>
+                                                <constraint firstItem="wGW-Mr-mkm" firstAttribute="leading" secondItem="wFb-cm-bwo" secondAttribute="leading" constant="10" id="reD-sT-Qht"/>
+                                                <constraint firstAttribute="trailing" secondItem="tvt-jK-JGg" secondAttribute="trailing" constant="100" id="ugp-tT-sXG"/>
                                                 <constraint firstItem="tvt-jK-JGg" firstAttribute="top" secondItem="q8C-Pa-IDh" secondAttribute="bottom" constant="10" id="vfV-yu-uj2"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerY" secondItem="wFb-cm-bwo" secondAttribute="centerY" id="y7b-P3-FjW"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="AWW-RW-5LJ"/>
                                                     <exclude reference="y7b-P3-FjW"/>
                                                 </mask>
                                             </variation>
@@ -248,10 +268,13 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
+                        <outlet property="episodeDuration" destination="OFd-I5-I7r" id="Dw4-Aq-Rsw"/>
                         <outlet property="episodeTitle" destination="v88-C9-9PB" id="LVg-cV-7qN"/>
                         <outlet property="playButton" destination="q8C-Pa-IDh" id="Tiq-kG-oh7"/>
+                        <outlet property="playTime" destination="wGW-Mr-mkm" id="7p7-xc-BLP"/>
                         <outlet property="podcastImageView" destination="yQp-XX-DKQ" id="Jcw-fu-Hfl"/>
                         <outlet property="podcastTitle" destination="5u6-7C-BhH" id="tEJ-Nw-lhO"/>
+                        <outlet property="progressBar" destination="tvt-jK-JGg" id="btj-Vv-X1l"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8M0-an-he2" userLabel="First Responder" sceneMemberID="firstResponder"/>
