@@ -68,22 +68,12 @@ class FileService {
     
     // MARK: - Private
     
-    private class func convertFileNameToNSURL(url: String) -> NSURL {
+    private class func convertFileNameToNSURL(imageUrl: String) -> NSURL {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)
         let docURL = urls[urls.endIndex-1]
-        let fileName = convertUrlToFilename(url)
+        let fileName = imageUrl.toHashWithExtension()
         let path = docURL.URLByAppendingPathComponent(fileName)
         return path
-    }
-    
-    private class func convertUrlToFilename(url: String) -> String {
-        let strArray = url.characters.split{$0 == "/"}.map(String.init)
-        if let str = strArray.last {
-            return str
-        }
-        else {
-            return url
-        }
     }
     
 }
