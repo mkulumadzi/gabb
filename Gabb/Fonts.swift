@@ -21,7 +21,7 @@ extension UIFont {
     }
     
     class func logoSmall() -> UIFont {
-        if let font = UIFont(name: "AmaticSC-Regular", size: 30.0) {
+        if let font = UIFont(name: "Amatic-Bold", size: 30.0) {
             return font
         }
         else {
