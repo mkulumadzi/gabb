@@ -9,13 +9,13 @@
 import UIKit
 import AVFoundation
 
-class PlayEpisodeTableViewController: UITableViewController {
+class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate {
     
     var podcast:NSDictionary!
     var episode:NSDictionary!
     
-    var audioPlaying:Bool = false
-    var updater : CADisplayLink! = nil
+//    var audioPlaying:Bool = false
+//    var updater : CADisplayLink! = nil
     
     @IBOutlet weak var progressBar: UISlider!
     @IBOutlet weak var playTime: UILabel!
@@ -46,9 +46,10 @@ class PlayEpisodeTableViewController: UITableViewController {
     
     func initializePlayer() {
         if let audioUrl = episode["audio_url"] as? String {
-            podcastPlayer = PodcastPlayer(audioUrl: audioUrl)
-            episodeDuration.text = podcastPlayer.episodeDuration
-            playTime.text = podcastPlayer.playTime
+            gabber = GabbPlayer(audioUrl: audioUrl)
+            gabber.delegate = self
+            episodeDuration.text = gabber.episodeDuration
+            playTime.text = gabber.playTime
             
             progressBar.minimumValue = 0
             progressBar.maximumValue = 100
@@ -87,63 +88,44 @@ class PlayEpisodeTableViewController: UITableViewController {
     // MARK: - User Actions
     
     @IBAction func playButtonTapped(sender: AnyObject) {
-        if audioPlaying {
-            pauseEpisode()
+        if gabber.playing {
+            if let pauseImage = UIImage(named: "pause") {
+                playButton.setImage(pauseImage, forState: .Normal)
+            }
+            gabber.play()
         }
         else {
-            playEpisode()
+            if let playImage = UIImage(named: "play") {
+                playButton.setImage(playImage, forState: .Normal)
+            }
+            gabber.pause()
         }
     }
     
     
     @IBAction func sliderValueChanged(sender: AnyObject) {
-        pauseEpisode()
+        gabber.pause()
         let newTime = getTimeFromProgressBar()
         playTime.text = newTime.toString()
     }
     
     @IBAction func sliderEditingEnded(sender: AnyObject) {
         let newTime = getTimeFromProgressBar()
-        podcastPlayer.player.seekToTime(newTime)
-        playEpisode()
+        gabber.player.seekToTime(newTime)
+        gabber.play()
     }
     
     func getTimeFromProgressBar() -> CMTime {
-        let seconds = Double(Float(CMTimeGetSeconds(podcastPlayer.asset.duration)) * progressBar.value / 100)
-        let newTime = CMTime(seconds: seconds, preferredTimescale: podcastPlayer.asset.duration.timescale)
+        let seconds = Double(Float(CMTimeGetSeconds(gabber.asset.duration)) * progressBar.value / 100)
+        let newTime = CMTime(seconds: seconds, preferredTimescale: gabber.asset.duration.timescale)
         return newTime
     }
     
-    // MARK: - Private
+    // MARK: - Delegate methods
     
-    private func playEpisode() {
-        if let pauseImage = UIImage(named: "pause") {
-            playButton.setImage(pauseImage, forState: .Normal)
-        }
-        if let player = podcastPlayer.player {
-            updater = CADisplayLink(target: self, selector: #selector(PlayEpisodeTableViewController.trackProgress))
-            updater.frameInterval = 1
-            updater.addToRunLoop(NSRunLoop.currentRunLoop(),forMode: NSRunLoopCommonModes)
-            player.play()
-            audioPlaying = true
-        }
-        tableView.reloadData()
-    }
-    
-    private func pauseEpisode() {
-        if let playImage = UIImage(named: "play") {
-            playButton.setImage(playImage, forState: .Normal)
-        }
-        if let player = podcastPlayer.player {
-            player.pause()
-            audioPlaying = false
-            updater.invalidate()
-        }
-    }
-    
-    func trackProgress() {
-        playTime.text = podcastPlayer.playTime
-        progressBar.setValue(podcastPlayer.episodeProgress, animated: true)
+    func gabbPlayerUpdated() {
+        playTime.text = gabber.playTime
+        progressBar.setValue(gabber.episodeProgress, animated: true)
     }
 
 }

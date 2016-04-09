@@ -12,7 +12,7 @@ private let browsePodcasts = "BrowsePodcasts"
 
 let screenSize: CGRect = UIScreen.mainScreen().bounds
 
-var podcastPlayer:PodcastPlayer!
+var gabber:GabbPlayer!
 
 class InitializationViewController: UIViewController {
 
