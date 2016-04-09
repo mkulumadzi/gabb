@@ -41,7 +41,6 @@ class RestService {
                     completion(result: nil)
                 }
         }
-        
     }
     
     class func postRequest(requestURL:String, parameters: [String: AnyObject]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {

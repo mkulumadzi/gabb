@@ -23,19 +23,12 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
     func getPodcastImages() {
         for podcast in podcasts {
             if let imageURL = podcast.valueForKey("image_url") as? String {
-                if let image = FileService.getImageFromDirectory(imageURL) {
-                    podcast.setValue(image, forKey: "image")
-                    self.collectionView?.reloadData()
-                }
-                else {
-                    RestService.downloadImage(imageURL, completion: {(image) -> Void in
-                        if let image = image {
-                            podcast.setValue(image, forKey: "image")
-                            FileService.saveImageToDirectory(image, fileName: imageURL)
-                            self.collectionView?.reloadData()
-                        }
-                    })
-                }
+                FileService.getThumbnailImageForURL(imageURL, completion: {(image) -> Void in
+                    if let image = image {
+                        podcast.setValue(image, forKey: "imageThumb")
+                        self.collectionView?.reloadData()
+                    }
+                })
             }
         }
     }
@@ -52,15 +45,14 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
-        let cellWidth = (screenSize.width - 8) / 3
-        return CGSize.init(width: cellWidth, height: cellWidth)
+        return thumbnailSize
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PodcastCollectionViewCell
         cell.backgroundColor = UIColor.lightGrayColor()
         cell.podcast = podcasts[indexPath.row]
-        if let image = cell.podcast["image"] as? UIImage {
+        if let image = cell.podcast["imageThumb"] as? UIImage {
             cell.imageView.image = image
         }
         else {

@@ -12,6 +12,16 @@ private let browsePodcasts = "BrowsePodcasts"
 
 let screenSize: CGRect = UIScreen.mainScreen().bounds
 
+var thumbnailSize: CGSize {
+    let x = (screenSize.width - 8) / 3
+    return CGSize(width: x, height: x)
+}
+
+var fullSize: CGSize {
+    let x = screenSize.width
+    return CGSize(width: x, height: x)
+}
+
 var gabber:GabbPlayer!
 
 class InitializationViewController: UIViewController {

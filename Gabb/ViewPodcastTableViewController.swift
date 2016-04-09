@@ -21,6 +21,7 @@ class ViewPodcastTableViewController: UITableViewController {
         super.viewDidLoad()
         formatView()
         getPodcastEpisodes()
+        getPodcastImage()
     }
     
     func formatView() {
@@ -35,6 +36,18 @@ class ViewPodcastTableViewController: UITableViewController {
             PodcastService.getEpisodesForPodcast(podcast_id, completion: {(episodeArray) -> Void in
                 if let episodeArray = episodeArray {
                     self.episodes = episodeArray
+                    self.tableView.reloadData()
+                }
+            })
+        }
+    }
+    
+    func getPodcastImage() {
+        if let imageURL = podcast.valueForKey("image_url") as? String {
+            FileService.getFullImageForURL(imageURL, completion: {(image) -> Void in
+                if let image = image {
+                    print(image.size)
+                    self.podcast.setValue(image, forKey: "image")
                     self.tableView.reloadData()
                 }
             })

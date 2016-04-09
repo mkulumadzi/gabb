@@ -33,9 +33,10 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     
     func formatView() {
         
-        if let image = podcast.valueForKey("image") as? UIImage {
+        if let image = podcast["image"] as? UIImage {
             self.podcastImageView.image = image
         }
+        
         if let podcastTitle = podcast.valueForKey("title") as? String {
             self.podcastTitle.text = podcastTitle
         }
