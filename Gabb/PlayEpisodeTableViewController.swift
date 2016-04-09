@@ -10,6 +10,10 @@ import UIKit
 import AVFoundation
 import SwiftyJSON
 
+private let noState = -1
+private let wasPlaying = 0
+private let wasNotPlaying = 1
+
 class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate {
     
     var podcast:NSDictionary!
@@ -46,6 +50,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         
         progressBar.minimumValue = 0
         progressBar.maximumValue = 100
+        progressBar.tag = noState
         
         tableView.tableHeaderView = UIView(frame: CGRectMake(0,0,screenSize.width,0.1))
     }
@@ -79,6 +84,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     }
     
     func initializePlayer() {
+        print("Starting the player at \(NSDate())")
         if let audioUrl = episode["audio_url"] as? String {
             gabber = GabbPlayer(audioUrl: audioUrl)
             gabber.delegate = self
@@ -86,9 +92,11 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             playTime.text = gabber.playTime
             progressBar.setValue(0, animated: false)
         }
+        print("Finished starting the player at \(NSDate())")
     }
     
     func queueUpEpisode() {
+        print("Starting the player at \(NSDate())")
         if let audioUrl = episode["audio_url"] as? String {
             gabbQueue = GabbPlayer(audioUrl: audioUrl)
             gabbQueue.delegate = self
@@ -96,6 +104,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             playTime.text = gabbQueue.playTime
             progressBar.setValue(0, animated: false)
         }
+        print("Finished starting the player at \(NSDate())")
     }
 
     // MARK: - Table view data source
@@ -145,8 +154,19 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         }
     }
     
+    /*
+     If this is the first time this function was called, pause the player (if necessary) and records its state (playing or not playing)
+     Set the time labels based on the position of the slider.
+    */
+    
     @IBAction func sliderValueChanged(sender: AnyObject) {
-        gabber.pause()
+        if gabber.playing {
+            gabber.pause()
+            progressBar.tag = wasPlaying
+        }
+        else if progressBar.tag == noState {
+            progressBar.tag = wasNotPlaying
+        }
         let newTime = getTimeFromProgressBar()
         playTime.text = newTime.toString()
     }
@@ -154,7 +174,10 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     @IBAction func sliderEditingEnded(sender: AnyObject) {
         let newTime = getTimeFromProgressBar()
         gabber.player.seekToTime(newTime)
-        gabber.play()
+        if progressBar.tag == wasPlaying {
+            gabber.play()
+        }
+        progressBar.tag = -1
     }
     
     func getTimeFromProgressBar() -> CMTime {

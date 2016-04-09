@@ -234,6 +234,7 @@
                                                 </button>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tvt-jK-JGg">
                                                     <rect key="frame" x="98" y="58" width="404" height="31"/>
+                                                    <color key="tintColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="sliderEditingEnded:" destination="2CD-FD-2VC" eventType="touchUpInside" id="kKU-ev-wNA"/>
                                                         <action selector="sliderValueChanged:" destination="2CD-FD-2VC" eventType="valueChanged" id="NJU-oe-vER"/>
