@@ -58,7 +58,7 @@ class GabbPlayer: NSObject {
             _playing = false
             return false
         }
-        _playing = player.rate > 0 ? false : true
+        _playing = player.rate > 0 ? true : false
         return _playing
     }
     

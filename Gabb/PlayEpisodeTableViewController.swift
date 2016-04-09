@@ -8,14 +8,14 @@
 
 import UIKit
 import AVFoundation
+import SwiftyJSON
 
 class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate {
     
     var podcast:NSDictionary!
     var episode:NSDictionary!
     
-//    var audioPlaying:Bool = false
-//    var updater : CADisplayLink! = nil
+    var gabbQueue:GabbPlayer!
     
     @IBOutlet weak var progressBar: UISlider!
     @IBOutlet weak var playTime: UILabel!
@@ -27,7 +27,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     
     override func viewDidLoad() {
         formatView()
-        initializePlayer()
+        checkGabberStatus()
         super.viewDidLoad()
     }
     
@@ -42,6 +42,37 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         if let episodeTitle = episode.valueForKey("title") as? String {
             self.episodeTitle.text = episodeTitle
         }
+        
+        progressBar.minimumValue = 0
+        progressBar.maximumValue = 100
+    }
+    
+    /*
+     If player is not playing, initialize it
+     If player is playing this episode, start updating the view
+     If player is playing another episode, initialize the view but do not start playing
+    */
+    func checkGabberStatus() {
+        guard let gabber = gabber else {
+            initializePlayer()
+            return
+        }
+        
+        if gabber.audioUrl == episode["audio_url"] as? String {
+            gabber.delegate = self
+            
+            if gabber.playing {
+                showPauseButton()
+            }
+            else {
+                progressBar.setValue(gabber.episodeProgress, animated: false)
+                showPlayButton()
+            }
+        }
+        else {
+            showPlayButton()
+            queueUpEpisode()
+        }
     }
     
     func initializePlayer() {
@@ -50,9 +81,16 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             gabber.delegate = self
             episodeDuration.text = gabber.episodeDuration
             playTime.text = gabber.playTime
-            
-            progressBar.minimumValue = 0
-            progressBar.maximumValue = 100
+            progressBar.setValue(0, animated: false)
+        }
+    }
+    
+    func queueUpEpisode() {
+        if let audioUrl = episode["audio_url"] as? String {
+            gabbQueue = GabbPlayer(audioUrl: audioUrl)
+            gabbQueue.delegate = self
+            episodeDuration.text = gabbQueue.episodeDuration
+            playTime.text = gabbQueue.playTime
             progressBar.setValue(0, animated: false)
         }
     }
@@ -87,21 +125,25 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     
     // MARK: - User Actions
     
+    //If another episode is playing, stop it, kill that player, and assign the player to this episode. Then play it.
+    // If another episode is not playing, just play this episode
+    
     @IBAction func playButtonTapped(sender: AnyObject) {
-        if gabber.playing {
-            if let pauseImage = UIImage(named: "pause") {
-                playButton.setImage(pauseImage, forState: .Normal)
-            }
+        if !gabber.playing {
+            self.showPauseButton()
+            gabber.play()
+        }
+        else if (gabber.audioUrl != episode["audio_url"] as? String) {
+            gabber.pause()
+            gabber = gabbQueue
+            self.showPauseButton()
             gabber.play()
         }
         else {
-            if let playImage = UIImage(named: "play") {
-                playButton.setImage(playImage, forState: .Normal)
-            }
+            self.showPlayButton()
             gabber.pause()
         }
     }
-    
     
     @IBAction func sliderValueChanged(sender: AnyObject) {
         gabber.pause()
@@ -126,6 +168,20 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     func gabbPlayerUpdated() {
         playTime.text = gabber.playTime
         progressBar.setValue(gabber.episodeProgress, animated: true)
+    }
+    
+    // MARK: - Private
+    
+    private func showPlayButton() {
+        if let playImage = UIImage(named: "play") {
+            playButton.setImage(playImage, forState: .Normal)
+        }
+    }
+    
+    private func showPauseButton() {
+        if let pauseImage = UIImage(named: "pause") {
+            playButton.setImage(pauseImage, forState: .Normal)
+        }
     }
 
 }
