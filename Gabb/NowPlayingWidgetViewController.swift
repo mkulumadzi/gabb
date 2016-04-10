@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import MarqueeLabel_Swift
 
 class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var nowPlayingLabel: UILabel!
+    @IBOutlet weak var nowPlayingMarquee: MarqueeLabel!
     @IBOutlet weak var playTime: UILabel!
     @IBOutlet weak var episodeDuration: UILabel!
     @IBOutlet weak var progressBar: UISlider!
@@ -22,11 +23,11 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     }
     
     func formatView() {
-        nowPlayingLabel.textColor = UIColor.gabbLightGreyColor()
+        nowPlayingMarquee.textColor = UIColor.gabbLightGreyColor()
         
         if let podcastTitle = gabber.podcast.valueForKey("title") as? String {
             if let episodeTitle = gabber.episode.valueForKey("title") as? String {
-                self.nowPlayingLabel.text = podcastTitle + " - " + episodeTitle
+                self.nowPlayingMarquee.text = podcastTitle + " - " + episodeTitle
             }
         }
         
@@ -35,9 +36,11 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
         progressBar.maximumValue = 100.0
         
         if gabber.playing {
+            nowPlayingMarquee.restartLabel()
             showPauseButton()
         }
         else {
+            nowPlayingMarquee.pauseLabel()
             showPlayButton()
         }
         
@@ -63,10 +66,12 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     }
     
     func played() {
+        nowPlayingMarquee.unpauseLabel()
         showPauseButton()
     }
     
     func paused() {
+        nowPlayingMarquee.pauseLabel()
         showPlayButton()
     }
     

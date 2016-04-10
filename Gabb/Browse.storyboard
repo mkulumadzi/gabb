@@ -330,7 +330,7 @@
                                     <action selector="playButtonTapped:" destination="HVY-H9-Thb" eventType="touchUpInside" id="7kU-gw-G21"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nowPlaying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbr-6h-5n9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nowPlaying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbr-6h-5n9" customClass="MarqueeLabel" customModule="MarqueeLabel_Swift">
                                 <rect key="frame" x="60" y="10" width="305" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -343,26 +343,26 @@
                                     <constraint firstAttribute="height" constant="2" id="vyw-bW-Su9"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veq-hS-ake">
-                                <rect key="frame" x="60" y="36" width="48" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veq-hS-ake">
+                                <rect key="frame" x="60" y="36" width="54" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="wRh-rl-xPE"/>
+                                    <constraint firstAttribute="width" constant="54" id="wRh-rl-xPE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxQ-h2-d6f">
-                                <rect key="frame" x="317" y="36" width="48" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxQ-h2-d6f">
+                                <rect key="frame" x="311" y="36" width="54" height="16"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="UMJ-dd-NV6"/>
+                                    <constraint firstAttribute="width" constant="54" id="UMJ-dd-NV6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6bd-p5-RkR">
-                                <rect key="frame" x="106" y="29" width="213" height="31"/>
+                                <rect key="frame" x="112" y="29" width="201" height="31"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                             </slider>
                         </subviews>
@@ -401,7 +401,7 @@
                     <size key="freeformSize" width="375" height="60"/>
                     <connections>
                         <outlet property="episodeDuration" destination="OxQ-h2-d6f" id="1c3-8X-7Gh"/>
-                        <outlet property="nowPlayingLabel" destination="zbr-6h-5n9" id="msQ-Uw-OME"/>
+                        <outlet property="nowPlayingMarquee" destination="zbr-6h-5n9" id="Vja-XT-fDE"/>
                         <outlet property="playButton" destination="DGI-at-dBF" id="efG-3H-7Gz"/>
                         <outlet property="playTime" destination="veq-hS-ake" id="C9f-ko-vOI"/>
                         <outlet property="progressBar" destination="6bd-p5-RkR" id="ILd-rf-eLO"/>

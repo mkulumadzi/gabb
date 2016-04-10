@@ -6,4 +6,5 @@ target 'Gabb' do
   pod 'SwiftyJSON', '~> 2.3'
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'MarqueeLabel-Swift'
 end
