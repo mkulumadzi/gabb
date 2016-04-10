@@ -12,7 +12,10 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nowPlayingLabel: UILabel!
-
+    @IBOutlet weak var playTime: UILabel!
+    @IBOutlet weak var episodeDuration: UILabel!
+    @IBOutlet weak var progressBar: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         formatView()
@@ -27,12 +30,18 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
             }
         }
         
+        progressBar.setThumbImage(UIImage(), forState: .Normal)
+        progressBar.minimumValue = 0.0
+        progressBar.maximumValue = 100.0
+        
         if gabber.playing {
             showPauseButton()
         }
         else {
             showPlayButton()
         }
+        
+        episodeDuration.text = gabber.episodeDuration
     }
     
     // MARK: - User actions
@@ -49,7 +58,8 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     // MARK: - Delegate methods
     
     func gabbPlayerUpdated() {
-        
+        playTime.text = gabber.playTime
+        progressBar.setValue(gabber.episodeProgress, animated: true)
     }
     
     func played() {
