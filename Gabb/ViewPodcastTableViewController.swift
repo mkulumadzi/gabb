@@ -25,6 +25,10 @@ class ViewPodcastTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        
+        navigationController?.navigationBar.tintColor = UIColor.gabbRedColor()
+        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        
         tableView.reloadData()
     }
     
