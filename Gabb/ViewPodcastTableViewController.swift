@@ -16,25 +16,40 @@ class ViewPodcastTableViewController: UITableViewController {
     
     var podcast:NSMutableDictionary!
     var episodes = [NSDictionary]()
+    
+    var navBarBackgroundImage:UIImage?
+    var navBarShadowImage:UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        formatView()
+        
+        navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
+        navBarShadowImage = navigationController?.navigationBar.shadowImage
+        
         getPodcastEpisodes()
         getPodcastImage()
     }
     
     override func viewDidAppear(animated: Bool) {
-        
-        navigationController?.navigationBar.tintColor = UIColor.gabbRedColor()
-        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
-        
+        formatView()
         tableView.reloadData()
     }
     
     func formatView() {
         tableView.estimatedRowHeight = 200.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        navigationController?.navigationBar.tintColor = UIColor.gabbRedColor()
+        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        
+        navigationController?.navigationBar.translucent = false
+        if let backgroundImage = navBarBackgroundImage {
+            navigationController?.navigationBar.setBackgroundImage(backgroundImage, forBarMetrics: .Default)
+        }
+        if let shadowImage = navBarShadowImage {
+            navigationController?.navigationBar.shadowImage = shadowImage
+        }
+        
     }
     
     // MARK: - Downloading podcast episodes
