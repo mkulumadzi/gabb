@@ -95,25 +95,21 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     }
     
     func initializePlayer() {
-        if let audioUrl = episode["audio_url"] as? String {
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                gabber = GabbPlayer(audioUrl: audioUrl)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.layoutViewForGabbPlayer(gabber)
-                }
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            gabber = GabbPlayer(podcast: self.podcast, episode: self.episode)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.layoutViewForGabbPlayer(gabber)
             }
         }
     }
     
     func queueUpEpisode() {
-        if let audioUrl = episode["audio_url"] as? String {
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                self.gabbQueue = GabbPlayer(audioUrl: audioUrl)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.layoutViewForGabbPlayer(self.gabbQueue)
-                }
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            self.gabbQueue = GabbPlayer(podcast: self.podcast, episode: self.episode)
+            dispatch_async(dispatch_get_main_queue()) {
+                self.layoutViewForGabbPlayer(self.gabbQueue)
             }
         }
     }

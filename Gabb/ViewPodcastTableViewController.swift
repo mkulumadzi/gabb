@@ -24,6 +24,10 @@ class ViewPodcastTableViewController: UITableViewController {
         getPodcastImage()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func formatView() {
         tableView.estimatedRowHeight = 200.0
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -83,6 +87,39 @@ class ViewPodcastTableViewController: UITableViewController {
             cell.podcastTitleLabel.text = ""
         }
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard let gabber = gabber else {
+            return 0.0
+        }
+        if gabber.playing {
+            return 60.0
+        }
+        else {
+            return 0.0
+        }
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let gabber = gabber else {
+            return nil
+        }
+        if gabber.playing {
+            let widgetContainer = UIView(frame: CGRectMake(0, 0, screenSize.width, 60))
+            widgetContainer.backgroundColor = UIColor.lightGrayColor()
+            
+            if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
+                widget.view.frame = CGRectMake(0,0, screenSize.width, 60)
+                gabber.delegate = widget
+                self.embedViewController(widget, intoView: widgetContainer)
+            }
+            
+            return widgetContainer
+        }
+        else {
+            return nil
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

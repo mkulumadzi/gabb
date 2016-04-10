@@ -17,6 +17,8 @@ protocol GabbPlayerDelegate {
 
 class GabbPlayer: NSObject {
     
+    var podcast:NSDictionary!
+    var episode:NSDictionary!
     var audioUrl:String!
     var player:AVPlayer!
     var asset:AVURLAsset!
@@ -31,12 +33,17 @@ class GabbPlayer: NSObject {
     private var _episodeProgress:Float!
     private var _playing:Bool!
     
-    init (audioUrl: String) {
-        if let url = NSURL(string: audioUrl) {
-            self.audioUrl = audioUrl
-            self.player = AVPlayer(URL: url)
-            self.asset = AVURLAsset(URL: url, options: nil)
-            self.audioPlaying = false
+    init (podcast: NSDictionary, episode: NSDictionary) {
+        self.podcast = podcast
+        
+        if let audioUrl = episode.valueForKey("audio_url") as? String {
+            if let url = NSURL(string: audioUrl) {
+                self.episode = episode
+                self.audioUrl = audioUrl
+                self.player = AVPlayer(URL: url)
+                self.asset = AVURLAsset(URL: url, options: nil)
+                self.audioPlaying = false
+            }
         }
     }
     

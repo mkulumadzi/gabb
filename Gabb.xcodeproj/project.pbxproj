@@ -31,6 +31,8 @@
 		D2E4CD071CB894A300B59768 /* GabbPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD061CB894A300B59768 /* GabbPlayer.swift */; };
 		D2E4CD0C1CB89C1400B59768 /* DateAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD0B1CB89C1400B59768 /* DateAndTime.swift */; };
 		D2E4CD0E1CB99A8E00B59768 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD0D1CB99A8E00B59768 /* Strings.swift */; };
+		D2E4CD111CB9C4C600B59768 /* NowPlayingWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD101CB9C4C600B59768 /* NowPlayingWidgetViewController.swift */; };
+		D2E4CD171CB9C7DF00B59768 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD161CB9C7DF00B59768 /* ViewControllers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		D2E4CD0B1CB89C1400B59768 /* DateAndTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateAndTime.swift; sourceTree = "<group>"; };
 		D2E4CD0D1CB99A8E00B59768 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		D2E4CD0F1CB99AF700B59768 /* Gabb-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gabb-Bridging-Header.h"; sourceTree = "<group>"; };
+		D2E4CD101CB9C4C600B59768 /* NowPlayingWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingWidgetViewController.swift; sourceTree = "<group>"; };
+		D2E4CD161CB9C7DF00B59768 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gabb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gabb/Pods-Gabb.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +203,7 @@
 				D240F4261CA6062E00B1AE57 /* Fonts.swift */,
 				D2E4CD0B1CB89C1400B59768 /* DateAndTime.swift */,
 				D2E4CD0D1CB99A8E00B59768 /* Strings.swift */,
+				D2E4CD161CB9C7DF00B59768 /* ViewControllers.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				D2CFA73F1CA7627D001743E6 /* PodcastCollectionViewCell.swift */,
 				D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */,
 				D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */,
+				D2E4CD101CB9C4C600B59768 /* NowPlayingWidgetViewController.swift */,
 			);
 			name = Browse;
 			sourceTree = "<group>";
@@ -456,11 +462,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2E4CD111CB9C4C600B59768 /* NowPlayingWidgetViewController.swift in Sources */,
 				D240F4271CA6062E00B1AE57 /* Fonts.swift in Sources */,
 				D240F3F71CA5EC0000B1AE57 /* InitializationViewController.swift in Sources */,
 				D2CFA73E1CA75EA2001743E6 /* BrowsePodcastsCollectionViewController.swift in Sources */,
 				D2BC4EA71CA88254006A66AA /* ViewPodcastTableViewController.swift in Sources */,
 				D2BC4EAB1CA8B9A4006A66AA /* FileService.swift in Sources */,
+				D2E4CD171CB9C7DF00B59768 /* ViewControllers.swift in Sources */,
 				D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */,
 				D2E4CD0E1CB99A8E00B59768 /* Strings.swift in Sources */,
 				D240F4241CA5F29200B1AE57 /* Colors.swift in Sources */,
