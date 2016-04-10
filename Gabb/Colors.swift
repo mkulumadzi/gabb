@@ -11,6 +11,35 @@ import UIKit
 
 extension UIColor {
     
+    /*
+     Adapted solution from http://stackoverflow.com/questions/2509443/check-if-uicolor-is-dark-or-bright
+    */
+    class func readableColorForBackground(backgroundColor: UIColor) -> UIColor {
+        let count = CGColorGetNumberOfComponents(backgroundColor.CGColor)
+        let componentColors = CGColorGetComponents(backgroundColor.CGColor)
+        
+        var darknessScore:CGFloat = 0.0
+        if (count == 2) {
+            let component1 = componentColors[0]*255 * 299
+            let component2 = componentColors[0]*255 * 587
+            let component3 = componentColors[0]*255 * 114
+            darknessScore = (component1 + component2 + component3) / 1000
+        }
+        else if (count == 4) {
+            let component1 = componentColors[0]*255 * 299
+            let component2 = componentColors[1]*255 * 587
+            let component3 = componentColors[2]*255 * 114
+            darknessScore = (component1 + component2 + component3) / 1000
+        }
+        
+        if (darknessScore >= 125) {
+            return UIColor.gabbRedColor()
+        }
+        else {
+            return UIColor.whiteColor()
+        }
+    }
+    
     class func gabbRedColor() -> UIColor {
         return UIColor.colorWithHexString("#f55d4b")
     }

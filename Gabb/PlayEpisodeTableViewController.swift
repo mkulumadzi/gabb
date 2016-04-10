@@ -69,8 +69,14 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         edgesForExtendedLayout = .Top
         extendedLayoutIncludesOpaqueBars = true
         
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.barTintColor = UIColor.gabbBlackColor()
+        let backbarPosition = CGPoint(x: 20, y: 20)
+        if let backgroundColor = podcastImageView.image?.getPixelColor(backbarPosition) {
+            navigationController?.navigationBar.tintColor = UIColor.readableColorForBackground(backgroundColor)
+        }
+        else {
+            navigationController?.navigationBar.tintColor = UIColor.gabbRedColor()
+        }
+        
         navigationController?.navigationBar.translucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -89,7 +95,6 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             initializePlayer()
             return
         }
-        
         if gabber.audioUrl == episode["audio_url"] as? String {
             gabber.delegate = self
             if gabber.playing {
@@ -168,7 +173,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     }
     
     func imageCellHeight() -> CGFloat {
-        if gabberPlayingOtherEpisode() {
+        if shouldShowNowPlayingWidget() {
             return screenSize.height - (66.0 + 96.0 + 60.0)
         }
         else {
@@ -177,7 +182,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if gabberPlayingOtherEpisode() {
+        if shouldShowNowPlayingWidget() {
             return 60.0
         }
         else {
@@ -186,7 +191,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     }
     
     override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if gabberPlayingOtherEpisode() {
+        if shouldShowNowPlayingWidget() {
             let widgetContainer = UIView(frame: CGRectMake(0, 0, screenSize.width, 60))
             widgetContainer.backgroundColor = UIColor.lightGrayColor()
             
@@ -212,7 +217,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         if !gabber.playing {
             gabber.play()
         }
-        else if gabberPlayingOtherEpisode() {
+        else if shouldShowNowPlayingWidget() {
             gabber.pause()
             gabber = gabbQueue
             gabber.play()
@@ -284,7 +289,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         }
     }
     
-    private func gabberPlayingOtherEpisode() -> Bool {
+    private func shouldShowNowPlayingWidget() -> Bool {
         guard let gabber = gabber, audioUrl = episode.valueForKey("audio_url") as? String else {
             return false
         }

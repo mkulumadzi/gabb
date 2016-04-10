@@ -152,7 +152,7 @@
         <!--Play Episode Table View Controller-->
         <scene sceneID="iHJ-wv-9im">
             <objects>
-                <tableViewController automaticallyAdjustsScrollViewInsets="NO" id="2CD-FD-2VC" customClass="PlayEpisodeTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="episodeViewController" automaticallyAdjustsScrollViewInsets="NO" id="2CD-FD-2VC" customClass="PlayEpisodeTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Eed-Eu-dda">
                         <rect key="frame" x="0.0" y="64" width="600" height="936"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,11 +365,18 @@
                                 <rect key="frame" x="112" y="29" width="201" height="31"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54e-hU-I18" userLabel="overlayButton">
+                                <rect key="frame" x="50" y="0.0" width="325" height="60"/>
+                                <connections>
+                                    <action selector="overlayButtonTapped:" destination="HVY-H9-Thb" eventType="touchUpInside" id="zLV-G2-H7R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="OxQ-h2-d6f" secondAttribute="trailing" constant="10" id="2Y8-b2-cqs"/>
                             <constraint firstItem="OxQ-h2-d6f" firstAttribute="leading" secondItem="6bd-p5-RkR" secondAttribute="trailing" id="2t4-k0-6NT"/>
+                            <constraint firstItem="54e-hU-I18" firstAttribute="top" secondItem="yPs-BR-4Ya" secondAttribute="bottom" id="4xr-J2-Fha"/>
                             <constraint firstItem="veq-hS-ake" firstAttribute="top" secondItem="zbr-6h-5n9" secondAttribute="bottom" constant="8" id="DfY-1Q-Vmu"/>
                             <constraint firstItem="zbr-6h-5n9" firstAttribute="top" secondItem="yPs-BR-4Ya" secondAttribute="bottom" constant="10" id="EaH-0P-Ad8"/>
                             <constraint firstAttribute="trailing" secondItem="zbr-6h-5n9" secondAttribute="trailing" constant="10" id="KyG-a5-eEf"/>
@@ -382,10 +389,13 @@
                             <constraint firstItem="HzZ-Gr-jOk" firstAttribute="leading" secondItem="6Gv-qY-uq6" secondAttribute="leading" id="djC-TD-tgq"/>
                             <constraint firstItem="HzZ-Gr-jOk" firstAttribute="top" secondItem="yPs-BR-4Ya" secondAttribute="bottom" id="fcT-Hi-wXW"/>
                             <constraint firstItem="zbr-6h-5n9" firstAttribute="leading" secondItem="DGI-at-dBF" secondAttribute="trailing" constant="10" id="htH-Ic-cUY"/>
+                            <constraint firstAttribute="trailing" secondItem="54e-hU-I18" secondAttribute="trailing" id="oCM-TZ-tya"/>
                             <constraint firstItem="veq-hS-ake" firstAttribute="leading" secondItem="DGI-at-dBF" secondAttribute="trailing" constant="10" id="po5-rO-j1x"/>
+                            <constraint firstItem="54e-hU-I18" firstAttribute="leading" secondItem="DGI-at-dBF" secondAttribute="trailing" id="reV-Zo-32k"/>
                             <constraint firstItem="zbr-6h-5n9" firstAttribute="top" secondItem="yPs-BR-4Ya" secondAttribute="bottom" constant="8" id="uYb-S8-d0T"/>
                             <constraint firstAttribute="trailing" secondItem="HzZ-Gr-jOk" secondAttribute="trailing" id="v8O-i2-2mT"/>
                             <constraint firstItem="DGI-at-dBF" firstAttribute="top" secondItem="yPs-BR-4Ya" secondAttribute="bottom" constant="10" id="vQc-i9-oCa"/>
+                            <constraint firstItem="zd1-Sj-FTf" firstAttribute="top" secondItem="54e-hU-I18" secondAttribute="bottom" id="yc7-Hh-6Db"/>
                             <constraint firstItem="zbr-6h-5n9" firstAttribute="centerY" secondItem="6Gv-qY-uq6" secondAttribute="centerY" id="z91-BC-LW8"/>
                         </constraints>
                         <variation key="default">

@@ -58,6 +58,10 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
         }
     }
     
+    @IBAction func overlayButtonTapped(sender: AnyObject) {
+        print(parentViewController)
+    }
+    
     // MARK: - Delegate methods
     
     func gabbPlayerUpdated() {
