@@ -10,6 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "PodcastCell"
 private let viewPodcast = "ViewPodcast"
+private let nowPlayingContainer = "nowPlayingContainer"
 
 class BrowsePodcastsCollectionViewController: UICollectionViewController {
     
@@ -44,7 +45,6 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return podcasts.count
@@ -85,6 +85,22 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PodcastCollectionViewCell
         self.performSegueWithIdentifier(viewPodcast, sender: cell)
     }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        switch kind {
+        
+        case UICollectionElementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: nowPlayingContainer, forIndexPath: indexPath)
+            footerView.backgroundColor = UIColor.lightGrayColor()
+            return footerView
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
+    
+    
+    
+    // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == viewPodcast {

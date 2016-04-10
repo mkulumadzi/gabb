@@ -158,6 +158,39 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         }
     }
     
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        guard let gabber = gabber, audioUrl = episode.valueForKey("audio_url") as? String else {
+            return 0.0
+        }
+        if gabber.playing && gabber.audioUrl != audioUrl {
+            return 60.0
+        }
+        else {
+            return 0.0
+        }
+    }
+    
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        guard let gabber = gabber, audioUrl = episode.valueForKey("audio_url") as? String else {
+            return nil
+        }
+        if gabber.playing && gabber.audioUrl != audioUrl {
+            let widgetContainer = UIView(frame: CGRectMake(0, 0, screenSize.width, 60))
+            widgetContainer.backgroundColor = UIColor.lightGrayColor()
+            
+            if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
+                widget.view.frame = CGRectMake(0,0, screenSize.width, 60)
+                gabber.delegate = widget
+                self.embedViewController(widget, intoView: widgetContainer)
+            }
+            
+            return widgetContainer
+        }
+        else {
+            return nil
+        }
+    }
+    
     // MARK: - User Actions
     
     //If another episode is playing, stop it, kill that player, and assign the player to this episode. Then play it.
@@ -218,6 +251,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     
     func played() {
         showPauseButton()
+        tableView.reloadData()
     }
     
     func paused() {
