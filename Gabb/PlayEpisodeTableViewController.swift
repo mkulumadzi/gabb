@@ -18,6 +18,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     
     var podcast:NSDictionary!
     var episode:NSDictionary!
+    var presentedModally:Bool = false
     
     var gabbQueue:GabbPlayer!
     

@@ -9,6 +9,9 @@
 import UIKit
 import MarqueeLabel_Swift
 
+private let browseStoryboard = "Browse"
+private let episodeViewController = "episodeViewController"
+
 class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     
     @IBOutlet weak var playButton: UIButton!
@@ -59,7 +62,14 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     }
     
     @IBAction func overlayButtonTapped(sender: AnyObject) {
-        print(parentViewController)
+        guard let parent = parentViewController else {
+            return
+        }
+        let vc = fetchViewController(browseStoryboard, storyboardIdentifier: episodeViewController) as! PlayEpisodeTableViewController
+        vc.podcast = gabber.podcast
+        vc.episode = gabber.episode
+        vc.presentedModally = true
+        parent.showViewController(vc, sender: parent)
     }
     
     // MARK: - Delegate methods
