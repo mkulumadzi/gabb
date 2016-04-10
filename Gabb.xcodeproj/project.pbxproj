@@ -347,6 +347,11 @@
 					D240F3F01CA5EC0000B1AE57 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = X9T7R56238;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					D240F4041CA5EC0100B1AE57 = {
 						CreatedOnToolsVersion = 7.2.1;

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 private let browsePodcasts = "BrowsePodcasts"
 
@@ -31,11 +32,20 @@ class InitializationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatView()
+        configureAudioForBackgroundMode()
+        getPodcasts()
+    }
+    
+    func formatView() {
         self.view.backgroundColor = UIColor.gabbRedColor()
         logoLabel.font = UIFont.logoLarge()
         logoLabel.textColor = UIColor.whiteColor()
-        
-        
+    }
+    
+    // MARK: - API
+    
+    func getPodcasts() {
         PodcastService.getPopularPodcasts({(podcastArray) -> Void in
             if let podcastArray = podcastArray {
                 for dict in podcastArray {
@@ -47,6 +57,8 @@ class InitializationViewController: UIViewController {
         })
     }
     
+    // MARK: - Segues
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == browsePodcasts) {
             if let nav = segue.destinationViewController as? UINavigationController {
@@ -55,6 +67,23 @@ class InitializationViewController: UIViewController {
                 }
             }
             
+        }
+    }
+    
+    // MARK: - Audio Configuration
+    
+    private func configureAudioForBackgroundMode() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            print("AVAudioSession Category Playback OK")
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
     }
 
