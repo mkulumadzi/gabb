@@ -28,6 +28,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     @IBOutlet weak var podcastTitle: UILabel!
     @IBOutlet weak var episodeTitle: UILabel!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         formatView()
@@ -36,6 +37,9 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     }
     
     func formatView() {
+        
+        activityIndicator.startAnimating()
+        playButton.hidden = true
         
         if let image = podcast["image"] as? UIImage {
             self.podcastImageView.image = image
@@ -119,8 +123,11 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         episodeDuration.text = gabbPlayer.episodeDuration
         playTime.text = gabbPlayer.playTime
         progressBar.setValue(0, animated: false)
+        playButton.hidden = false
         playButton.enabled = true
         progressBar.enabled = true
+        activityIndicator.hidden = true
+        activityIndicator.stopAnimating()
     }
 
     // MARK: - Table view data source

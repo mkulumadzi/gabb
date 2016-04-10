@@ -252,6 +252,9 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Psv-3n-LD4">
+                                                    <rect key="frame" x="290" y="18" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tvt-jK-JGg" firstAttribute="leading" secondItem="wGW-Mr-mkm" secondAttribute="trailing" constant="10" id="4q5-QY-wwi"/>
@@ -260,11 +263,13 @@
                                                 <constraint firstAttribute="bottom" secondItem="tvt-jK-JGg" secondAttribute="bottom" constant="8" id="Brg-Vg-Xki"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="top" secondItem="wFb-cm-bwo" secondAttribute="top" constant="8" id="KaR-25-UWY"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerX" secondItem="wFb-cm-bwo" secondAttribute="centerX" id="Q4g-y0-5Ug"/>
+                                                <constraint firstItem="Psv-3n-LD4" firstAttribute="top" secondItem="q8C-Pa-IDh" secondAttribute="bottom" constant="-30" id="Z9f-pj-0qB"/>
                                                 <constraint firstAttribute="trailing" secondItem="OFd-I5-I7r" secondAttribute="trailing" constant="10" id="fKm-v9-frB"/>
                                                 <constraint firstItem="wGW-Mr-mkm" firstAttribute="centerY" secondItem="tvt-jK-JGg" secondAttribute="centerY" id="iHR-i3-VZt"/>
                                                 <constraint firstItem="OFd-I5-I7r" firstAttribute="centerY" secondItem="tvt-jK-JGg" secondAttribute="centerY" id="nHS-Cw-Peo"/>
                                                 <constraint firstItem="tvt-jK-JGg" firstAttribute="leading" secondItem="wFb-cm-bwo" secondAttribute="leading" constant="100" id="pus-v1-N6Q"/>
                                                 <constraint firstItem="wGW-Mr-mkm" firstAttribute="leading" secondItem="wFb-cm-bwo" secondAttribute="leading" constant="10" id="reD-sT-Qht"/>
+                                                <constraint firstItem="Psv-3n-LD4" firstAttribute="leading" secondItem="q8C-Pa-IDh" secondAttribute="trailing" constant="-30" id="svv-9v-Spo"/>
                                                 <constraint firstAttribute="trailing" secondItem="tvt-jK-JGg" secondAttribute="trailing" constant="100" id="ugp-tT-sXG"/>
                                                 <constraint firstItem="tvt-jK-JGg" firstAttribute="top" secondItem="q8C-Pa-IDh" secondAttribute="bottom" constant="10" id="vfV-yu-uj2"/>
                                                 <constraint firstItem="q8C-Pa-IDh" firstAttribute="centerY" secondItem="wFb-cm-bwo" secondAttribute="centerY" id="y7b-P3-FjW"/>
@@ -288,6 +293,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Psv-3n-LD4" id="9KL-vd-EOe"/>
                         <outlet property="episodeDuration" destination="OFd-I5-I7r" id="Dw4-Aq-Rsw"/>
                         <outlet property="episodeTitle" destination="v88-C9-9PB" id="LVg-cV-7qN"/>
                         <outlet property="playButton" destination="q8C-Pa-IDh" id="Tiq-kG-oh7"/>
