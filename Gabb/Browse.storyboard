@@ -71,6 +71,24 @@
             </objects>
             <point key="canvasLocation" x="441" y="307"/>
         </scene>
+        <!--Gabb Chat View Controller-->
+        <scene sceneID="OrL-qZ-ltl">
+            <objects>
+                <viewController id="C2Z-48-UPj" customClass="GabbChatViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ydo-Uo-v26"/>
+                        <viewControllerLayoutGuide type="bottom" id="JLE-jA-aQB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ai3-cC-VJW">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6on-UB-rrq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904" y="-583"/>
+        </scene>
         <!--View Podcast Table View Controller-->
         <scene sceneID="FXe-79-9EC">
             <objects>
@@ -140,8 +158,19 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="W15-Nt-eyB">
                         <barButtonItem key="backBarButtonItem" title="Episodes" id="1y5-91-t8y"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="5fg-q2-SFq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SUH-TI-AYw" userLabel="chatButton">
+                                <rect key="frame" x="502" y="10" width="78" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="chat"/>
+                                <connections>
+                                    <segue destination="C2Z-48-UPj" kind="show" identifier="viewChat" id="nDa-5k-H5a"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="chatButton" destination="SUH-TI-AYw" id="Mjd-0N-SaG"/>
                         <segue destination="2CD-FD-2VC" kind="show" identifier="PlayEpisode" id="QqH-5U-ZNK"/>
                     </connections>
                 </tableViewController>
@@ -305,7 +334,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8M0-an-he2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1904" y="307"/>
+            <point key="canvasLocation" x="1904" y="331"/>
         </scene>
         <!--Now Playing Widget View Controller-->
         <scene sceneID="Emy-hC-Mwm">
@@ -444,6 +473,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chat" width="24" height="24"/>
         <image name="play" width="24" height="24"/>
     </resources>
 </document>

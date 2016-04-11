@@ -20,7 +20,10 @@ class ViewPodcastTableViewController: UITableViewController {
     var navBarBackgroundImage:UIImage?
     var navBarShadowImage:UIImage?
 
+    @IBOutlet weak var chatButton: UIButton!
+    
     override func viewDidLoad() {
+        formatImages()
         super.viewDidLoad()
         
         navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
@@ -33,6 +36,12 @@ class ViewPodcastTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         formatView()
         tableView.reloadData()
+    }
+    
+    func formatImages() {
+        if let image = UIImage(named: "chat")?.imageWithRenderingMode(.AlwaysTemplate) {
+            chatButton.setImage(image, forState: .Normal)
+        }
     }
     
     func formatView() {

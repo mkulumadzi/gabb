@@ -2,18 +2,25 @@ PODS:
   - Alamofire (3.3.0)
   - AlamofireImage (2.4.0):
     - Alamofire (~> 3.3)
+  - Chatto (1.0.0)
+  - ChattoAdditions (1.0.0):
+    - Chatto
   - MarqueeLabel-Swift (2.6.6)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - Chatto (= 1.0.0)
+  - ChattoAdditions (= 1.0.0)
   - MarqueeLabel-Swift
   - SwiftyJSON (~> 2.3)
 
 SPEC CHECKSUMS:
   Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
   AlamofireImage: 87408b652e0f5ae5fe364035f15aea8b9b24c77e
+  Chatto: 531b14bbb7d21dfc50a86fc4ff70a90367171403
+  ChattoAdditions: 27c7b59f4c1b1d51d5f37c7199164982fcc59edf
   MarqueeLabel-Swift: debdfb306f9398b3921a43d7c1a7fed3b8a29694
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 

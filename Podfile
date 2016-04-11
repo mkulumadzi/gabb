@@ -7,4 +7,6 @@ target 'Gabb' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'MarqueeLabel-Swift'
+  pod 'Chatto', '= 1.0.0'
+  pod 'ChattoAdditions', '= 1.0.0'
 end
