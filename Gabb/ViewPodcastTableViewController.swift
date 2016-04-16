@@ -174,15 +174,17 @@ class ViewPodcastTableViewController: UITableViewController {
             }
         }
         else if segue.identifier == viewChat {
-            var initialCount = 2
-            let pageSize = 50
             
+            // Change this to get a data source for the podcast
+            let initialCount = 1000
+            let pageSize = 10
             var dataSource: FakeDataSource!
-            initialCount = 2
             let chatController = segue.destinationViewController as! DemoChatViewController
             if dataSource == nil {
                 dataSource = FakeDataSource(count: initialCount, pageSize: pageSize)
             }
+            
+            
             chatController.dataSource = dataSource
             chatController.messageSender = dataSource.messageSender
         }

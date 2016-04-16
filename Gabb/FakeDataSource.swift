@@ -33,6 +33,7 @@ class FakeDataSource: ChatDataSourceProtocol {
     init(count: Int, pageSize: Int) {
         self.slidingWindow = SlidingDataSource(count: count, pageSize: pageSize) { () -> ChatItemProtocol in
             defer { self.nextMessageId += 1 }
+            print(self.nextMessageId)
             return FakeMessageFactory.createChatItem("\(self.nextMessageId)")
         }
     }
