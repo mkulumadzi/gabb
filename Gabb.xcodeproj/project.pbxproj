@@ -21,6 +21,19 @@
 		D240F42F1CA6075000B1AE57 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D240F42C1CA6075000B1AE57 /* SIL Open Font License.txt */; };
 		D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F4311CA73EF700B1AE57 /* RestService.swift */; };
 		D240F4381CA7412400B1AE57 /* Pods_Gabb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		D277E2B61CC1C2C200B01899 /* ChatItemsDemoDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2AD1CC1C2C200B01899 /* ChatItemsDemoDecorator.swift */; };
+		D277E2B71CC1C2C200B01899 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2AE1CC1C2C200B01899 /* ConversationsViewController.swift */; };
+		D277E2B81CC1C2C200B01899 /* DemoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2AF1CC1C2C200B01899 /* DemoChatViewController.swift */; };
+		D277E2B91CC1C2C200B01899 /* FakeMessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B01CC1C2C200B01899 /* FakeMessageFactory.swift */; };
+		D277E2BA1CC1C2C200B01899 /* FakeDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B11CC1C2C200B01899 /* FakeDataSource.swift */; };
+		D277E2BB1CC1C2C200B01899 /* FakeMessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B21CC1C2C200B01899 /* FakeMessageSender.swift */; };
+		D277E2BC1CC1C2C200B01899 /* FakePhotoMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B31CC1C2C200B01899 /* FakePhotoMessageViewModel.swift */; };
+		D277E2BD1CC1C2C200B01899 /* SlidingDatasSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */; };
+		D277E2BE1CC1C2C200B01899 /* UserActionHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */; };
+		D277E2C41CC1C30C00B01899 /* SendingStatusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2C11CC1C30C00B01899 /* SendingStatusPresenter.swift */; };
+		D277E2C51CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2C21CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift */; };
+		D277E2C61CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D277E2C31CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib */; };
+		D299D6201CC1A72900FEC7DF /* GabbChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */; };
 		D2BC4EA71CA88254006A66AA /* ViewPodcastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */; };
 		D2BC4EA91CA8A950006A66AA /* PlayEpisodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */; };
 		D2BC4EAB1CA8B9A4006A66AA /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EAA1CA8B9A4006A66AA /* FileService.swift */; };
@@ -35,7 +48,7 @@
 		D2E4CD171CB9C7DF00B59768 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD161CB9C7DF00B59768 /* ViewControllers.swift */; };
 		D2E4CD191CBB093800B59768 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD181CBB093800B59768 /* Images.swift */; };
 		D2E4CD1D1CBB1C4000B59768 /* GabbChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD1C1CBB1C4000B59768 /* GabbChatViewController.swift */; };
-		D2E4CD1F1CBB200200B59768 /* ChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD1E1CBB200200B59768 /* ChatItem.swift */; };
+		D2E4CD1F1CBB200200B59768 /* GabbChatItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD1E1CBB200200B59768 /* GabbChatItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +93,19 @@
 		D240F4331CA7410000B1AE57 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Release-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		D240F4351CA7410500B1AE57 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Gabb.framework; path = "Pods/../build/Debug-iphoneos/Pods_Gabb.framework"; sourceTree = "<group>"; };
+		D277E2AD1CC1C2C200B01899 /* ChatItemsDemoDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsDemoDecorator.swift; sourceTree = "<group>"; };
+		D277E2AE1CC1C2C200B01899 /* ConversationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
+		D277E2AF1CC1C2C200B01899 /* DemoChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatViewController.swift; sourceTree = "<group>"; };
+		D277E2B01CC1C2C200B01899 /* FakeMessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeMessageFactory.swift; sourceTree = "<group>"; };
+		D277E2B11CC1C2C200B01899 /* FakeDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeDataSource.swift; sourceTree = "<group>"; };
+		D277E2B21CC1C2C200B01899 /* FakeMessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeMessageSender.swift; sourceTree = "<group>"; };
+		D277E2B31CC1C2C200B01899 /* FakePhotoMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakePhotoMessageViewModel.swift; sourceTree = "<group>"; };
+		D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingDatasSource.swift; sourceTree = "<group>"; };
+		D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActionHandlers.swift; sourceTree = "<group>"; };
+		D277E2C11CC1C30C00B01899 /* SendingStatusPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingStatusPresenter.swift; sourceTree = "<group>"; };
+		D277E2C21CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingStatusCollectionViewCell.swift; sourceTree = "<group>"; };
+		D277E2C31CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendingStatusCollectionViewCell.xib; sourceTree = "<group>"; };
+		D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatDataSource.swift; sourceTree = "<group>"; };
 		D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPodcastTableViewController.swift; sourceTree = "<group>"; };
 		D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayEpisodeTableViewController.swift; sourceTree = "<group>"; };
 		D2BC4EAA1CA8B9A4006A66AA /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
@@ -95,7 +121,7 @@
 		D2E4CD161CB9C7DF00B59768 /* ViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		D2E4CD181CBB093800B59768 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		D2E4CD1C1CBB1C4000B59768 /* GabbChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatViewController.swift; sourceTree = "<group>"; };
-		D2E4CD1E1CBB200200B59768 /* ChatItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItem.swift; sourceTree = "<group>"; };
+		D2E4CD1E1CBB200200B59768 /* GabbChatItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatItem.swift; sourceTree = "<group>"; };
 		ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gabb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gabb/Pods-Gabb.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,11 +269,55 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+		D277E2AB1CC1C29D00B01899 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D277E2AC1CC1C2A500B01899 /* Chatto Demo App */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		D277E2AC1CC1C2A500B01899 /* Chatto Demo App */ = {
+			isa = PBXGroup;
+			children = (
+				D277E2BF1CC1C2EB00B01899 /* Custom Items */,
+				D277E2AD1CC1C2C200B01899 /* ChatItemsDemoDecorator.swift */,
+				D277E2AE1CC1C2C200B01899 /* ConversationsViewController.swift */,
+				D277E2AF1CC1C2C200B01899 /* DemoChatViewController.swift */,
+				D277E2B01CC1C2C200B01899 /* FakeMessageFactory.swift */,
+				D277E2B11CC1C2C200B01899 /* FakeDataSource.swift */,
+				D277E2B21CC1C2C200B01899 /* FakeMessageSender.swift */,
+				D277E2B31CC1C2C200B01899 /* FakePhotoMessageViewModel.swift */,
+				D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */,
+				D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */,
+			);
+			name = "Chatto Demo App";
+			sourceTree = "<group>";
+		};
+		D277E2BF1CC1C2EB00B01899 /* Custom Items */ = {
+			isa = PBXGroup;
+			children = (
+				D277E2C01CC1C2FB00B01899 /* Sending status */,
+			);
+			name = "Custom Items";
+			sourceTree = "<group>";
+		};
+		D277E2C01CC1C2FB00B01899 /* Sending status */ = {
+			isa = PBXGroup;
+			children = (
+				D277E2C11CC1C30C00B01899 /* SendingStatusPresenter.swift */,
+				D277E2C21CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift */,
+				D277E2C31CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib */,
+			);
+			name = "Sending status";
+			sourceTree = "<group>";
+		};
 		D2CFA7371CA75D2C001743E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				D2E4CD061CB894A300B59768 /* GabbPlayer.swift */,
-				D2E4CD1E1CBB200200B59768 /* ChatItem.swift */,
+				D2E4CD1E1CBB200200B59768 /* GabbChatItem.swift */,
+				D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -255,6 +325,7 @@
 		D2CFA7381CA75D92001743E6 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D277E2AB1CC1C29D00B01899 /* Chat */,
 				D2CFA7391CA75D99001743E6 /* Initialization */,
 				D2CFA73A1CA75DCE001743E6 /* Browse */,
 			);
@@ -404,6 +475,7 @@
 				D240F42F1CA6075000B1AE57 /* SIL Open Font License.txt in Resources */,
 				D240F3FC1CA5EC0000B1AE57 /* Assets.xcassets in Resources */,
 				D240F3FA1CA5EC0000B1AE57 /* Initialization.storyboard in Resources */,
+				D277E2C61CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,23 +550,35 @@
 			files = (
 				D2E4CD111CB9C4C600B59768 /* NowPlayingWidgetViewController.swift in Sources */,
 				D240F4271CA6062E00B1AE57 /* Fonts.swift in Sources */,
+				D277E2BA1CC1C2C200B01899 /* FakeDataSource.swift in Sources */,
+				D277E2BB1CC1C2C200B01899 /* FakeMessageSender.swift in Sources */,
 				D240F3F71CA5EC0000B1AE57 /* InitializationViewController.swift in Sources */,
 				D2E4CD191CBB093800B59768 /* Images.swift in Sources */,
 				D2E4CD1D1CBB1C4000B59768 /* GabbChatViewController.swift in Sources */,
+				D277E2BD1CC1C2C200B01899 /* SlidingDatasSource.swift in Sources */,
 				D2CFA73E1CA75EA2001743E6 /* BrowsePodcastsCollectionViewController.swift in Sources */,
 				D2BC4EA71CA88254006A66AA /* ViewPodcastTableViewController.swift in Sources */,
+				D277E2BC1CC1C2C200B01899 /* FakePhotoMessageViewModel.swift in Sources */,
+				D277E2B81CC1C2C200B01899 /* DemoChatViewController.swift in Sources */,
 				D2BC4EAB1CA8B9A4006A66AA /* FileService.swift in Sources */,
+				D277E2C51CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift in Sources */,
 				D2E4CD171CB9C7DF00B59768 /* ViewControllers.swift in Sources */,
+				D277E2B71CC1C2C200B01899 /* ConversationsViewController.swift in Sources */,
 				D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */,
+				D277E2B61CC1C2C200B01899 /* ChatItemsDemoDecorator.swift in Sources */,
 				D2E4CD0E1CB99A8E00B59768 /* Strings.swift in Sources */,
 				D240F4241CA5F29200B1AE57 /* Colors.swift in Sources */,
+				D277E2C41CC1C30C00B01899 /* SendingStatusPresenter.swift in Sources */,
 				D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */,
 				D2BC4EA91CA8A950006A66AA /* PlayEpisodeTableViewController.swift in Sources */,
+				D277E2BE1CC1C2C200B01899 /* UserActionHandlers.swift in Sources */,
+				D299D6201CC1A72900FEC7DF /* GabbChatDataSource.swift in Sources */,
 				D2E4CD0C1CB89C1400B59768 /* DateAndTime.swift in Sources */,
 				D2E4CD071CB894A300B59768 /* GabbPlayer.swift in Sources */,
 				D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */,
-				D2E4CD1F1CBB200200B59768 /* ChatItem.swift in Sources */,
+				D2E4CD1F1CBB200200B59768 /* GabbChatItem.swift in Sources */,
 				D2CFA7401CA7627D001743E6 /* PodcastCollectionViewCell.swift in Sources */,
+				D277E2B91CC1C2C200B01899 /* FakeMessageFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

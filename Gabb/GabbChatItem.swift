@@ -1,5 +1,5 @@
 //
-//  ChatItem.swift
+//  GabbChatItem.swift
 //  Gabb
 //
 //  Created by Evan Waters on 4/10/16.
@@ -10,10 +10,11 @@ import Foundation
 import Chatto
 import ChattoAdditions
 
-class ChatItem:NSObject, ChatItemProtocol {
+class GabbChatItem:NSObject, ChatItemProtocol {
     
     private var _type:ChatItemType!
     private var _uid:String!
+    private var _chatItemType:ChatItemType!
     
     init(type:ChatItemType, uid: String) {
         _uid = uid
@@ -36,6 +37,10 @@ class ChatItem:NSObject, ChatItemProtocol {
         else {
             return ""
         }
+    }
+    
+    var chatItemType:ChatItemType {
+        return type
     }
     
 }

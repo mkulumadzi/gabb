@@ -11,29 +11,34 @@ import Chatto
 import ChattoAdditions
 
 class GabbChatViewController: ChatViewController {
+    
+    var dataSource:GabbChatDataSource!
+    var chatInputPresenter:ChatInputBarPresenter!
 
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        chatDataSource = myDataSource
-//    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        chatDataSource = dataSource
+    }
+    
+//    override func createPresenterBuilders() -> [ChatItemType : [ChatItemPresenterBuilderProtocol]] {
 //
-//    override func createPresenterBuilders() -> [ChatItemType: [ChatItemPresenterBuilderProtocol]] {
+//        
 //        return [
-//            TextMessageModel.chatItemType: [
+//            "Text Message": [
 //                TextMessagePresenterBuilder(
 //                    viewModelBuilder: TextMessageViewModelDefaultBuilder(),
-//                    interactionHandler: TextMessageHandler(baseHandler: self.baseMessageHandler)
-//                )
+//                    interactionHandler: nil
+//                )   
 //            ]
 //        ]
+//        
 //    }
-//    
-//    override func createChatInputView() -> UIView {
-//        let chatInputView = ChatInputBar.loadNib()
-//        self.configureChatInputBar(chatInputView)
-//        self.chatInputPresenter = ChatInputBarPresenter(chatInputView: chatInputView, chatInputItems: self.createChatInputItems())
-//        return chatInputView
-//    }
+
+    
+    override func createChatInputView() -> UIView {
+        return ChattoAdditions.ChatInputBar()
+    }
 
 }
 

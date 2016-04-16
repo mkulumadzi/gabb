@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="441" y="307"/>
         </scene>
-        <!--Gabb Chat View Controller-->
+        <!--Demo Chat View Controller-->
         <scene sceneID="OrL-qZ-ltl">
             <objects>
-                <viewController id="C2Z-48-UPj" customClass="GabbChatViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C2Z-48-UPj" customClass="DemoChatViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ydo-Uo-v26"/>
                         <viewControllerLayoutGuide type="bottom" id="JLE-jA-aQB"/>

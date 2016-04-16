@@ -11,6 +11,7 @@ import UIKit
 private let podcastHeaderCell = "PodcastHeader"
 private let podcastEpisodeCell = "PodcastEpisode"
 private let playEpisode = "PlayEpisode"
+private let viewChat = "viewChat"
 
 class ViewPodcastTableViewController: UITableViewController {
     
@@ -171,6 +172,19 @@ class ViewPodcastTableViewController: UITableViewController {
                 vc.podcast = podcast
                 vc.episode = episodes[indexPath.row]
             }
+        }
+        else if segue.identifier == viewChat {
+            var initialCount = 2
+            let pageSize = 50
+            
+            var dataSource: FakeDataSource!
+            initialCount = 2
+            let chatController = segue.destinationViewController as! DemoChatViewController
+            if dataSource == nil {
+                dataSource = FakeDataSource(count: initialCount, pageSize: pageSize)
+            }
+            chatController.dataSource = dataSource
+            chatController.messageSender = dataSource.messageSender
         }
     }
 
