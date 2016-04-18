@@ -63,4 +63,25 @@ class RestService {
         }
     }
     
+    
+//    class func postRequest(requestURL:String, parameters: [String: AnyObject]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+//        Alamofire.request(.POST, requestURL, parameters: parameters, headers: headers, encoding: .JSON)
+//            .responseJSON { (response) in
+//                if let statusCode = response.response?.statusCode {
+//                    if statusCode == 201 {
+//                        completion(error: nil, result: [201, response.response?.allHeaderFields["Location"] as! String])
+//                    }
+//                    else if statusCode == 204 {
+//                        completion(error: nil, result: [204, ""])
+//                    }
+//                    else {
+//                        completion(error: nil, result: response.result.value)
+//                    }
+//                }
+//                else {
+//                    completion(error: nil, result: "Unexpected result")
+//                }
+//        }
+//    }
+    
 }

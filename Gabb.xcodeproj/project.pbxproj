@@ -35,6 +35,8 @@
 		D277E2C61CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D277E2C31CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib */; };
 		D277E2CB1CC2D28300B01899 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D277E2CA1CC2D28300B01899 /* Login.storyboard */; };
 		D277E2D01CC4736900B01899 /* StartLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */; };
+		D277E2D21CC474A000B01899 /* GabbUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2D11CC474A000B01899 /* GabbUser.swift */; };
+		D277E2D41CC4779A00B01899 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2D31CC4779A00B01899 /* EnterPasswordViewController.swift */; };
 		D299D6201CC1A72900FEC7DF /* GabbChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */; };
 		D2BC4EA71CA88254006A66AA /* ViewPodcastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */; };
 		D2BC4EA91CA8A950006A66AA /* PlayEpisodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */; };
@@ -108,6 +110,8 @@
 		D277E2C31CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendingStatusCollectionViewCell.xib; sourceTree = "<group>"; };
 		D277E2CA1CC2D28300B01899 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLoginViewController.swift; sourceTree = "<group>"; };
+		D277E2D11CC474A000B01899 /* GabbUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbUser.swift; sourceTree = "<group>"; };
+		D277E2D31CC4779A00B01899 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
 		D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatDataSource.swift; sourceTree = "<group>"; };
 		D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPodcastTableViewController.swift; sourceTree = "<group>"; };
 		D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayEpisodeTableViewController.swift; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 			children = (
 				D277E2CA1CC2D28300B01899 /* Login.storyboard */,
 				D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */,
+				D277E2D31CC4779A00B01899 /* EnterPasswordViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				D2E4CD061CB894A300B59768 /* GabbPlayer.swift */,
+				D277E2D11CC474A000B01899 /* GabbUser.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 				D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */,
 				D277E2B61CC1C2C200B01899 /* ChatItemsDemoDecorator.swift in Sources */,
 				D2E4CD0E1CB99A8E00B59768 /* Strings.swift in Sources */,
+				D277E2D21CC474A000B01899 /* GabbUser.swift in Sources */,
 				D240F4241CA5F29200B1AE57 /* Colors.swift in Sources */,
 				D277E2C41CC1C30C00B01899 /* SendingStatusPresenter.swift in Sources */,
 				D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */,
@@ -589,6 +596,7 @@
 				D2E4CD0C1CB89C1400B59768 /* DateAndTime.swift in Sources */,
 				D2E4CD071CB894A300B59768 /* GabbPlayer.swift in Sources */,
 				D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */,
+				D277E2D41CC4779A00B01899 /* EnterPasswordViewController.swift in Sources */,
 				D2CFA7401CA7627D001743E6 /* PodcastCollectionViewCell.swift in Sources */,
 				D277E2B91CC1C2C200B01899 /* FakeMessageFactory.swift in Sources */,
 			);
