@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BFr-up-Vpu">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="mbF-Wa-2NZ">
+            <objects>
+                <navigationController id="BFr-up-Vpu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="yxK-43-3aM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QMU-je-njs" kind="relationship" relationship="rootViewController" id="2EB-gk-fId"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v5B-E1-Esg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-399" y="242"/>
+        </scene>
+        <!--Start Login View Controller-->
+        <scene sceneID="KVx-J2-4YZ">
+            <objects>
+                <viewController id="QMU-je-njs" customClass="StartLoginViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DEY-f5-NAP"/>
+                        <viewControllerLayoutGuide type="bottom" id="uh0-eK-sQV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ypd-sm-GOr">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="myname@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nj2-vW-oLn">
+                                <rect key="frame" x="20" y="176" width="560" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rpo-v3-mB8"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address to get started." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESI-HS-Qrq">
+                                <rect key="frame" x="20" y="143" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcd-Rn-fQB" userLabel="nextButton">
+                                <rect key="frame" x="20" y="228" width="560" height="40"/>
+                                <color key="backgroundColor" red="0.68627450980392157" green="0.25882352941176467" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4iJ-M7-q5e"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ESI-HS-Qrq" secondAttribute="trailing" id="0Ri-LW-AAb"/>
+                            <constraint firstItem="ESI-HS-Qrq" firstAttribute="leading" secondItem="ypd-sm-GOr" secondAttribute="leadingMargin" id="GFC-Qm-SOq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rcd-Rn-fQB" secondAttribute="trailing" id="Gcd-Sv-u4W"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nj2-vW-oLn" secondAttribute="trailing" id="Ksq-uR-v8Y"/>
+                            <constraint firstItem="nj2-vW-oLn" firstAttribute="centerY" secondItem="ypd-sm-GOr" secondAttribute="centerY" constant="-20" id="OYu-MP-faF"/>
+                            <constraint firstItem="rcd-Rn-fQB" firstAttribute="centerY" secondItem="ypd-sm-GOr" secondAttribute="centerY" constant="-20" id="PHV-PT-oIg"/>
+                            <constraint firstItem="rcd-Rn-fQB" firstAttribute="top" secondItem="nj2-vW-oLn" secondAttribute="bottom" constant="12" id="VdS-Mp-B4N"/>
+                            <constraint firstItem="nj2-vW-oLn" firstAttribute="top" secondItem="ESI-HS-Qrq" secondAttribute="bottom" constant="12" id="X76-JW-pM2"/>
+                            <constraint firstItem="rcd-Rn-fQB" firstAttribute="leading" secondItem="ypd-sm-GOr" secondAttribute="leadingMargin" id="aSD-Wq-ppj"/>
+                            <constraint firstItem="nj2-vW-oLn" firstAttribute="leading" secondItem="ypd-sm-GOr" secondAttribute="leadingMargin" id="hcm-Sy-rYg"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="OYu-MP-faF"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="0WE-Kg-nvo">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="n6x-za-XQ5">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="QMU-je-njs" id="ZjO-EZ-0eK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MdS-V0-CsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="293" y="242"/>
+        </scene>
+    </scenes>
+</document>

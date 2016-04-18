@@ -89,6 +89,14 @@
             </objects>
             <point key="canvasLocation" x="1904" y="-583"/>
         </scene>
+        <!--Login-->
+        <scene sceneID="HhR-r0-OuI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="uJm-bZ-M5O" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gla-JA-JtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1553.5" y="452"/>
+        </scene>
         <!--View Podcast Table View Controller-->
         <scene sceneID="FXe-79-9EC">
             <objects>
@@ -164,7 +172,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="chat"/>
                                 <connections>
-                                    <segue destination="C2Z-48-UPj" kind="show" identifier="viewChat" id="nDa-5k-H5a"/>
+                                    <action selector="chatButtonTapped:" destination="hIz-vF-BGh" eventType="touchUpInside" id="2Vj-RJ-atx"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -172,6 +180,8 @@
                     <connections>
                         <outlet property="chatButton" destination="SUH-TI-AYw" id="Mjd-0N-SaG"/>
                         <segue destination="2CD-FD-2VC" kind="show" identifier="PlayEpisode" id="QqH-5U-ZNK"/>
+                        <segue destination="uJm-bZ-M5O" kind="presentation" identifier="Login" id="aWy-1D-FP9"/>
+                        <segue destination="C2Z-48-UPj" kind="show" identifier="ViewChat" id="cNe-RG-EBT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGN-Ud-1GG" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -75,6 +75,7 @@ class GabbPlayer: NSObject {
         guard let player = self.player else {
             return
         }
+        
         updater = CADisplayLink(target: self, selector: #selector(GabbPlayer.updateDelegate))
         updater.frameInterval = 1
         updater.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)

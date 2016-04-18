@@ -33,6 +33,8 @@
 		D277E2C41CC1C30C00B01899 /* SendingStatusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2C11CC1C30C00B01899 /* SendingStatusPresenter.swift */; };
 		D277E2C51CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2C21CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift */; };
 		D277E2C61CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D277E2C31CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib */; };
+		D277E2CB1CC2D28300B01899 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D277E2CA1CC2D28300B01899 /* Login.storyboard */; };
+		D277E2D01CC4736900B01899 /* StartLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */; };
 		D299D6201CC1A72900FEC7DF /* GabbChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */; };
 		D2BC4EA71CA88254006A66AA /* ViewPodcastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */; };
 		D2BC4EA91CA8A950006A66AA /* PlayEpisodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */; };
@@ -104,6 +106,8 @@
 		D277E2C11CC1C30C00B01899 /* SendingStatusPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingStatusPresenter.swift; sourceTree = "<group>"; };
 		D277E2C21CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingStatusCollectionViewCell.swift; sourceTree = "<group>"; };
 		D277E2C31CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendingStatusCollectionViewCell.xib; sourceTree = "<group>"; };
+		D277E2CA1CC2D28300B01899 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLoginViewController.swift; sourceTree = "<group>"; };
 		D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatDataSource.swift; sourceTree = "<group>"; };
 		D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPodcastTableViewController.swift; sourceTree = "<group>"; };
 		D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayEpisodeTableViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +316,15 @@
 			name = "Sending status";
 			sourceTree = "<group>";
 		};
+		D277E2C71CC2D22B00B01899 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D277E2CA1CC2D28300B01899 /* Login.storyboard */,
+				D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		D2CFA7371CA75D2C001743E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +336,7 @@
 		D2CFA7381CA75D92001743E6 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D277E2C71CC2D22B00B01899 /* Login */,
 				D277E2AB1CC1C29D00B01899 /* Chat */,
 				D2CFA7391CA75D99001743E6 /* Initialization */,
 				D2CFA73A1CA75DCE001743E6 /* Browse */,
@@ -473,6 +487,7 @@
 				D240F3FC1CA5EC0000B1AE57 /* Assets.xcassets in Resources */,
 				D240F3FA1CA5EC0000B1AE57 /* Initialization.storyboard in Resources */,
 				D277E2C61CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib in Resources */,
+				D277E2CB1CC2D28300B01899 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +567,7 @@
 				D240F3F71CA5EC0000B1AE57 /* InitializationViewController.swift in Sources */,
 				D2E4CD191CBB093800B59768 /* Images.swift in Sources */,
 				D2E4CD1D1CBB1C4000B59768 /* GabbChatViewController.swift in Sources */,
+				D277E2D01CC4736900B01899 /* StartLoginViewController.swift in Sources */,
 				D277E2BD1CC1C2C200B01899 /* SlidingDatasSource.swift in Sources */,
 				D2CFA73E1CA75EA2001743E6 /* BrowsePodcastsCollectionViewController.swift in Sources */,
 				D2BC4EA71CA88254006A66AA /* ViewPodcastTableViewController.swift in Sources */,

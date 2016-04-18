@@ -11,7 +11,8 @@ import UIKit
 private let podcastHeaderCell = "PodcastHeader"
 private let podcastEpisodeCell = "PodcastEpisode"
 private let playEpisode = "PlayEpisode"
-private let viewChat = "viewChat"
+private let viewChat = "ViewChat"
+private let login = "Login"
 
 class ViewPodcastTableViewController: UITableViewController {
     
@@ -164,6 +165,15 @@ class ViewPodcastTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier(playEpisode, sender: indexPath)
     }
+    
+    // MARK: User Actions
+    
+    @IBAction func chatButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier(login, sender: self)
+    }
+    
+    
+    // MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == playEpisode {
