@@ -92,6 +92,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailTextField" destination="nj2-vW-oLn" id="KRA-Wh-JmS"/>
                         <segue destination="OWL-fp-5A0" kind="show" identifier="Signup" id="pc6-FZ-MRD"/>
                     </connections>
                 </viewController>
@@ -140,6 +141,9 @@
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneTapped:" destination="OWL-fp-5A0" eventType="touchUpInside" id="294-YD-2ke"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Gabb! Please enter a secure password." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8D-QE-fpE">
                                 <rect key="frame" x="20" y="91" width="560" height="21"/>
@@ -170,6 +174,10 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="RG8-Fu-8PJ"/>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="ETw-yq-i2S" id="WB3-lx-MMY"/>
+                        <outlet property="passwordTextField" destination="1vv-ML-7hp" id="Gcc-5w-xYz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPq-pf-0wX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

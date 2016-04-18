@@ -37,6 +37,8 @@
 		D277E2D01CC4736900B01899 /* StartLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */; };
 		D277E2D21CC474A000B01899 /* GabbUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2D11CC474A000B01899 /* GabbUser.swift */; };
 		D277E2D41CC4779A00B01899 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2D31CC4779A00B01899 /* EnterPasswordViewController.swift */; };
+		D277E2D61CC51B8A00B01899 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2D51CC51B8A00B01899 /* LoginService.swift */; };
+		D277E2D91CC51E7500B01899 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D277E2D81CC51E7500B01899 /* KeychainWrapper.m */; };
 		D299D6201CC1A72900FEC7DF /* GabbChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */; };
 		D2BC4EA71CA88254006A66AA /* ViewPodcastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */; };
 		D2BC4EA91CA8A950006A66AA /* PlayEpisodeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */; };
@@ -112,6 +114,9 @@
 		D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLoginViewController.swift; sourceTree = "<group>"; };
 		D277E2D11CC474A000B01899 /* GabbUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbUser.swift; sourceTree = "<group>"; };
 		D277E2D31CC4779A00B01899 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
+		D277E2D51CC51B8A00B01899 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		D277E2D71CC51E7500B01899 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		D277E2D81CC51E7500B01899 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatDataSource.swift; sourceTree = "<group>"; };
 		D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewPodcastTableViewController.swift; sourceTree = "<group>"; };
 		D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayEpisodeTableViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +212,8 @@
 				D2CFA7371CA75D2C001743E6 /* Models */,
 				D240F4301CA73EE600B1AE57 /* Services */,
 				D240F4281CA6073900B1AE57 /* Resources */,
+				D277E2D71CC51E7500B01899 /* KeychainWrapper.h */,
+				D277E2D81CC51E7500B01899 /* KeychainWrapper.m */,
 				D240F4221CA5F20C00B1AE57 /* Extensions */,
 				D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */,
 				D240F3FB1CA5EC0000B1AE57 /* Assets.xcassets */,
@@ -271,6 +278,7 @@
 				D240F4311CA73EF700B1AE57 /* RestService.swift */,
 				D2CFA7351CA752BC001743E6 /* PodcastService.swift */,
 				D2BC4EAA1CA8B9A4006A66AA /* FileService.swift */,
+				D277E2D51CC51B8A00B01899 /* LoginService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -570,6 +578,7 @@
 				D240F4271CA6062E00B1AE57 /* Fonts.swift in Sources */,
 				D277E2BA1CC1C2C200B01899 /* FakeDataSource.swift in Sources */,
 				D277E2BB1CC1C2C200B01899 /* FakeMessageSender.swift in Sources */,
+				D277E2D91CC51E7500B01899 /* KeychainWrapper.m in Sources */,
 				D240F3F71CA5EC0000B1AE57 /* InitializationViewController.swift in Sources */,
 				D2E4CD191CBB093800B59768 /* Images.swift in Sources */,
 				D2E4CD1D1CBB1C4000B59768 /* GabbChatViewController.swift in Sources */,
@@ -583,6 +592,7 @@
 				D277E2C51CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift in Sources */,
 				D2E4CD171CB9C7DF00B59768 /* ViewControllers.swift in Sources */,
 				D277E2B71CC1C2C200B01899 /* ConversationsViewController.swift in Sources */,
+				D277E2D61CC51B8A00B01899 /* LoginService.swift in Sources */,
 				D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */,
 				D277E2B61CC1C2C200B01899 /* ChatItemsDemoDecorator.swift in Sources */,
 				D2E4CD0E1CB99A8E00B59768 /* Strings.swift in Sources */,

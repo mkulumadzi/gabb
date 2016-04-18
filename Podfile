@@ -9,4 +9,5 @@ target 'Gabb' do
   pod 'MarqueeLabel-Swift'
   pod 'Chatto', '= 1.0.0'
   pod 'ChattoAdditions', '= 1.0.0'
+  pod 'JWTDecode', '>= 1.0'
 end

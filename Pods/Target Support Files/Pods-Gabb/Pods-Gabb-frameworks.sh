@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Gabb/AlamofireImage.framework"
   install_framework "Pods-Gabb/Chatto.framework"
   install_framework "Pods-Gabb/ChattoAdditions.framework"
+  install_framework "Pods-Gabb/JWTDecode.framework"
   install_framework "Pods-Gabb/MarqueeLabel_Swift.framework"
   install_framework "Pods-Gabb/SwiftyJSON.framework"
 fi
@@ -96,6 +97,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Gabb/AlamofireImage.framework"
   install_framework "Pods-Gabb/Chatto.framework"
   install_framework "Pods-Gabb/ChattoAdditions.framework"
+  install_framework "Pods-Gabb/JWTDecode.framework"
   install_framework "Pods-Gabb/MarqueeLabel_Swift.framework"
   install_framework "Pods-Gabb/SwiftyJSON.framework"
 fi

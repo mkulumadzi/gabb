@@ -34,6 +34,7 @@ class InitializationViewController: UIViewController {
         super.viewDidLoad()
         formatView()
         configureAudioForBackgroundMode()
+        checkLogin()
         getPodcasts()
     }
     
@@ -43,7 +44,20 @@ class InitializationViewController: UIViewController {
         logoLabel.textColor = UIColor.whiteColor()
     }
     
-    // MARK: - API
+    // MARK: Check login
+    
+    func checkLogin() {
+        let token = LoginService.getTokenFromKeychain()
+        if token != nil {
+            LoginService.confirmTokenMatchesValidUserOnServer( { error, result -> Void in
+                if result as? String == "Success" {
+                    print("User is logged in.")
+                }
+            })
+        }
+    }
+    
+    // MARK: API
     
     func getPodcasts() {
         PodcastService.getPopularPodcasts({(podcastArray) -> Void in
@@ -57,7 +71,7 @@ class InitializationViewController: UIViewController {
         })
     }
     
-    // MARK: - Segues
+    // MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == browsePodcasts) {
@@ -70,7 +84,7 @@ class InitializationViewController: UIViewController {
         }
     }
     
-    // MARK: - Audio Configuration
+    // MARK: Audio Configuration
     
     private func configureAudioForBackgroundMode() {
         do {

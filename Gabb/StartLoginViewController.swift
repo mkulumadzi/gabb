@@ -14,9 +14,16 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     
     var user = GabbUser(email: nil)
 
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeView()
         formatView()
+    }
+    
+    func initializeView() {
+        emailTextField.delegate = self
     }
     
     func formatView() {

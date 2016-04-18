@@ -10,5 +10,6 @@
 #define Gabb_Bridging_Header_h
 
 #import <CommonCrypto/CommonCrypto.h>
+#import "KeychainWrapper.h"
 
 #endif /* Gabb_Bridging_Header_h */
