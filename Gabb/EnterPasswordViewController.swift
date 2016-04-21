@@ -17,8 +17,18 @@ class EnterPasswordViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initializeView()
     }
+    
+    func initializeView() {
+        passwordTextField.delegate = self
+        passwordTextField.tag = 0
+        confirmPasswordTextField.delegate = self
+        confirmPasswordTextField.tag = 1
+    }
+    
+    // MARK: Text field delegate actions
+    
     
     // MARK: User actions
     
@@ -33,7 +43,7 @@ class EnterPasswordViewController: UIViewController, UITextFieldDelegate {
             return
         }
         let newPersonURL = "http://gabb.herokuapp.com/person/new"
-        let parameters = ["username": user.email, "email": user.email, "password": password]
+        let parameters = ["username": user.email, "email": user.email, "given_name": user.givenName, "family_name": user.familyName, "password": password]
         let headers:[String: String] = ["Accept": "application/json"]
         
         RestService.postRequest(newPersonURL, parameters: parameters, headers: headers, completion: {(error, result) -> Void in
@@ -45,7 +55,12 @@ class EnterPasswordViewController: UIViewController, UITextFieldDelegate {
                     if response[0] as? Int == 201 {
                         let parameters = ["username": "\(self.user.email)", "password": "\(password)"]
                         LoginService.logIn(parameters, completion: { (error, result) -> Void in
-                            print("logged in")
+                            if let error = error {
+                                print(error)
+                            }
+                            else {
+                                self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+                            }
                         })
                     }
                     else if let error_message = response[1] as? String {

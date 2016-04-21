@@ -9,10 +9,11 @@
 import UIKit
 
 private let signup = "Signup"
+private let login = "Login"
 
 class StartLoginViewController: UIViewController, UITextFieldDelegate {
     
-    var user = GabbUser(email: nil)
+    private var _user:GabbUser!
 
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -30,6 +31,13 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.translucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    var user:GabbUser {
+        if _user == nil {
+            _user = GabbUser(email: nil, givenName: nil, familyName: nil)
+        }
+        return _user
     }
     
     // MARK: Text field delegate actions
@@ -58,14 +66,37 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Private
     
     private func goToNextScreen() {
-        performSegueWithIdentifier(signup, sender: self)
+        checkForExistingUser()
+    }
+    
+    private func checkForExistingUser() {
+        let params = ["email": emailTextField.text!]
+        
+        LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else {
+                let availability = result!["email"].stringValue
+                if availability == "available" {
+                    self.performSegueWithIdentifier(signup, sender: nil)
+                }
+                else {
+                    self.performSegueWithIdentifier(login, sender: nil)
+                }
+            }
+        })
     }
     
     // MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == signup {
-            if let vc = segue.destinationViewController as? EnterPasswordViewController {
+            if let vc = segue.destinationViewController as? SignupViewController {
+                vc.user = self.user
+            }
+        } else if segue.identifier == login {
+            if let vc = segue.destinationViewController as? LoginViewController {
                 vc.user = self.user
             }
         }

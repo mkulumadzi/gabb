@@ -169,7 +169,12 @@ class ViewPodcastTableViewController: UITableViewController {
     // MARK: User Actions
     
     @IBAction func chatButtonTapped(sender: AnyObject) {
-        performSegueWithIdentifier(login, sender: self)
+        if let _ = currentUser {
+            performSegueWithIdentifier(viewChat, sender: self)
+        }
+        else {
+            performSegueWithIdentifier(login, sender: self)
+        }
     }
     
     

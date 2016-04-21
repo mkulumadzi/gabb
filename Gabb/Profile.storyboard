@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Zux-3a-J4f">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="eVf-Rc-hNv">
+            <objects>
+                <navigationController id="Zux-3a-J4f" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c4v-6p-h6V">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DGY-Ng-D6N" kind="relationship" relationship="rootViewController" id="e96-WW-uyq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yxk-BK-uCd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-454" y="251"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="Nv2-UN-X5c">
+            <objects>
+                <viewController id="DGY-Ng-D6N" customClass="ProfileViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dA9-kN-5p2"/>
+                        <viewControllerLayoutGuide type="bottom" id="XJY-Ig-up6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qds-3W-Yye">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mW1-4G-8Yt">
+                                <rect key="frame" x="20" y="124" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpo-0G-LMZ">
+                                <rect key="frame" x="20" y="157" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mW1-4G-8Yt" firstAttribute="top" secondItem="dA9-kN-5p2" secondAttribute="bottom" constant="60" id="0vl-D0-gGt"/>
+                            <constraint firstItem="mpo-0G-LMZ" firstAttribute="leading" secondItem="Qds-3W-Yye" secondAttribute="leadingMargin" id="9kF-3h-VHA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mW1-4G-8Yt" secondAttribute="trailing" id="Eua-L1-577"/>
+                            <constraint firstItem="mpo-0G-LMZ" firstAttribute="top" secondItem="mW1-4G-8Yt" secondAttribute="bottom" constant="12" id="Juy-wL-07d"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mpo-0G-LMZ" secondAttribute="trailing" id="R2B-Bq-Zcb"/>
+                            <constraint firstItem="mW1-4G-8Yt" firstAttribute="leading" secondItem="Qds-3W-Yye" secondAttribute="leadingMargin" id="wnA-Q6-wCW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="EGL-HG-lZx">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="KVX-Qp-rpy">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="DGY-Ng-D6N" id="XVx-x4-65U"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="oZD-hF-hfm">
+                            <connections>
+                                <action selector="logOutButtonTapped:" destination="DGY-Ng-D6N" id="dml-pT-HZm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailLabel" destination="mpo-0G-LMZ" id="SsY-H1-TWJ"/>
+                        <outlet property="nameLabel" destination="mW1-4G-8Yt" id="Pet-oe-asv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASg-k1-qUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="267" y="251"/>
+        </scene>
+    </scenes>
+</document>

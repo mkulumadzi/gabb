@@ -50,7 +50,9 @@ class LoginService {
                     completion(error: error, result: nil)
                 }
                 else {
-                    print(result)
+                    if let dictionary = result as? NSDictionary {
+                        currentUser = GabbUser.initWithDictionary(JSON(dictionary))
+                    }
                     completion(error: nil, result: "Success")
                 }
             })
@@ -72,8 +74,13 @@ class LoginService {
                 switch response.result {
                 case .Success (let result):
                     let json = JSON(result)
+                    
+                    let personDictionary = json["person"]
+                    currentUser = GabbUser.initWithDictionary(personDictionary)
+                    
                     let token = json["access_token"].stringValue
                     saveLoginToUserDefaults(token)
+                    
                     completion(error: nil, result: "Success")
                 case .Failure(let error):
                     if response.response != nil {
@@ -106,7 +113,7 @@ class LoginService {
         MyKeychainWrapper.mySetObject("", forKey:kSecValueData)
         MyKeychainWrapper.mySetObject("", forKey:kSecAttrService)
         MyKeychainWrapper.writeToKeychain()
-        
+        currentUser = nil
     }
     
     class func checkFieldAvailability(params: [String: String], completion: (error: ErrorType?, result: JSON?) -> Void) {

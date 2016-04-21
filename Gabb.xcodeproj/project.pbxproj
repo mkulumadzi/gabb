@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2151F671CC90B6800F1B261 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2151F661CC90B6800F1B261 /* SignupViewController.swift */; };
+		D2151F6B1CC9220200F1B261 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2151F6A1CC9220200F1B261 /* Profile.storyboard */; };
+		D2151F6D1CC9223500F1B261 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2151F6C1CC9223500F1B261 /* ProfileViewController.swift */; };
+		D2151F6F1CC9266100F1B261 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2151F6E1CC9266100F1B261 /* LoginViewController.swift */; };
 		D240F3F51CA5EC0000B1AE57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */; };
 		D240F3F71CA5EC0000B1AE57 /* InitializationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D240F3F61CA5EC0000B1AE57 /* InitializationViewController.swift */; };
 		D240F3FA1CA5EC0000B1AE57 /* Initialization.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D240F3F81CA5EC0000B1AE57 /* Initialization.storyboard */; };
@@ -76,6 +80,10 @@
 /* Begin PBXFileReference section */
 		72DA137B91621F46197418B8 /* Pods-Gabb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gabb.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gabb/Pods-Gabb.debug.xcconfig"; sourceTree = "<group>"; };
 		91D7F651DC23FBA1CCFD856A /* Pods_Gabb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gabb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2151F661CC90B6800F1B261 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		D2151F6A1CC9220200F1B261 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		D2151F6C1CC9223500F1B261 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D2151F6E1CC9266100F1B261 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D240F3F11CA5EC0000B1AE57 /* Gabb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gabb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D240F3F41CA5EC0000B1AE57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D240F3F61CA5EC0000B1AE57 /* InitializationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitializationViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +188,15 @@
 				ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D2151F691CC921F500F1B261 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D2151F6A1CC9220200F1B261 /* Profile.storyboard */,
+				D2151F6C1CC9223500F1B261 /* ProfileViewController.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		D240F3E81CA5EC0000B1AE57 = {
@@ -333,7 +350,9 @@
 			children = (
 				D277E2CA1CC2D28300B01899 /* Login.storyboard */,
 				D277E2CF1CC4736900B01899 /* StartLoginViewController.swift */,
+				D2151F661CC90B6800F1B261 /* SignupViewController.swift */,
 				D277E2D31CC4779A00B01899 /* EnterPasswordViewController.swift */,
+				D2151F6E1CC9266100F1B261 /* LoginViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -350,6 +369,7 @@
 		D2CFA7381CA75D92001743E6 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D2151F691CC921F500F1B261 /* Profile */,
 				D277E2C71CC2D22B00B01899 /* Login */,
 				D277E2AB1CC1C29D00B01899 /* Chat */,
 				D2CFA7391CA75D99001743E6 /* Initialization */,
@@ -495,6 +515,7 @@
 			files = (
 				D240F42E1CA6075000B1AE57 /* AmaticSC-Regular.ttf in Resources */,
 				D240F42D1CA6075000B1AE57 /* Amatic-Bold.ttf in Resources */,
+				D2151F6B1CC9220200F1B261 /* Profile.storyboard in Resources */,
 				D2CFA73C1CA75E80001743E6 /* Browse.storyboard in Resources */,
 				D240F3FF1CA5EC0000B1AE57 /* LaunchScreen.storyboard in Resources */,
 				D240F42F1CA6075000B1AE57 /* SIL Open Font License.txt in Resources */,
@@ -578,6 +599,7 @@
 				D240F4271CA6062E00B1AE57 /* Fonts.swift in Sources */,
 				D277E2BA1CC1C2C200B01899 /* FakeDataSource.swift in Sources */,
 				D277E2BB1CC1C2C200B01899 /* FakeMessageSender.swift in Sources */,
+				D2151F6F1CC9266100F1B261 /* LoginViewController.swift in Sources */,
 				D277E2D91CC51E7500B01899 /* KeychainWrapper.m in Sources */,
 				D240F3F71CA5EC0000B1AE57 /* InitializationViewController.swift in Sources */,
 				D2E4CD191CBB093800B59768 /* Images.swift in Sources */,
@@ -592,6 +614,7 @@
 				D277E2C51CC1C30C00B01899 /* SendingStatusCollectionViewCell.swift in Sources */,
 				D2E4CD171CB9C7DF00B59768 /* ViewControllers.swift in Sources */,
 				D277E2B71CC1C2C200B01899 /* ConversationsViewController.swift in Sources */,
+				D2151F671CC90B6800F1B261 /* SignupViewController.swift in Sources */,
 				D277E2D61CC51B8A00B01899 /* LoginService.swift in Sources */,
 				D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */,
 				D277E2B61CC1C2C200B01899 /* ChatItemsDemoDecorator.swift in Sources */,
@@ -607,6 +630,7 @@
 				D2E4CD071CB894A300B59768 /* GabbPlayer.swift in Sources */,
 				D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */,
 				D277E2D41CC4779A00B01899 /* EnterPasswordViewController.swift in Sources */,
+				D2151F6D1CC9223500F1B261 /* ProfileViewController.swift in Sources */,
 				D2CFA7401CA7627D001743E6 /* PodcastCollectionViewCell.swift in Sources */,
 				D277E2B91CC1C2C200B01899 /* FakeMessageFactory.swift in Sources */,
 			);

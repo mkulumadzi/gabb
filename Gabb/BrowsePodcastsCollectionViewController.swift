@@ -21,9 +21,29 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
         getPodcastImages()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if let _ = currentUser {
+            addProfileButton()
+        }
+        else {
+            addLogoutButton()
+        }
+    }
+    
     func formatView() {
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.logoSmall(), NSForegroundColorAttributeName : UIColor.gabbRedColor()]
         navigationItem.title = "Gabb"
+    }
+    
+    func addProfileButton() {
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "person"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(BrowsePodcastsCollectionViewController.viewProfile))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    func addLogoutButton() {
+        let rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .Done, target: self, action: #selector(BrowsePodcastsCollectionViewController.login))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     func getPodcastImages() {
@@ -83,6 +103,22 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PodcastCollectionViewCell
         self.performSegueWithIdentifier(viewPodcast, sender: cell)
+    }
+    
+    // MARK: - User actions
+    
+    func viewProfile() {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        if let vc = storyboard.instantiateInitialViewController() {
+            presentViewController(vc, animated: true, completion: nil)
+        }
+    }
+    
+    func login() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        if let vc = storyboard.instantiateInitialViewController() {
+            presentViewController(vc, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Segues

@@ -25,6 +25,8 @@ var fullSize: CGSize {
 
 var gabber:GabbPlayer!
 
+var currentUser:GabbUser!
+
 class InitializationViewController: UIViewController {
 
     @IBOutlet weak var logoLabel: UILabel!
