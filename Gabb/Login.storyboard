@@ -93,6 +93,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="nj2-vW-oLn" id="KRA-Wh-JmS"/>
+                        <outlet property="instructionsLabel" destination="ESI-HS-Qrq" id="cEG-gX-LIB"/>
                         <segue destination="LGB-RK-ieB" kind="show" identifier="Signup" id="rix-7N-ASO"/>
                         <segue destination="95V-B3-Tef" kind="show" identifier="Login" id="jXh-RE-Dsj"/>
                     </connections>

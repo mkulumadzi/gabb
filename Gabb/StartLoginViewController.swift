@@ -15,6 +15,7 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     
     private var _user:GabbUser!
 
+    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     
     override func viewDidLoad() {
@@ -53,7 +54,8 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        goToNextScreen()
+        textField.resignFirstResponder()
+        validateEmail()
         return true
     }
     
@@ -64,10 +66,26 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func nextButtonTapped(sender: AnyObject) {
-        goToNextScreen()
+        emailTextField.resignFirstResponder()
+        validateEmail()
     }
     
     // MARK: Private
+    
+    private func validateEmail() {
+        if (isValidEmail(user.email)) {
+            goToNextScreen()
+        } else {
+            instructionsLabel.text = "Please enter a valid email address."
+        }
+    }
+    
+    private func isValidEmail(email:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(email)
+    }
     
     private func goToNextScreen() {
         checkForExistingUser()
