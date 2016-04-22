@@ -12,8 +12,8 @@ private let enterPassword = "EnterPassword"
 
 class SignupViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var givenNameTextField: UITextField!
-    @IBOutlet weak var familyNameTextField: UITextField!
+    @IBOutlet weak var givenNameTextField: GabbTextField!
+    @IBOutlet weak var familyNameTextField: GabbTextField!
     
     var user:GabbUser!
     

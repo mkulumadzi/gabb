@@ -11,7 +11,10 @@ import UIKit
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var user:GabbUser!
-    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: GabbTextField!
+    @IBOutlet weak var logInButton: GabbTextButton!
+    @IBOutlet weak var instructionsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +31,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Text field delegate actions
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        login()
-        return true
+        if logInButton.enabled {
+            login()
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        logInButton.enabled = true
     }
     
     // MARK: User actions
@@ -41,6 +52,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Private
     
     private func login() {
+        logInButton.enabled = false
+        passwordTextField.resignFirstResponder()
+        
         guard let password = passwordTextField.text else {
             return
         }
@@ -48,9 +62,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let parameters = ["username": "\(self.user.email)", "password": "\(password)"]
         LoginService.logIn(parameters, completion: { (error, result) -> Void in
             if let error = error {
-                print(error)
+                let loginError = error as NSError
+                if loginError.code == 401 {
+                    self.instructionsLabel.text = "Invalid login"
+                } else {
+                    self.instructionsLabel.text = "Login failed"
+                }
             }
             else {
+                print(result)
                 self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
             }
         })

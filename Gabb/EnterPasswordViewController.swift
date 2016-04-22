@@ -15,6 +15,7 @@ class EnterPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var nextButton: GabbTextButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +45,21 @@ class EnterPasswordViewController: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
             confirmPasswordTextField.becomeFirstResponder()
         case 1:
-            textField.resignFirstResponder()
-            validateUserEntry()
+            if nextButton.enabled {
+                textField.resignFirstResponder()
+                validateUserEntry()
+            } else {
+                return false
+            }
         default:
             print("This should not happen.")
         }
         return true
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        nextButton.enabled = true
+    }
     
     // MARK: User actions
     
@@ -62,6 +70,7 @@ class EnterPasswordViewController: UIViewController, UITextFieldDelegate {
     // MARK: Private
     
     private func validateUserEntry() {
+        nextButton.enabled = false
         if (passwordTextField.text?.isEmpty == true || confirmPasswordTextField.text?.isEmpty == true) {
             instructionsLabel.text = "Please enter a password and a password confirmation."
         } else if (passwordTextField.text != confirmPasswordTextField.text) {

@@ -15,8 +15,9 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     
     private var _user:GabbUser!
 
+    @IBOutlet weak var nextButton: GabbTextButton!
     @IBOutlet weak var instructionsLabel: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailTextField: GabbTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +55,17 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        validateEmail()
-        return true
+        if nextButton.enabled {
+            textField.resignFirstResponder()
+            validateEmail()
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        nextButton.enabled = true
     }
     
     // MARK: User Actions
@@ -73,6 +82,7 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Private
     
     private func validateEmail() {
+        nextButton.enabled = false
         if (isValidEmail(user.email)) {
             goToNextScreen()
         } else {

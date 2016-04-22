@@ -36,8 +36,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="myname@example.com" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nj2-vW-oLn">
-                                <rect key="frame" x="20" y="176" width="560" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="myname@example.com" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nj2-vW-oLn" customClass="GabbTextField" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="204" width="560" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rpo-v3-mB8"/>
@@ -46,12 +46,12 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address to get started." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESI-HS-Qrq">
-                                <rect key="frame" x="20" y="143" width="560" height="21"/>
+                                <rect key="frame" x="20" y="159" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcd-Rn-fQB" userLabel="nextButton">
-                                <rect key="frame" x="20" y="228" width="560" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcd-Rn-fQB" userLabel="nextButton" customClass="GabbTextButton" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="268" width="560" height="40"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4iJ-M7-q5e"/>
@@ -72,9 +72,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="rcd-Rn-fQB" secondAttribute="trailing" id="Gcd-Sv-u4W"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nj2-vW-oLn" secondAttribute="trailing" id="Ksq-uR-v8Y"/>
                             <constraint firstItem="nj2-vW-oLn" firstAttribute="centerY" secondItem="ypd-sm-GOr" secondAttribute="centerY" constant="-20" id="OYu-MP-faF"/>
-                            <constraint firstItem="rcd-Rn-fQB" firstAttribute="centerY" secondItem="ypd-sm-GOr" secondAttribute="centerY" constant="-20" id="PHV-PT-oIg"/>
-                            <constraint firstItem="rcd-Rn-fQB" firstAttribute="top" secondItem="nj2-vW-oLn" secondAttribute="bottom" constant="12" id="VdS-Mp-B4N"/>
-                            <constraint firstItem="nj2-vW-oLn" firstAttribute="top" secondItem="ESI-HS-Qrq" secondAttribute="bottom" constant="12" id="X76-JW-pM2"/>
+                            <constraint firstItem="rcd-Rn-fQB" firstAttribute="centerY" secondItem="ypd-sm-GOr" secondAttribute="centerY" constant="20" id="PHV-PT-oIg"/>
+                            <constraint firstItem="rcd-Rn-fQB" firstAttribute="top" secondItem="nj2-vW-oLn" secondAttribute="bottom" constant="24" id="VdS-Mp-B4N"/>
+                            <constraint firstItem="nj2-vW-oLn" firstAttribute="top" secondItem="ESI-HS-Qrq" secondAttribute="bottom" constant="24" id="X76-JW-pM2"/>
                             <constraint firstItem="rcd-Rn-fQB" firstAttribute="leading" secondItem="ypd-sm-GOr" secondAttribute="leadingMargin" id="aSD-Wq-ppj"/>
                             <constraint firstItem="nj2-vW-oLn" firstAttribute="leading" secondItem="ypd-sm-GOr" secondAttribute="leadingMargin" id="hcm-Sy-rYg"/>
                         </constraints>
@@ -94,6 +94,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="nj2-vW-oLn" id="KRA-Wh-JmS"/>
                         <outlet property="instructionsLabel" destination="ESI-HS-Qrq" id="cEG-gX-LIB"/>
+                        <outlet property="nextButton" destination="rcd-Rn-fQB" id="xwP-1i-1LM"/>
                         <segue destination="LGB-RK-ieB" kind="show" identifier="Signup" id="rix-7N-ASO"/>
                         <segue destination="95V-B3-Tef" kind="show" identifier="Login" id="jXh-RE-Dsj"/>
                     </connections>
@@ -114,8 +115,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password confirmation" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ETw-yq-i2S">
-                                <rect key="frame" x="20" y="176" width="560" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password confirmation" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ETw-yq-i2S" customClass="GabbTextField" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="204" width="560" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LUa-Jt-6am"/>
@@ -123,8 +124,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1vv-ML-7hp">
-                                <rect key="frame" x="20" y="124" width="560" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1vv-ML-7hp" customClass="GabbTextField" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="152" width="560" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="e3q-xQ-A1b"/>
@@ -133,8 +134,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmp-I4-bBu" userLabel="nextButton">
-                                <rect key="frame" x="20" y="228" width="560" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dmp-I4-bBu" userLabel="nextButton" customClass="GabbTextButton" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="268" width="560" height="40"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ARN-zL-kBq"/>
@@ -148,7 +149,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose a secure password." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8D-QE-fpE">
-                                <rect key="frame" x="20" y="91" width="560" height="21"/>
+                                <rect key="frame" x="20" y="107" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -156,8 +157,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1vv-ML-7hp" firstAttribute="trailing" secondItem="hsK-rd-tKm" secondAttribute="trailingMargin" id="6lh-uS-Okt"/>
-                            <constraint firstItem="1vv-ML-7hp" firstAttribute="top" secondItem="H8D-QE-fpE" secondAttribute="bottom" constant="12" id="9x2-tR-tQs"/>
-                            <constraint firstItem="Dmp-I4-bBu" firstAttribute="top" secondItem="ETw-yq-i2S" secondAttribute="bottom" constant="12" id="BAO-JG-mwj"/>
+                            <constraint firstItem="1vv-ML-7hp" firstAttribute="top" secondItem="H8D-QE-fpE" secondAttribute="bottom" constant="24" id="9x2-tR-tQs"/>
+                            <constraint firstItem="Dmp-I4-bBu" firstAttribute="top" secondItem="ETw-yq-i2S" secondAttribute="bottom" constant="24" id="BAO-JG-mwj"/>
                             <constraint firstItem="ETw-yq-i2S" firstAttribute="leading" secondItem="hsK-rd-tKm" secondAttribute="leadingMargin" id="EFn-U3-5uf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H8D-QE-fpE" secondAttribute="trailing" id="YUl-fa-fdz"/>
                             <constraint firstItem="ETw-yq-i2S" firstAttribute="top" secondItem="1vv-ML-7hp" secondAttribute="bottom" constant="12" id="bcu-m8-S2S"/>
@@ -167,7 +168,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Dmp-I4-bBu" secondAttribute="trailing" id="hDP-Gz-bel"/>
                             <constraint firstItem="1vv-ML-7hp" firstAttribute="leading" secondItem="hsK-rd-tKm" secondAttribute="leadingMargin" id="kXF-9e-dut"/>
                             <constraint firstItem="Dmp-I4-bBu" firstAttribute="leading" secondItem="hsK-rd-tKm" secondAttribute="leadingMargin" id="sUT-iR-tPB"/>
-                            <constraint firstItem="Dmp-I4-bBu" firstAttribute="centerY" secondItem="hsK-rd-tKm" secondAttribute="centerY" constant="-20" id="tYo-Y1-fF9"/>
+                            <constraint firstItem="Dmp-I4-bBu" firstAttribute="centerY" secondItem="hsK-rd-tKm" secondAttribute="centerY" constant="20" id="tYo-Y1-fF9"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -179,6 +180,7 @@
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="ETw-yq-i2S" id="WB3-lx-MMY"/>
                         <outlet property="instructionsLabel" destination="H8D-QE-fpE" id="sOo-Lg-Fgl"/>
+                        <outlet property="nextButton" destination="Dmp-I4-bBu" id="Xg4-y8-ByM"/>
                         <outlet property="passwordTextField" destination="1vv-ML-7hp" id="Gcc-5w-xYz"/>
                     </connections>
                 </viewController>
@@ -198,8 +200,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Family name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fzU-mQ-i8y" userLabel="Family Name Text Field">
-                                <rect key="frame" x="20" y="176" width="560" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Family name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fzU-mQ-i8y" userLabel="Family Name Text Field" customClass="GabbTextField" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="204" width="560" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5WC-Gd-okn"/>
@@ -207,8 +209,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Given name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oaT-cM-QxK" userLabel="Given Name Text Field">
-                                <rect key="frame" x="20" y="124" width="560" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Given name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oaT-cM-QxK" userLabel="Given Name Text Field" customClass="GabbTextField" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="152" width="560" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DwT-KO-ndF"/>
@@ -217,8 +219,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-Pf-9WY" userLabel="nextButton">
-                                <rect key="frame" x="20" y="228" width="560" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-Pf-9WY" userLabel="nextButton" customClass="GabbTextButton" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="268" width="560" height="40"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="pqi-Zn-YAO"/>
@@ -232,21 +234,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Gabb! Please tell us who you are." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ugn-z9-97t">
-                                <rect key="frame" x="20" y="91" width="560" height="21"/>
+                                <rect key="frame" x="20" y="107" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qdd-Pf-9WY" firstAttribute="centerY" secondItem="Xcg-sP-s66" secondAttribute="centerY" constant="-20" id="5i4-mi-YSQ"/>
+                            <constraint firstItem="qdd-Pf-9WY" firstAttribute="centerY" secondItem="Xcg-sP-s66" secondAttribute="centerY" constant="20" id="5i4-mi-YSQ"/>
                             <constraint firstItem="oaT-cM-QxK" firstAttribute="trailing" secondItem="Xcg-sP-s66" secondAttribute="trailingMargin" id="CKF-re-sdY"/>
                             <constraint firstItem="oaT-cM-QxK" firstAttribute="leading" secondItem="Xcg-sP-s66" secondAttribute="leadingMargin" id="CPx-2f-6m2"/>
-                            <constraint firstItem="qdd-Pf-9WY" firstAttribute="top" secondItem="fzU-mQ-i8y" secondAttribute="bottom" constant="12" id="EFU-h4-6gD"/>
+                            <constraint firstItem="qdd-Pf-9WY" firstAttribute="top" secondItem="fzU-mQ-i8y" secondAttribute="bottom" constant="24" id="EFU-h4-6gD"/>
                             <constraint firstItem="Ugn-z9-97t" firstAttribute="leading" secondItem="Xcg-sP-s66" secondAttribute="leadingMargin" id="GXZ-Ar-6KL"/>
                             <constraint firstItem="fzU-mQ-i8y" firstAttribute="top" secondItem="oaT-cM-QxK" secondAttribute="bottom" constant="12" id="UsO-5o-MYY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qdd-Pf-9WY" secondAttribute="trailing" id="a4U-TP-a5n"/>
-                            <constraint firstItem="oaT-cM-QxK" firstAttribute="top" secondItem="Ugn-z9-97t" secondAttribute="bottom" constant="12" id="aYU-1X-o5X"/>
+                            <constraint firstItem="oaT-cM-QxK" firstAttribute="top" secondItem="Ugn-z9-97t" secondAttribute="bottom" constant="24" id="aYU-1X-o5X"/>
                             <constraint firstItem="fzU-mQ-i8y" firstAttribute="leading" secondItem="Xcg-sP-s66" secondAttribute="leadingMargin" id="hbZ-eL-hgr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ugn-z9-97t" secondAttribute="trailing" id="imc-pQ-Mh5"/>
                             <constraint firstItem="fzU-mQ-i8y" firstAttribute="centerY" secondItem="Xcg-sP-s66" secondAttribute="centerY" constant="-20" id="mAc-15-sLD"/>
@@ -282,8 +284,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-Cs-qge">
-                                <rect key="frame" x="20" y="176" width="560" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wMH-Cs-qge" customClass="GabbTextField" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="204" width="560" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="0yg-ZE-fuy"/>
@@ -292,8 +294,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tc-DP-oui" userLabel="nextButton">
-                                <rect key="frame" x="20" y="228" width="560" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Tc-DP-oui" userLabel="nextButton" customClass="GabbTextButton" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="20" y="268" width="560" height="40"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.36470588240000001" blue="0.29411764709999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5S6-4O-S9g"/>
@@ -307,7 +309,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter your password." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hr-5r-yAu">
-                                <rect key="frame" x="20" y="143" width="560" height="21"/>
+                                <rect key="frame" x="20" y="159" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -315,11 +317,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="8hr-5r-yAu" secondAttribute="trailing" id="4zR-gQ-cRp"/>
-                            <constraint firstItem="8Tc-DP-oui" firstAttribute="centerY" secondItem="K4t-te-ikg" secondAttribute="centerY" constant="-20" id="Dnt-Hr-zNI"/>
-                            <constraint firstItem="wMH-Cs-qge" firstAttribute="top" secondItem="8hr-5r-yAu" secondAttribute="bottom" constant="12" id="MiT-fa-pGd"/>
+                            <constraint firstItem="8Tc-DP-oui" firstAttribute="centerY" secondItem="K4t-te-ikg" secondAttribute="centerY" constant="20" id="Dnt-Hr-zNI"/>
+                            <constraint firstItem="wMH-Cs-qge" firstAttribute="top" secondItem="8hr-5r-yAu" secondAttribute="bottom" constant="24" id="MiT-fa-pGd"/>
                             <constraint firstItem="8Tc-DP-oui" firstAttribute="leading" secondItem="K4t-te-ikg" secondAttribute="leadingMargin" id="UhB-Sf-C0l"/>
                             <constraint firstItem="8hr-5r-yAu" firstAttribute="leading" secondItem="K4t-te-ikg" secondAttribute="leadingMargin" id="WQY-EQ-L5C"/>
-                            <constraint firstItem="8Tc-DP-oui" firstAttribute="top" secondItem="wMH-Cs-qge" secondAttribute="bottom" constant="12" id="jp2-Hn-NUe"/>
+                            <constraint firstItem="8Tc-DP-oui" firstAttribute="top" secondItem="wMH-Cs-qge" secondAttribute="bottom" constant="24" id="jp2-Hn-NUe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8Tc-DP-oui" secondAttribute="trailing" id="rgP-TP-caQ"/>
                             <constraint firstItem="wMH-Cs-qge" firstAttribute="leading" secondItem="K4t-te-ikg" secondAttribute="leadingMargin" id="xvO-Cf-F3d"/>
                             <constraint firstItem="wMH-Cs-qge" firstAttribute="trailing" secondItem="K4t-te-ikg" secondAttribute="trailingMargin" id="zon-AP-RJb"/>
@@ -327,6 +329,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="dcI-ZU-08c"/>
                     <connections>
+                        <outlet property="instructionsLabel" destination="8hr-5r-yAu" id="PWi-JD-yFv"/>
+                        <outlet property="logInButton" destination="8Tc-DP-oui" id="lB4-Ah-ioH"/>
                         <outlet property="passwordTextField" destination="wMH-Cs-qge" id="URp-bk-JZb"/>
                     </connections>
                 </viewController>

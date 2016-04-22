@@ -84,7 +84,8 @@ class LoginService {
                     completion(error: nil, result: "Success")
                 case .Failure(let error):
                     if response.response != nil {
-                        completion(error: nil, result: "Invalid login")
+                        let invalidLoginError = NSError(domain: "invalidLogin", code: 401, userInfo: ["message": "Invalid login"])
+                        completion(error: invalidLoginError, result: nil)
                     }
                     else {
                         completion(error: error, result: nil)
