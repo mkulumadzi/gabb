@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import SwiftyJSON
 
 protocol GabbPlayerDelegate {
     func gabbPlayerUpdated()
@@ -76,6 +77,8 @@ class GabbPlayer: NSObject {
             return
         }
         
+        if currentUser != nil { collectNowPlayingStats() }
+        
         updater = CADisplayLink(target: self, selector: #selector(GabbPlayer.updateDelegate))
         updater.frameInterval = 1
         updater.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
@@ -87,6 +90,9 @@ class GabbPlayer: NSObject {
         guard let player = self.player, updater = self.updater else {
             return
         }
+        
+        if currentUser != nil { submitPlayingEndedStatus() }
+        
         player.pause()
         delegate?.paused()
         updater.invalidate()
@@ -94,6 +100,22 @@ class GabbPlayer: NSObject {
     
     func updateDelegate() {
         delegate?.gabbPlayerUpdated()
+    }
+    
+    // MARK: Private
+    
+    // When playing begins, record the current date and time, the episode, and the time of the episode
+    private func collectNowPlayingStats() {
+        let episodeJSON = JSON(self.episode)
+        let episodeURL = episodeJSON["audio_url"].stringValue
+        SessionService.startSession(episodeURL, timeValue: player.currentTime().value, timeScale: player.currentTime().timescale)
+    }
+    
+    // When playing ends, submit details about the beginning and ending of the playing session
+    private func submitPlayingEndedStatus() {
+        let episodeJSON = JSON(self.episode)
+        let episodeURL = episodeJSON["audio_url"].stringValue
+        SessionService.stopSession(episodeURL, timeValue: player.currentTime().value, timeScale: player.currentTime().timescale)
     }
 
 }

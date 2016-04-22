@@ -33,4 +33,10 @@ extension String {
         return hash
     }
     
+    func toAlphanumeric() -> String {
+        let specialCharacterSet = NSCharacterSet.alphanumericCharacterSet().invertedSet
+        let alphanumericString = self.componentsSeparatedByCharactersInSet(specialCharacterSet).joinWithSeparator("")
+        return alphanumericString
+    }
+    
 }

@@ -63,4 +63,13 @@ class RestService {
         }
     }
     
+    class func headersForJsonRequeestWithLoggedInUser() -> [String: String] {
+        var headers = [String: String]()
+        headers["Content-Type"] = "application/json"
+        if let token = LoginService.getTokenFromKeychain() {
+            headers["Authorization"] = "Bearer \(token)"
+        }
+        return headers
+    }
+    
 }
