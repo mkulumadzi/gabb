@@ -22,6 +22,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
     }
     
+    override func viewDidAppear(animated: Bool) {
+        passwordTextField.becomeFirstResponder()
+    }
+    
+    // MARK: Text field delegate actions
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        login()
+        return true
+    }
+    
     // MARK: User actions
     
     @IBAction func loginTapped(sender: AnyObject) {

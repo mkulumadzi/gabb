@@ -27,6 +27,10 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
         emailTextField.delegate = self
     }
     
+    override func viewDidAppear(animated: Bool) {
+        emailTextField.becomeFirstResponder()
+    }
+    
     func formatView() {
         navigationController?.navigationBar.translucent = true
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)

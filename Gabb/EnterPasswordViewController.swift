@@ -12,12 +12,14 @@ class EnterPasswordViewController: UIViewController, UITextFieldDelegate {
     
     var user:GabbUser!
     
+    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeView()
+        formatView()
     }
     
     func initializeView() {
@@ -27,16 +29,47 @@ class EnterPasswordViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.tag = 1
     }
     
+    func formatView() {
+        instructionsLabel.text = "Please choose a secure password."
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        passwordTextField.becomeFirstResponder()
+    }
+    
     // MARK: Text field delegate actions
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        switch textField.tag {
+        case 0:
+            textField.resignFirstResponder()
+            confirmPasswordTextField.becomeFirstResponder()
+        case 1:
+            textField.resignFirstResponder()
+            validateUserEntry()
+        default:
+            print("This should not happen.")
+        }
+        return true
+    }
     
     
     // MARK: User actions
     
     @IBAction func doneTapped(sender: AnyObject) {
-        createPersonAndLogin()
+        validateUserEntry()
     }
     
     // MARK: Private
+    
+    private func validateUserEntry() {
+        if (passwordTextField.text?.isEmpty == true || confirmPasswordTextField.text?.isEmpty == true) {
+            instructionsLabel.text = "Please enter a password and a password confirmation."
+        } else if (passwordTextField.text != confirmPasswordTextField.text) {
+            instructionsLabel.text = "Passwords must match."
+        } else {
+            createPersonAndLogin()
+        }
+    }
     
     private func createPersonAndLogin() {
         guard let password = passwordTextField.text else {

@@ -30,6 +30,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
         familyNameTextField.tag = 1
     }
     
+    override func viewDidAppear(animated: Bool) {
+        givenNameTextField.becomeFirstResponder()
+    }
+    
     // MARK: Text Field actions
     
     func textFieldDidEndEditing(textField: UITextField) {
