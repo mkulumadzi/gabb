@@ -11,11 +11,11 @@ import SwiftyJSON
 
 class SessionService : RestService {
 
-    class func startSession(episodeURL: String, timeValue: Int64, timeScale: Int32) {
-        let episodeHash = episodeURL.toHash()
+    class func startSession(gabbPlayer: GabbPlayer) {
         let url = "https://gabb.herokuapp.com/session/start"
         let headers = RestService.headersForJsonRequeestWithLoggedInUser()
-        let parameters:[String: AnyObject] = ["episode_url": episodeURL, "episode_hash": episodeHash, "time_value": NSInteger(timeValue), "time_scale": NSInteger(timeScale)]
+        let parameters = SessionService.parametersForSession(gabbPlayer)
+        
         RestService.postRequest(url, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
             if let error = error {
                 print (error)
@@ -25,11 +25,10 @@ class SessionService : RestService {
         })
     }
     
-    class func stopSession(episodeURL: String, timeValue: Int64, timeScale: Int32) {
-        let episodeHash = episodeURL.toHash()
+    class func stopSession(gabbPlayer: GabbPlayer) {
         let url = "https://gabb.herokuapp.com/session/stop"
         let headers = RestService.headersForJsonRequeestWithLoggedInUser()
-        let parameters:[String: AnyObject] = ["episode_url": episodeURL, "episode_hash": episodeHash, "time_value": NSInteger(timeValue), "time_scale": NSInteger(timeScale)]
+        let parameters = SessionService.parametersForSession(gabbPlayer)
         RestService.postRequest(url, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
             if let error = error {
                 print (error)
@@ -50,6 +49,20 @@ class SessionService : RestService {
                 completion(result: nil)
             }
         })
+    }
+    
+    private class func parametersForSession(gabbPlayer: GabbPlayer) -> [String: AnyObject] {
+        let episodeJSON = JSON(gabbPlayer.episode)
+        let episodeURL = episodeJSON["audio_url"].stringValue
+        let episodeHash = episodeURL.toHash()
+        let episodeTitle = episodeJSON["title"].stringValue
+        
+        let podcastJSON = JSON(gabbPlayer.podcast)
+        let podcastId = podcastJSON["podcast_id"].intValue
+        
+        let parameters:[String: AnyObject] = ["podcast_id": podcastId, "title": episodeTitle, "episode_url": episodeURL, "episode_hash": episodeHash, "time_value": NSInteger(gabbPlayer.player.currentTime().value), "time_scale": NSInteger(gabbPlayer.player.currentTime().timescale)]
+        
+        return parameters
     }
     
 }

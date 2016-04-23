@@ -80,7 +80,7 @@ class GabbPlayer: NSObject {
             return
         }
         
-        if currentUser != nil { collectNowPlayingStats() }
+        if currentUser != nil { SessionService.startSession(self) }
         
         updater = CADisplayLink(target: self, selector: #selector(GabbPlayer.updateDelegate))
         updater.frameInterval = 1
@@ -94,7 +94,7 @@ class GabbPlayer: NSObject {
             return
         }
         
-        if currentUser != nil { submitPlayingEndedStatus() }
+        if currentUser != nil { SessionService.stopSession(self) }
         
         player.pause()
         delegate?.paused()
@@ -122,22 +122,6 @@ class GabbPlayer: NSObject {
                 completionHandler()
             }
         })
-    }
-    
-    // MARK: Private
-    
-    // When playing begins, record the current date and time, the episode, and the time of the episode
-    private func collectNowPlayingStats() {
-        let episodeJSON = JSON(self.episode)
-        let episodeURL = episodeJSON["audio_url"].stringValue
-        SessionService.startSession(episodeURL, timeValue: player.currentTime().value, timeScale: player.currentTime().timescale)
-    }
-    
-    // When playing ends, submit details about the beginning and ending of the playing session
-    private func submitPlayingEndedStatus() {
-        let episodeJSON = JSON(self.episode)
-        let episodeURL = episodeJSON["audio_url"].stringValue
-        SessionService.stopSession(episodeURL, timeValue: player.currentTime().value, timeScale: player.currentTime().timescale)
     }
 
 }
