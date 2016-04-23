@@ -127,9 +127,11 @@ class GabbPlayer: NSObject {
                 let json = JSON(result)
                 let stopTimeScale = json["stop_time_scale"].int32Value
                 let stopTimeValue = json["stop_time_value"].int64Value
-                let stopTime = CMTime(value: stopTimeValue, timescale: stopTimeScale)
-                self.player.seekToTime(stopTime)
-                self.updateDelegate()
+                if stopTimeScale > 0 && stopTimeValue > 0 {
+                    let stopTime = CMTime(value: stopTimeValue, timescale: stopTimeScale)
+                    self.player.seekToTime(stopTime)
+                    self.updateDelegate()
+                }
             }
         })
     }
