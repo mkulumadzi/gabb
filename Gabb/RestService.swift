@@ -44,6 +44,9 @@ class RestService {
     }
     
     class func postRequest(requestURL:String, parameters: [String: AnyObject]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+        
+        print(parameters)
+        
         Alamofire.request(.POST, requestURL, parameters: parameters, headers: headers, encoding: .JSON)
             .responseJSON { (response) in
                 if let statusCode = response.response?.statusCode {
