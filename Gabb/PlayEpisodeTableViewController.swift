@@ -117,9 +117,9 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             gabber = GabbPlayer(podcast: self.podcast, episode: self.episode)
-            dispatch_async(dispatch_get_main_queue()) {
+            gabber.getLastSession({() -> Void in
                 self.layoutViewForGabbPlayer(gabber)
-            }
+            })
         }
     }
     
@@ -127,9 +127,9 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             self.gabbQueue = GabbPlayer(podcast: self.podcast, episode: self.episode)
-            dispatch_async(dispatch_get_main_queue()) {
+            self.gabbQueue.getLastSession({() -> Void in
                 self.layoutViewForGabbPlayer(self.gabbQueue)
-            }
+            })
         }
     }
     
@@ -137,10 +137,10 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         gabbPlayer.delegate = self
         episodeDuration.text = gabbPlayer.episodeDuration
         playTime.text = gabbPlayer.playTime
-        progressBar.setValue(0, animated: false)
         playButton.hidden = false
         playButton.enabled = true
         progressBar.enabled = true
+        progressBar.setValue(gabbPlayer.episodeProgress, animated: false)
         activityIndicator.hidden = true
         activityIndicator.stopAnimating()
     }

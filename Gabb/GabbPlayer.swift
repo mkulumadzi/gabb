@@ -35,8 +35,9 @@ class GabbPlayer: NSObject {
     private var _playing:Bool!
     
     init (podcast: NSDictionary, episode: NSDictionary) {
+        super.init()
         self.podcast = podcast
-        
+
         if let audioUrl = episode.valueForKey("audio_url") as? String {
             if let url = NSURL(string: audioUrl) {
                 self.episode = episode
@@ -47,8 +48,7 @@ class GabbPlayer: NSObject {
             }
         }
         
-        super.init()
-        getLastSession()
+        
     }
     
     var episodeDuration: String {
@@ -105,6 +105,25 @@ class GabbPlayer: NSObject {
         delegate?.gabbPlayerUpdated()
     }
     
+    func getLastSession(completionHandler: () -> Void) {
+        SessionService.getLastSessionForEpisode(audioUrl, completion: { (result) -> Void in
+            if let result = result {
+                let json = JSON(result)
+                let stopTimeScale = json["stop_time_scale"].int32Value
+                let stopTimeValue = json["stop_time_value"].int64Value
+                if stopTimeScale > 0 && stopTimeValue > 0 {
+                    let stopTime = CMTime(value: stopTimeValue, timescale: stopTimeScale)
+                    self.player.seekToTime(stopTime)
+                    completionHandler()
+                } else {
+                    completionHandler()
+                }
+            } else {
+                completionHandler()
+            }
+        })
+    }
+    
     // MARK: Private
     
     // When playing begins, record the current date and time, the episode, and the time of the episode
@@ -119,21 +138,6 @@ class GabbPlayer: NSObject {
         let episodeJSON = JSON(self.episode)
         let episodeURL = episodeJSON["audio_url"].stringValue
         SessionService.stopSession(episodeURL, timeValue: player.currentTime().value, timeScale: player.currentTime().timescale)
-    }
-    
-    private func getLastSession() {
-        SessionService.getLastSessionForEpisode(audioUrl, completion: { (result) -> Void in
-            if let result = result {
-                let json = JSON(result)
-                let stopTimeScale = json["stop_time_scale"].int32Value
-                let stopTimeValue = json["stop_time_value"].int64Value
-                if stopTimeScale > 0 && stopTimeValue > 0 {
-                    let stopTime = CMTime(value: stopTimeValue, timescale: stopTimeScale)
-                    self.player.seekToTime(stopTime)
-                    self.updateDelegate()
-                }
-            }
-        })
     }
 
 }
