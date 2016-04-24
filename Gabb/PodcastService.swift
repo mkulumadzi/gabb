@@ -23,6 +23,18 @@ class PodcastService : RestService {
         })
     }
     
+    class func getPodcast(podcast_id: NSInteger, completion: (result: NSDictionary?) -> Void) {
+        let url = "https://gabb.herokuapp.com/podcasts/show?podcast_id=\(podcast_id)"
+        self.getRequest(url, headers: nil, completion: { (error, result) -> Void in
+            if let podcast = result as? NSDictionary {
+                completion(result: podcast)
+            }
+            else {
+                completion(result: nil)
+            }
+        })
+    }
+    
     class func getEpisodesForPodcast(podcast_id: NSInteger, completion: (result: [NSDictionary]?) -> Void) {
         let url = "https://gabb.herokuapp.com/podcasts/show?podcast_id=\(podcast_id)"
         self.getRequest(url, headers: nil, completion: { (error, result) -> Void in

@@ -51,6 +51,20 @@ class SessionService : RestService {
         })
     }
     
+    class func getRecentSessions(completion: (result: [NSDictionary]?) -> Void) {
+        let url = "https://gabb.herokuapp.com/sessions?limit=3"
+        let headers = RestService.headersForJsonRequeestWithLoggedInUser()
+        self.getRequest(url, headers: headers, completion: {(error, result) -> Void in
+            if let sessions = result as? [NSDictionary] {
+                completion(result: sessions)
+            } else {
+                completion(result: nil)
+            }
+        })
+    }
+    
+    // MARK: Private
+    
     private class func parametersForSession(gabbPlayer: GabbPlayer) -> [String: AnyObject] {
         let episodeJSON = JSON(gabbPlayer.episode)
         let episodeURL = episodeJSON["audio_url"].stringValue

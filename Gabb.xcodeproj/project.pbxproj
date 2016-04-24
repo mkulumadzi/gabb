@@ -61,6 +61,7 @@
 		D2E4CD191CBB093800B59768 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD181CBB093800B59768 /* Images.swift */; };
 		D2E4CD1D1CBB1C4000B59768 /* GabbChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E4CD1C1CBB1C4000B59768 /* GabbChatViewController.swift */; };
 		D2F0BBA31CCAAC9100C1A64F /* GabbTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F0BBA21CCAAC9100C1A64F /* GabbTextField.swift */; };
+		D2F20A501CCC3E4C009E1BF2 /* ContinueListeningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F20A4F1CCC3E4C009E1BF2 /* ContinueListeningCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		D2E4CD181CBB093800B59768 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		D2E4CD1C1CBB1C4000B59768 /* GabbChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatViewController.swift; sourceTree = "<group>"; };
 		D2F0BBA21CCAAC9100C1A64F /* GabbTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbTextField.swift; sourceTree = "<group>"; };
+		D2F20A4F1CCC3E4C009E1BF2 /* ContinueListeningCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueListeningCollectionViewCell.swift; sourceTree = "<group>"; };
 		ED0DBF334E31AF9133DD440C /* Pods-Gabb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gabb.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gabb/Pods-Gabb.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -404,6 +406,7 @@
 				D2BC4EA61CA88254006A66AA /* ViewPodcastTableViewController.swift */,
 				D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */,
 				D2E4CD101CB9C4C600B59768 /* NowPlayingWidgetViewController.swift */,
+				D2F20A4F1CCC3E4C009E1BF2 /* ContinueListeningCollectionViewCell.swift */,
 			);
 			name = Browse;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				D2BC4EA91CA8A950006A66AA /* PlayEpisodeTableViewController.swift in Sources */,
 				D277E2BE1CC1C2C200B01899 /* UserActionHandlers.swift in Sources */,
 				D299D6201CC1A72900FEC7DF /* GabbChatDataSource.swift in Sources */,
+				D2F20A501CCC3E4C009E1BF2 /* ContinueListeningCollectionViewCell.swift in Sources */,
 				D2E4CD0C1CB89C1400B59768 /* DateAndTime.swift in Sources */,
 				D2E4CD071CB894A300B59768 /* GabbPlayer.swift in Sources */,
 				D240F4321CA73EF700B1AE57 /* RestService.swift in Sources */,

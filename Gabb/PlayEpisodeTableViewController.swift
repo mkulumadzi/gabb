@@ -44,6 +44,8 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         
         if let image = podcast["image"] as? UIImage {
             self.podcastImageView.image = image
+        } else if let imageUrl = podcast["image_url"] as? String {
+            getPodcastImage(imageUrl)
         }
         
         if let podcastTitle = podcast.valueForKey("title") as? String {
@@ -85,6 +87,15 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         tableView.tableHeaderView = UIView(frame: CGRectMake(0,0,screenSize.width,0.1))
     }
     
+    // This is redundant - doing this on the 'browse' screen too.
+    func getPodcastImage(imageURL: String) {
+        FileService.getFullImageForURL(imageURL, completion: {(image) -> Void in
+            if let image = image {
+                self.podcastImageView.image = image
+            }
+        })
+    }
+    
     /*
      If player is not playing, initialize it
      If player is playing this episode, start updating the view
@@ -108,6 +119,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             layoutViewForGabbPlayer(gabber)
         }
         else {
+            
             showPlayButton()
             queueUpEpisode()
         }
@@ -215,12 +227,17 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     // If another episode is not playing, just play this episode
     
     @IBAction func playButtonTapped(sender: AnyObject) {
-        if !gabber.playing {
+        if !gabber.playing && gabbQueue == nil {
+            gabber.play()
+        } else if !gabber.playing && gabbQueue != nil {
+            gabber = gabbQueue
+            gabbQueue = nil
             gabber.play()
         }
-        else if shouldShowNowPlayingWidget() {
+        else if gabber.playing && gabbQueue != nil {
             gabber.pause()
             gabber = gabbQueue
+            gabbQueue = nil
             gabber.play()
         }
         else {
