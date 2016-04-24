@@ -21,16 +21,23 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
     var podcasts:[NSMutableDictionary]!
     
     var continueListeningOptions = [NSDictionary]()
+    
+    var navBarBackgroundImage:UIImage?
+    var navBarShadowImage:UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        formatView()
+        
+        navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
+        navBarShadowImage = navigationController?.navigationBar.shadowImage
+        
         getPodcastImages()
         getRecentSessions()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        formatView()
         if let _ = currentUser {
             addProfileButton()
         }
@@ -42,6 +49,17 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
     func formatView() {
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.logoSmall(), NSForegroundColorAttributeName : UIColor.gabbRedColor()]
         navigationItem.title = "Gabb"
+        
+        navigationController?.navigationBar.tintColor = UIColor.gabbRedColor()
+        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        
+        navigationController?.navigationBar.translucent = false
+        if let backgroundImage = navBarBackgroundImage {
+            navigationController?.navigationBar.setBackgroundImage(backgroundImage, forBarMetrics: .Default)
+        }
+        if let shadowImage = navBarShadowImage {
+            navigationController?.navigationBar.shadowImage = shadowImage
+        }
     }
     
     func getRecentSessions() {
