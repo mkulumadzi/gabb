@@ -123,12 +123,7 @@ class BrowsePodcastsCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
-        switch kind {
-        case UICollectionElementKindSectionHeader:
-            return customSupplementaryView(collectionView, indexPath: indexPath, kind: kind)
-        default:
-            assert(false, "Unexpected element kind")
-        }
+        return customSupplementaryView(collectionView, indexPath: indexPath, kind: kind)
         
     }
     
