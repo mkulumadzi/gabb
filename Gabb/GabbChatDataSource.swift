@@ -36,12 +36,13 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     
     func createTextMessageModel(chat: NSMutableDictionary) -> TextMessageModel {
         let json = JSON(chat)
+        let fromPerson = GabbUser.initWithDictionary(json["from_person"])
         let uid = json["_id"]["$oid"].stringValue
         let text = json["text"].stringValue
         let date = NSDate(dateString: json["created_at"].stringValue)
-        let senderId = json["person_id"]["$oid"].stringValue
+        let senderId = fromPerson.id
         let isIncoming = (senderId == currentUser.id ? false : true)
-        let messageModel = createMessageModel(uid, senderId: senderId, isIncoming: isIncoming, date: date, type: TextMessageModel.chatItemType)
+        let messageModel = createMessageModel(fromPerson, uid: uid, senderId: senderId, isIncoming: isIncoming, date: date, type: TextMessageModel.chatItemType)
         let textMessageModel = TextMessageModel(messageModel: messageModel, text: text)
         return textMessageModel
     }
@@ -51,16 +52,17 @@ class GabbChatDataSource: ChatDataSourceProtocol {
         let tempUid = "\(nextMessageId)"
         let date = NSDate()
         let isIncoming = false
-        let messageModel = createMessageModel(tempUid, senderId: senderId, isIncoming: isIncoming, date: date, type: TextMessageModel.chatItemType)
+        let messageModel = createMessageModel(currentUser, uid: tempUid, senderId: senderId, isIncoming: isIncoming, date: date, type: TextMessageModel.chatItemType)
         let textMessageModel = TextMessageModel(messageModel: messageModel, text: text)
         return textMessageModel
     }
     
-    func createMessageModel(uid: String, senderId: String, isIncoming: Bool, date: NSDate, type: String) -> GabbMessageModel {
+    func createMessageModel(fromPerson: GabbUser, uid: String, senderId: String, isIncoming: Bool, date: NSDate, type: String) -> GabbMessageModel {
         let senderId = senderId
         let messageStatus = MessageStatus.Success
         let messageModel = GabbMessageModel(uid: uid, senderId: senderId, type: type, isIncoming: isIncoming, date: date, status: messageStatus)
         messageModel.podcastId = JSON(self.podcast)["podcast_id"].intValue
+        messageModel.fromPerson = fromPerson
         return messageModel
     }
     

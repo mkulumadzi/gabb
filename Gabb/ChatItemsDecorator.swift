@@ -56,13 +56,18 @@ final class ChatItemsDecorator: ChatItemsDecoratorProtocol {
                     }
                 }
                 
+                // Gotta figure out how to clean this up, it is UGLY
                 if showsName {
-                    decoratedChatItems.append(
-                        DecoratedChatItem(
-                            chatItem: FromNameModel(uid: "\(currentMessage.uid)-from-Name", from: currentUser),
-                            decorationAttributes: nil
-                        )
-                    )
+                    if let textMessage = currentMessage as? TextMessageModel {
+                        if let gabbMessage = textMessage.messageModel as? GabbMessageModel {
+                            decoratedChatItems.append(
+                                DecoratedChatItem(
+                                    chatItem: FromNameModel(uid: "\(currentMessage.uid)-from-Name", fromPerson: gabbMessage.fromPerson),
+                                    decorationAttributes: nil
+                                )
+                            )
+                        }
+                    }
                 }
                 
                 if let nextMessage = next as? MessageModelProtocol {

@@ -13,5 +13,6 @@ import ChattoAdditions
 class GabbMessageModel: MessageModel {
 
     var podcastId:NSInteger!
+    var fromPerson:GabbUser!
     
 }

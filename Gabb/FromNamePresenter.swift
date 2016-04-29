@@ -18,11 +18,11 @@ class FromNameModel: ChatItemProtocol {
     }
     
     var type: String { return FromNameModel.chatItemType }
-    let from: GabbUser
+    let fromPerson: GabbUser
     
-    init (uid: String, from: GabbUser) {
+    init (uid: String, fromPerson: GabbUser) {
         self.uid = uid
-        self.from = from
+        self.fromPerson = fromPerson
     }
 }
 
@@ -71,7 +71,7 @@ class FromNamePresenter: ChatItemPresenterProtocol {
             NSForegroundColorAttributeName: UIColor.gabbDarkGreyColor()
         ]
         fromNameCell.text = NSAttributedString(
-            string: "Kristen Ulwelling",
+            string: self.fromNameModel.fromPerson.fullName(),
             attributes: attrs)
     }
     
