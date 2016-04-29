@@ -16,6 +16,8 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     var nextMessageId: Int = 0
     let preferredMaxWindowSize = 500
     
+    var podcast:NSDictionary!
+    
     var chats:[NSMutableDictionary]!
     
 //    var fakeMessages:NSMutableDictionary!
@@ -38,15 +40,25 @@ class GabbChatDataSource: ChatDataSourceProtocol {
         let uid = json["_id"]["$oid"].stringValue
         let text = json["text"].stringValue
         let date = NSDate(dateString: json["created_at"].stringValue)
-        let fromId = json["person_id"]["$oid"].stringValue
-        let isIncoming = (fromId == currentUser.id ? false : true)
-        let messageModel = createMessageModel(uid, fromId: fromId, isIncoming: isIncoming, date: date, type: TextMessageModel.chatItemType)
+        let senderId = json["person_id"]["$oid"].stringValue
+        let isIncoming = (senderId == currentUser.id ? false : true)
+        let messageModel = createMessageModel(uid, senderId: senderId, isIncoming: isIncoming, date: date, type: TextMessageModel.chatItemType)
         let textMessageModel = TextMessageModel(messageModel: messageModel, text: text)
         return textMessageModel
     }
     
-    func createMessageModel(uid: String, fromId: String, isIncoming: Bool, date: NSDate, type: String) -> MessageModel {
-        let senderId = fromId
+    func createOutgoingTextMessage(text: String) -> TextMessageModel {
+        let senderId = currentUser.id
+        let tempUid = "\(nextMessageId)"
+        let date = NSDate()
+        let isIncoming = false
+        let messageModel = createMessageModel(tempUid, senderId: senderId, isIncoming: isIncoming, date: date, type: TextMessageModel.chatItemType)
+        let textMessageModel = TextMessageModel(messageModel: messageModel, text: text)
+        return textMessageModel
+    }
+    
+    func createMessageModel(uid: String, senderId: String, isIncoming: Bool, date: NSDate, type: String) -> MessageModel {
+        let senderId = senderId
         let messageStatus = MessageStatus.Success
         let messageModel = MessageModel(uid: uid, senderId: senderId, type: type, isIncoming: isIncoming, date: date, status: messageStatus)
         return messageModel
@@ -57,14 +69,23 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     }
     
     // Create a real message sender
-    lazy var messageSender: FakeMessageSender = {
-        let sender = FakeMessageSender()
+    lazy var messageSender: GabbChatSender = {
+        let sender = GabbChatSender()
         sender.onMessageChanged = { [weak self] (message) in
             guard let sSelf = self else { return }
             sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
         }
         return sender
     }()
+    
+//    lazy var messageSender: FakeMessageSender = {
+//        let sender = FakeMessageSender()
+//        sender.onMessageChanged = { [weak self] (message) in
+//            guard let sSelf = self else { return }
+//            sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
+//        }
+//        return sender
+//    }()
     
     var hasMoreNext: Bool {
         return self.slidingWindow.hasMore()
@@ -93,10 +114,10 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     }
     
     func addTextMessage(text: String) {
-//        let uid = "\(self.nextMessageId)"
+        let message = createOutgoingTextMessage(text)
         self.nextMessageId += 1
-        let message = createTextMessageModel(chats[nextMessageId])
-        self.messageSender.sendMessage(message)
+        let podcastId = JSON(self.podcast)["podcast_id"].intValue
+        self.messageSender.sendTextMessage(podcastId, message: message)
         self.slidingWindow.insertItem(message, position: .Bottom)
         self.delegate?.chatDataSourceDidUpdate(self)
     }
@@ -115,4 +136,16 @@ class GabbChatDataSource: ChatDataSourceProtocol {
         completion(didAdjust: didAdjust)
     }
     
+}
+
+extension TextMessageModel {
+    static var chatItemType: ChatItemType {
+        return "text"
+    }
+}
+
+extension PhotoMessageModel {
+    static var chatItemType: ChatItemType {
+        return "photo"
+    }
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 import SwiftyJSON
+import Chatto
+import ChattoAdditions
 
 class ChatService : RestService {
     
@@ -21,6 +23,15 @@ class ChatService : RestService {
             } else {
                 completion(result: nil)
             }
+        })
+    }
+    
+    class func sendTextMessage(podcastId: NSInteger, textMessage:TextMessageModel, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+        let url = "https://gabb.herokuapp.com/chat"
+        let headers = RestService.headersForJsonRequeestWithLoggedInUser()
+        let parameters:[String: AnyObject] = ["podcast_id": podcastId, "text": textMessage.text]
+        RestService.postRequest(url, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
+            completion(error: error, result: result)
         })
     }
 

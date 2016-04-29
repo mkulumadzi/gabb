@@ -12,10 +12,7 @@ import ChattoAdditions
 
 class GabbChatViewController: ChatViewController {
     
-    var podcast:NSDictionary!
-    
-    // Make a real message sender
-    var messageSender: FakeMessageSender!
+    var messageSender: GabbChatSender!
     
     var dataSource: GabbChatDataSource! {
         didSet {
@@ -55,12 +52,6 @@ class GabbChatViewController: ChatViewController {
                     interactionHandler: TextMessageHandler(baseHandler: self.baseMessageHandler)
                 )
             ],
-            PhotoMessageModel.chatItemType: [
-                PhotoMessagePresenterBuilder(
-                    viewModelBuilder: FakePhotoMessageViewModelBuilder(),
-                    interactionHandler: PhotoMessageHandler(baseHandler: self.baseMessageHandler)
-                )
-            ],
             SendingStatusModel.chatItemType: [SendingStatusPresenterBuilder()]
         ]
     }
@@ -68,7 +59,6 @@ class GabbChatViewController: ChatViewController {
     func createChatInputItems() -> [ChatInputItemProtocol] {
         var items = [ChatInputItemProtocol]()
         items.append(self.createTextInputItem())
-//        items.append(self.createPhotoInputItem())
         return items
     }
     
@@ -79,14 +69,6 @@ class GabbChatViewController: ChatViewController {
         }
         return item
     }
-    
-//    private func createPhotoInputItem() -> PhotosChatInputItem {
-//        let item = PhotosChatInputItem(presentingController: self)
-//        item.photoInputHandler = { [weak self] image in
-//            self?.dataSource.addPhotoMessage(image)
-//        }
-//        return item
-//    }
 
 }
 

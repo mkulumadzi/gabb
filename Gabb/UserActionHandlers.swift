@@ -65,13 +65,13 @@ class PhotoMessageHandler: BaseMessageInteractionHandlerProtocol {
 
 class BaseMessageHandler {
 
-    private let messageSender: FakeMessageSender
-    init (messageSender: FakeMessageSender) {
+    private let messageSender: GabbChatSender
+    init (messageSender: GabbChatSender) {
         self.messageSender = messageSender
     }
     func userDidTapOnFailIcon(viewModel viewModel: MessageViewModelProtocol) {
         NSLog("userDidTapOnFailIcon")
-        self.messageSender.sendMessage(viewModel.messageModel)
+//        self.messageSender.sendMessage(viewModel.messageModel)
     }
 
     func userDidTapOnBubble(viewModel viewModel: MessageViewModelProtocol) {

@@ -199,8 +199,8 @@ class ViewPodcastTableViewController: UITableViewController {
         }
         else if segue.identifier == viewChat {
             let chatController = segue.destinationViewController as! GabbChatViewController
-            chatController.podcast = self.podcast
             chatController.dataSource = GabbChatDataSource(chats: chats)
+            chatController.dataSource.podcast = self.podcast
             chatController.messageSender = chatController.dataSource.messageSender
         }
     }
