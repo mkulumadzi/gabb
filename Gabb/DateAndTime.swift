@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import UIKit
 
 extension CMTime {
     
@@ -28,4 +29,15 @@ extension CMTime {
         return timeString
     }
     
+}
+
+extension NSDate {
+    convenience
+    init(dateString:String) {
+        let dateStringFormatter = NSDateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z"
+        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let d = dateStringFormatter.dateFromString(dateString)
+        self.init(timeInterval:0, sinceDate:d!)
+    }
 }

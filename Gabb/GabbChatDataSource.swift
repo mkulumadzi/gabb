@@ -37,11 +37,19 @@ class GabbChatDataSource: ChatDataSourceProtocol {
         let json = JSON(chat)
         let uid = json["_id"]["$oid"].stringValue
         let text = json["text"].stringValue
+        let date = NSDate(dateString: json["created_at"].stringValue)
         let fromId = json["person_id"]["$oid"].stringValue
         let isIncoming = (fromId == currentUser.id ? false : true)
-        let messageModel = createMessageModel(uid, isIncoming: isIncoming, type: TextMessageModel.chatItemType)
+        let messageModel = createMessageModel(uid, fromId: fromId, isIncoming: isIncoming, date: date, type: TextMessageModel.chatItemType)
         let textMessageModel = TextMessageModel(messageModel: messageModel, text: text)
         return textMessageModel
+    }
+    
+    func createMessageModel(uid: String, fromId: String, isIncoming: Bool, date: NSDate, type: String) -> MessageModel {
+        let senderId = fromId
+        let messageStatus = MessageStatus.Success
+        let messageModel = MessageModel(uid: uid, senderId: senderId, type: type, isIncoming: isIncoming, date: date, status: messageStatus)
+        return messageModel
     }
     
     init(messages: [ChatItemProtocol], pageSize: Int) {
