@@ -26,7 +26,7 @@ import Foundation
 import Chatto
 import ChattoAdditions
 
-final class ChatItemsDemoDecorator: ChatItemsDecoratorProtocol {
+final class ChatItemsDecorator: ChatItemsDecoratorProtocol {
     struct Constants {
         static let shortSeparation: CGFloat = 3
         static let normalSeparation: CGFloat = 10
@@ -55,6 +55,15 @@ final class ChatItemsDemoDecorator: ChatItemsDecoratorProtocol {
                         DecoratedChatItem(
                             chatItem: SendingStatusModel(uid: "\(currentMessage.uid)-decoration-status", status: currentMessage.status),
                             decorationAttributes: nil)
+                    )
+                }
+                
+                if showsTail == true && currentMessage.senderId != currentUser.id {
+                    additionalItems.append(
+                        DecoratedChatItem(
+                            chatItem: FromAvatarModel(uid: "\(currentMessage.uid)-from-avatar", from: currentUser),
+                            decorationAttributes: nil
+                        )
                     )
                 }
             }

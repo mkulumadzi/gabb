@@ -15,6 +15,7 @@ public class GabbChatSender {
     public var onMessageChanged: ((message: MessageModelProtocol) -> Void)?
     
     public func sendTextMessage(message: TextMessageModel) {
+        self.updateMessage(message, status: .Sending)
         ChatService.sendTextMessage(message, completion: {(error, result) -> Void in
             if let error = error {
                 print(error)

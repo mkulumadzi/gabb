@@ -232,7 +232,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="W15-Nt-eyB">
                         <barButtonItem key="backBarButtonItem" title="Episodes" id="1y5-91-t8y"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="5fg-q2-SFq">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="5fg-q2-SFq">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SUH-TI-AYw" userLabel="chatButton">
                                 <rect key="frame" x="540" y="10" width="40" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

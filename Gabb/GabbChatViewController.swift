@@ -26,7 +26,7 @@ class GabbChatViewController: ChatViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.chatItemsDecorator = ChatItemsDemoDecorator()
+        super.chatItemsDecorator = ChatItemsDecorator()
     }
     
     var chatInputPresenter: ChatInputBarPresenter!
@@ -52,7 +52,8 @@ class GabbChatViewController: ChatViewController {
                     interactionHandler: TextMessageHandler(baseHandler: self.baseMessageHandler)
                 )
             ],
-            SendingStatusModel.chatItemType: [SendingStatusPresenterBuilder()]
+            SendingStatusModel.chatItemType: [SendingStatusPresenterBuilder()],
+            FromAvatarModel.chatItemType: [FromAvatarPresenterBuilder()]
         ]
     }
     

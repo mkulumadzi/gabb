@@ -85,7 +85,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="0WE-Kg-nvo">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="n6x-za-XQ5">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="n6x-za-XQ5">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="QMU-je-njs" id="ZjO-EZ-0eK"/>
                             </connections>
