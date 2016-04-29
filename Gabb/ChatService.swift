@@ -26,10 +26,13 @@ class ChatService : RestService {
         })
     }
     
-    class func sendTextMessage(podcastId: NSInteger, textMessage:TextMessageModel, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+    class func sendTextMessage(textMessage:TextMessageModel, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+        guard let messageModel = textMessage.messageModel as? GabbMessageModel else {
+            return
+        }
         let url = "https://gabb.herokuapp.com/chat"
         let headers = RestService.headersForJsonRequeestWithLoggedInUser()
-        let parameters:[String: AnyObject] = ["podcast_id": podcastId, "text": textMessage.text]
+        let parameters:[String: AnyObject] = ["podcast_id": messageModel.podcastId, "text": textMessage.text]
         RestService.postRequest(url, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
             completion(error: error, result: result)
         })

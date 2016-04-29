@@ -27,6 +27,7 @@
 		D240F4381CA7412400B1AE57 /* Pods_Gabb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D269F2381CD3CCDA00E360CC /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2371CD3CCDA00E360CC /* ChatService.swift */; };
 		D269F23E1CD3E4E200E360CC /* GabbChatSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F23D1CD3E4E200E360CC /* GabbChatSender.swift */; };
+		D269F2421CD3F0AE00E360CC /* GabbMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2411CD3F0AE00E360CC /* GabbMessageModel.swift */; };
 		D277E2B61CC1C2C200B01899 /* ChatItemsDemoDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2AD1CC1C2C200B01899 /* ChatItemsDemoDecorator.swift */; };
 		D277E2BD1CC1C2C200B01899 /* SlidingDatasSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */; };
 		D277E2BE1CC1C2C200B01899 /* UserActionHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */; };
@@ -108,6 +109,7 @@
 		D240F4371CA7412400B1AE57 /* Pods_Gabb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Gabb.framework; path = "Pods/../build/Debug-iphoneos/Pods_Gabb.framework"; sourceTree = "<group>"; };
 		D269F2371CD3CCDA00E360CC /* ChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		D269F23D1CD3E4E200E360CC /* GabbChatSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatSender.swift; sourceTree = "<group>"; };
+		D269F2411CD3F0AE00E360CC /* GabbMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbMessageModel.swift; sourceTree = "<group>"; };
 		D277E2AD1CC1C2C200B01899 /* ChatItemsDemoDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsDemoDecorator.swift; sourceTree = "<group>"; };
 		D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingDatasSource.swift; sourceTree = "<group>"; };
 		D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActionHandlers.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			children = (
 				D2E4CD061CB894A300B59768 /* GabbPlayer.swift */,
 				D277E2D11CC474A000B01899 /* GabbUser.swift */,
+				D269F2411CD3F0AE00E360CC /* GabbMessageModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 			files = (
 				D269F2381CD3CCDA00E360CC /* ChatService.swift in Sources */,
 				D2E4CD111CB9C4C600B59768 /* NowPlayingWidgetViewController.swift in Sources */,
+				D269F2421CD3F0AE00E360CC /* GabbMessageModel.swift in Sources */,
 				D240F4271CA6062E00B1AE57 /* Fonts.swift in Sources */,
 				D2151F6F1CC9266100F1B261 /* LoginViewController.swift in Sources */,
 				D277E2D91CC51E7500B01899 /* KeychainWrapper.m in Sources */,

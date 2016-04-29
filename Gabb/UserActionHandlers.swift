@@ -71,7 +71,9 @@ class BaseMessageHandler {
     }
     func userDidTapOnFailIcon(viewModel viewModel: MessageViewModelProtocol) {
         NSLog("userDidTapOnFailIcon")
-//        self.messageSender.sendMessage(viewModel.messageModel)
+        if let message = viewModel.messageModel as? TextMessageModel {
+            self.messageSender.sendTextMessage(message)
+        }
     }
 
     func userDidTapOnBubble(viewModel viewModel: MessageViewModelProtocol) {

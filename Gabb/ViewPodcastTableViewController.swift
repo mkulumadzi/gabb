@@ -176,10 +176,11 @@ class ViewPodcastTableViewController: UITableViewController {
             ChatService.getChatsForPodcast(self.podcast, completion: {(result) -> Void in
                 if let chats = result {
                     self.chats = chats
-                    self.performSegueWithIdentifier(viewChat, sender: self)
+                } else {
+                    self.chats = [NSMutableDictionary]()
                 }
+                self.performSegueWithIdentifier(viewChat, sender: self)
             })
-//
         }
         else {
             performSegueWithIdentifier(login, sender: self)
@@ -199,8 +200,7 @@ class ViewPodcastTableViewController: UITableViewController {
         }
         else if segue.identifier == viewChat {
             let chatController = segue.destinationViewController as! GabbChatViewController
-            chatController.dataSource = GabbChatDataSource(chats: chats)
-            chatController.dataSource.podcast = self.podcast
+            chatController.dataSource = GabbChatDataSource(podcast: self.podcast, chats: chats)
             chatController.messageSender = chatController.dataSource.messageSender
         }
     }

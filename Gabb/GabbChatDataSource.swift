@@ -20,12 +20,11 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     
     var chats:[NSMutableDictionary]!
     
-//    var fakeMessages:NSMutableDictionary!
-    
     var slidingWindow: SlidingDataSource<ChatItemProtocol>!
     
-    init(chats: [NSMutableDictionary]!) {
+    init(podcast: NSDictionary!, chats: [NSMutableDictionary]!) {
         
+        self.podcast = podcast
         self.chats = chats
         let count = self.chats.count
         
@@ -57,10 +56,11 @@ class GabbChatDataSource: ChatDataSourceProtocol {
         return textMessageModel
     }
     
-    func createMessageModel(uid: String, senderId: String, isIncoming: Bool, date: NSDate, type: String) -> MessageModel {
+    func createMessageModel(uid: String, senderId: String, isIncoming: Bool, date: NSDate, type: String) -> GabbMessageModel {
         let senderId = senderId
         let messageStatus = MessageStatus.Success
-        let messageModel = MessageModel(uid: uid, senderId: senderId, type: type, isIncoming: isIncoming, date: date, status: messageStatus)
+        let messageModel = GabbMessageModel(uid: uid, senderId: senderId, type: type, isIncoming: isIncoming, date: date, status: messageStatus)
+        messageModel.podcastId = JSON(self.podcast)["podcast_id"].intValue
         return messageModel
     }
     
@@ -77,15 +77,6 @@ class GabbChatDataSource: ChatDataSourceProtocol {
         }
         return sender
     }()
-    
-//    lazy var messageSender: FakeMessageSender = {
-//        let sender = FakeMessageSender()
-//        sender.onMessageChanged = { [weak self] (message) in
-//            guard let sSelf = self else { return }
-//            sSelf.delegate?.chatDataSourceDidUpdate(sSelf)
-//        }
-//        return sender
-//    }()
     
     var hasMoreNext: Bool {
         return self.slidingWindow.hasMore()
@@ -116,20 +107,10 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     func addTextMessage(text: String) {
         let message = createOutgoingTextMessage(text)
         self.nextMessageId += 1
-        let podcastId = JSON(self.podcast)["podcast_id"].intValue
-        self.messageSender.sendTextMessage(podcastId, message: message)
+        self.messageSender.sendTextMessage(message)
         self.slidingWindow.insertItem(message, position: .Bottom)
         self.delegate?.chatDataSourceDidUpdate(self)
     }
-    
-//    func addPhotoMessage(image: UIImage) {
-//        let uid = "\(self.nextMessageId)"
-//        self.nextMessageId += 1
-//        let message = createPhotoMessageModel(uid, image: image, size: image.size, isIncoming: false)
-//        self.messageSender.sendMessage(message)
-//        self.slidingWindow.insertItem(message, position: .Bottom)
-//        self.delegate?.chatDataSourceDidUpdate(self)
-//    }
     
     func adjustNumberOfMessages(preferredMaxCount preferredMaxCount: Int?, focusPosition: Double, completion:(didAdjust: Bool) -> Void) {
         let didAdjust = self.slidingWindow.adjustWindow(focusPosition: focusPosition, maxWindowSize: preferredMaxCount ?? self.preferredMaxWindowSize)

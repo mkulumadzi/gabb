@@ -14,14 +14,18 @@ public class GabbChatSender {
     
     public var onMessageChanged: ((message: MessageModelProtocol) -> Void)?
     
-    public func sendTextMessage(podcastId: NSInteger, message: TextMessageModel) {
-        ChatService.sendTextMessage(podcastId, textMessage: message, completion: {(error, result) -> Void in
+    public func sendTextMessage(message: TextMessageModel) {
+        ChatService.sendTextMessage(message, completion: {(error, result) -> Void in
             if let error = error {
                 print(error)
                 self.updateMessage(message, status: .Failed)
             } else {
-                print(result)
-                self.updateMessage(message, status: .Success)
+                if let array = result as? NSArray {
+                    print(array) // Successful post will return an array with a status and a header
+                    self.updateMessage(message, status: .Success)
+                } else {
+                    self.updateMessage(message, status: .Failed)
+                }
             }
         })
     }
