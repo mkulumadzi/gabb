@@ -68,7 +68,7 @@
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="Wes-Ud-A36"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="episodeTitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTD-DZ-xXx">
@@ -137,10 +137,10 @@
             </objects>
             <point key="canvasLocation" x="441" y="307"/>
         </scene>
-        <!--Demo Chat View Controller-->
+        <!--Gabb Chat View Controller-->
         <scene sceneID="OrL-qZ-ltl">
             <objects>
-                <viewController id="C2Z-48-UPj" customClass="DemoChatViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C2Z-48-UPj" customClass="GabbChatViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ydo-Uo-v26"/>
                         <viewControllerLayoutGuide type="bottom" id="JLE-jA-aQB"/>

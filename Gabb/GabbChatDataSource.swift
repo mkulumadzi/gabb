@@ -8,26 +8,40 @@
 
 import Foundation
 import Chatto
+import ChattoAdditions
+import SwiftyJSON
 
 class GabbChatDataSource: ChatDataSourceProtocol {
     
     var nextMessageId: Int = 0
     let preferredMaxWindowSize = 500
     
-    var fakeMessages:NSMutableDictionary!
+    var chats:[NSMutableDictionary]!
+    
+//    var fakeMessages:NSMutableDictionary!
     
     var slidingWindow: SlidingDataSource<ChatItemProtocol>!
     
-    // Change this to not take a static count - just get the messages for this podcast (or maybe take the total count of the messages for this podcast?
-    init(count: Int, pageSize: Int) {
-        self.slidingWindow = SlidingDataSource(count: count, pageSize: pageSize) { () -> ChatItemProtocol in
+    init(chats: [NSMutableDictionary]!) {
+        
+        self.chats = chats
+        let count = self.chats.count
+        
+        self.slidingWindow = SlidingDataSource(count: count, pageSize: 10) { () -> ChatItemProtocol in
             defer { self.nextMessageId += 1 }
-            
-            print(self.nextMessageId)
-            
-            // Change this to get a real message from a real data source
-            return FakeMessageFactory.createChatItem("\(self.nextMessageId)")
+            return self.createTextMessageModel(self.chats[self.nextMessageId])
         }
+    }
+    
+    func createTextMessageModel(chat: NSMutableDictionary) -> TextMessageModel {
+        let json = JSON(chat)
+        let uid = json["_id"]["$oid"].stringValue
+        let text = json["text"].stringValue
+        let fromId = json["person_id"]["$oid"].stringValue
+        let isIncoming = (fromId == currentUser.id ? false : true)
+        let messageModel = createMessageModel(uid, isIncoming: isIncoming, type: TextMessageModel.chatItemType)
+        let textMessageModel = TextMessageModel(messageModel: messageModel, text: text)
+        return textMessageModel
     }
     
     init(messages: [ChatItemProtocol], pageSize: Int) {
@@ -71,22 +85,22 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     }
     
     func addTextMessage(text: String) {
-        let uid = "\(self.nextMessageId)"
+//        let uid = "\(self.nextMessageId)"
         self.nextMessageId += 1
-        let message = createTextMessageModel(uid, text: text, isIncoming: false)
+        let message = createTextMessageModel(chats[nextMessageId])
         self.messageSender.sendMessage(message)
         self.slidingWindow.insertItem(message, position: .Bottom)
         self.delegate?.chatDataSourceDidUpdate(self)
     }
     
-    func addPhotoMessage(image: UIImage) {
-        let uid = "\(self.nextMessageId)"
-        self.nextMessageId += 1
-        let message = createPhotoMessageModel(uid, image: image, size: image.size, isIncoming: false)
-        self.messageSender.sendMessage(message)
-        self.slidingWindow.insertItem(message, position: .Bottom)
-        self.delegate?.chatDataSourceDidUpdate(self)
-    }
+//    func addPhotoMessage(image: UIImage) {
+//        let uid = "\(self.nextMessageId)"
+//        self.nextMessageId += 1
+//        let message = createPhotoMessageModel(uid, image: image, size: image.size, isIncoming: false)
+//        self.messageSender.sendMessage(message)
+//        self.slidingWindow.insertItem(message, position: .Bottom)
+//        self.delegate?.chatDataSourceDidUpdate(self)
+//    }
     
     func adjustNumberOfMessages(preferredMaxCount preferredMaxCount: Int?, focusPosition: Double, completion:(didAdjust: Bool) -> Void) {
         let didAdjust = self.slidingWindow.adjustWindow(focusPosition: focusPosition, maxWindowSize: preferredMaxCount ?? self.preferredMaxWindowSize)

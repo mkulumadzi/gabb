@@ -11,11 +11,15 @@ import SwiftyJSON
 
 class GabbUser: NSObject {
     
+    var id:String!
     var email:String!
     var givenName:String!
     var familyName:String!
     
-    init(email: String?, givenName:String?, familyName:String?) {
+    init(id: String?, email: String?, givenName:String?, familyName:String?) {
+        if let id = id {
+            self.id = id
+        }
         if let email = email {
             self.email = email
         }
@@ -28,7 +32,7 @@ class GabbUser: NSObject {
     }
     
     class func initWithDictionary(json: JSON) -> GabbUser {
-        return GabbUser(email: json["email"].stringValue, givenName: json["given_name"].stringValue, familyName: json["family_name"].stringValue)
+        return GabbUser(id: json["_id"]["$oid"].stringValue, email: json["email"].stringValue, givenName: json["given_name"].stringValue, familyName: json["family_name"].stringValue)
     }
     
     func fullName() -> String {

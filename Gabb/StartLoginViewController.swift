@@ -41,7 +41,7 @@ class StartLoginViewController: UIViewController, UITextFieldDelegate {
     
     var user:GabbUser {
         if _user == nil {
-            _user = GabbUser(email: nil, givenName: nil, familyName: nil)
+            _user = GabbUser(id: nil, email: nil, givenName: nil, familyName: nil)
         }
         return _user
     }

@@ -19,6 +19,9 @@ class ViewPodcastTableViewController: UITableViewController {
     var podcast:NSMutableDictionary!
     var episodes = [NSDictionary]()
     
+    // Using this so that we have some chats to send in the segue...
+    var chats:[NSMutableDictionary]!
+    
     var navBarBackgroundImage:UIImage?
     var navBarShadowImage:UIImage?
 
@@ -170,7 +173,13 @@ class ViewPodcastTableViewController: UITableViewController {
     
     @IBAction func chatButtonTapped(sender: AnyObject) {
         if let _ = currentUser {
-            performSegueWithIdentifier(viewChat, sender: self)
+            ChatService.getChatsForPodcast(self.podcast, completion: {(result) -> Void in
+                if let chats = result {
+                    self.chats = chats
+                    self.performSegueWithIdentifier(viewChat, sender: self)
+                }
+            })
+//
         }
         else {
             performSegueWithIdentifier(login, sender: self)
@@ -189,19 +198,10 @@ class ViewPodcastTableViewController: UITableViewController {
             }
         }
         else if segue.identifier == viewChat {
-            
-            // Change this to get a data source for the podcast
-            let initialCount = 1000
-            let pageSize = 10
-            var dataSource: FakeDataSource!
-            let chatController = segue.destinationViewController as! DemoChatViewController
-            if dataSource == nil {
-                dataSource = FakeDataSource(count: initialCount, pageSize: pageSize)
-            }
-            
-            
-            chatController.dataSource = dataSource
-            chatController.messageSender = dataSource.messageSender
+            let chatController = segue.destinationViewController as! GabbChatViewController
+            chatController.podcast = self.podcast
+            chatController.dataSource = GabbChatDataSource(chats: chats)
+            chatController.messageSender = chatController.dataSource.messageSender
         }
     }
 
