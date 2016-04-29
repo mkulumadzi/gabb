@@ -28,9 +28,9 @@
 		D269F2381CD3CCDA00E360CC /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2371CD3CCDA00E360CC /* ChatService.swift */; };
 		D269F23E1CD3E4E200E360CC /* GabbChatSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F23D1CD3E4E200E360CC /* GabbChatSender.swift */; };
 		D269F2421CD3F0AE00E360CC /* GabbMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2411CD3F0AE00E360CC /* GabbMessageModel.swift */; };
-		D269F2451CD3F96900E360CC /* FromAvatarPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2441CD3F96900E360CC /* FromAvatarPresenter.swift */; };
-		D269F2471CD3FA9200E360CC /* FromAvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2461CD3FA9200E360CC /* FromAvatarCollectionViewCell.swift */; };
-		D269F2491CD3FB0700E360CC /* FromAvatarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D269F2481CD3FB0700E360CC /* FromAvatarCollectionViewCell.xib */; };
+		D269F2451CD3F96900E360CC /* FromNamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2441CD3F96900E360CC /* FromNamePresenter.swift */; };
+		D269F2471CD3FA9200E360CC /* FromNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2461CD3FA9200E360CC /* FromNameCollectionViewCell.swift */; };
+		D269F2491CD3FB0700E360CC /* FromNameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D269F2481CD3FB0700E360CC /* FromNameCollectionViewCell.xib */; };
 		D277E2B61CC1C2C200B01899 /* ChatItemsDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2AD1CC1C2C200B01899 /* ChatItemsDecorator.swift */; };
 		D277E2BD1CC1C2C200B01899 /* SlidingDatasSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */; };
 		D277E2BE1CC1C2C200B01899 /* UserActionHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */; };
@@ -113,9 +113,9 @@
 		D269F2371CD3CCDA00E360CC /* ChatService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		D269F23D1CD3E4E200E360CC /* GabbChatSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatSender.swift; sourceTree = "<group>"; };
 		D269F2411CD3F0AE00E360CC /* GabbMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbMessageModel.swift; sourceTree = "<group>"; };
-		D269F2441CD3F96900E360CC /* FromAvatarPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromAvatarPresenter.swift; sourceTree = "<group>"; };
-		D269F2461CD3FA9200E360CC /* FromAvatarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromAvatarCollectionViewCell.swift; sourceTree = "<group>"; };
-		D269F2481CD3FB0700E360CC /* FromAvatarCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FromAvatarCollectionViewCell.xib; sourceTree = "<group>"; };
+		D269F2441CD3F96900E360CC /* FromNamePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromNamePresenter.swift; sourceTree = "<group>"; };
+		D269F2461CD3FA9200E360CC /* FromNameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromNameCollectionViewCell.swift; sourceTree = "<group>"; };
+		D269F2481CD3FB0700E360CC /* FromNameCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FromNameCollectionViewCell.xib; sourceTree = "<group>"; };
 		D277E2AD1CC1C2C200B01899 /* ChatItemsDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsDecorator.swift; sourceTree = "<group>"; };
 		D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingDatasSource.swift; sourceTree = "<group>"; };
 		D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActionHandlers.swift; sourceTree = "<group>"; };
@@ -311,14 +311,14 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
-		D269F2431CD3F94F00E360CC /* From Avatar */ = {
+		D269F2431CD3F94F00E360CC /* From Name */ = {
 			isa = PBXGroup;
 			children = (
-				D269F2441CD3F96900E360CC /* FromAvatarPresenter.swift */,
-				D269F2461CD3FA9200E360CC /* FromAvatarCollectionViewCell.swift */,
-				D269F2481CD3FB0700E360CC /* FromAvatarCollectionViewCell.xib */,
+				D269F2441CD3F96900E360CC /* FromNamePresenter.swift */,
+				D269F2461CD3FA9200E360CC /* FromNameCollectionViewCell.swift */,
+				D269F2481CD3FB0700E360CC /* FromNameCollectionViewCell.xib */,
 			);
-			name = "From Avatar";
+			name = "From Name";
 			sourceTree = "<group>";
 		};
 		D277E2AB1CC1C29D00B01899 /* Chat */ = {
@@ -338,7 +338,7 @@
 		D277E2BF1CC1C2EB00B01899 /* Custom Items */ = {
 			isa = PBXGroup;
 			children = (
-				D269F2431CD3F94F00E360CC /* From Avatar */,
+				D269F2431CD3F94F00E360CC /* From Name */,
 				D277E2C01CC1C2FB00B01899 /* Sending status */,
 			);
 			name = "Custom Items";
@@ -543,7 +543,7 @@
 				D240F3FA1CA5EC0000B1AE57 /* Initialization.storyboard in Resources */,
 				D277E2C61CC1C30C00B01899 /* SendingStatusCollectionViewCell.xib in Resources */,
 				D277E2CB1CC2D28300B01899 /* Login.storyboard in Resources */,
-				D269F2491CD3FB0700E360CC /* FromAvatarCollectionViewCell.xib in Resources */,
+				D269F2491CD3FB0700E360CC /* FromNameCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,8 +639,8 @@
 				D2CFA7361CA752BC001743E6 /* PodcastService.swift in Sources */,
 				D277E2B61CC1C2C200B01899 /* ChatItemsDecorator.swift in Sources */,
 				D2E4CD0E1CB99A8E00B59768 /* Strings.swift in Sources */,
-				D269F2451CD3F96900E360CC /* FromAvatarPresenter.swift in Sources */,
-				D269F2471CD3FA9200E360CC /* FromAvatarCollectionViewCell.swift in Sources */,
+				D269F2451CD3F96900E360CC /* FromNamePresenter.swift in Sources */,
+				D269F2471CD3FA9200E360CC /* FromNameCollectionViewCell.swift in Sources */,
 				D277E2D21CC474A000B01899 /* GabbUser.swift in Sources */,
 				D2F0BBA31CCAAC9100C1A64F /* GabbTextField.swift in Sources */,
 				D240F4241CA5F29200B1AE57 /* Colors.swift in Sources */,

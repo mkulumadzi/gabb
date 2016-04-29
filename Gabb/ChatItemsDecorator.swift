@@ -37,13 +37,34 @@ final class ChatItemsDecorator: ChatItemsDecoratorProtocol {
         var decoratedChatItems = [DecoratedChatItem]()
 
         for (index, chatItem) in chatItems.enumerate() {
+            let prev: ChatItemProtocol? = (index - 1 > 0) ? chatItems[index - 1] : nil
+            
             let next: ChatItemProtocol? = (index + 1 < chatItems.count) ? chatItems[index + 1] : nil
 
             let bottomMargin = self.separationAfterItem(chatItem, next: next)
+            var showsName = false
             var showsTail = false
             var additionalItems =  [DecoratedChatItem]()
 
             if let currentMessage = chatItem as? MessageModelProtocol {
+                
+                if currentMessage.senderId != currentUser.id {
+                    if let prevMessage = prev as? MessageModelProtocol {
+                        showsName = currentMessage.senderId != prevMessage.senderId
+                    } else {
+                        showsName = true
+                    }
+                }
+                
+                if showsName {
+                    decoratedChatItems.append(
+                        DecoratedChatItem(
+                            chatItem: FromNameModel(uid: "\(currentMessage.uid)-from-Name", from: currentUser),
+                            decorationAttributes: nil
+                        )
+                    )
+                }
+                
                 if let nextMessage = next as? MessageModelProtocol {
                     showsTail = currentMessage.senderId != nextMessage.senderId
                 } else {
@@ -57,15 +78,7 @@ final class ChatItemsDecorator: ChatItemsDecoratorProtocol {
                             decorationAttributes: nil)
                     )
                 }
-                
-                if showsTail == true && currentMessage.senderId != currentUser.id {
-                    additionalItems.append(
-                        DecoratedChatItem(
-                            chatItem: FromAvatarModel(uid: "\(currentMessage.uid)-from-avatar", from: currentUser),
-                            decorationAttributes: nil
-                        )
-                    )
-                }
+            
             }
 
             decoratedChatItems.append(DecoratedChatItem(

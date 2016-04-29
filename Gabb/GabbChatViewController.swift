@@ -46,14 +46,14 @@ class GabbChatViewController: ChatViewController {
     
     override func createPresenterBuilders() -> [ChatItemType: [ChatItemPresenterBuilderProtocol]] {
         return [
+            FromNameModel.chatItemType: [FromNamePresenterBuilder()],
             TextMessageModel.chatItemType: [
                 TextMessagePresenterBuilder(
                     viewModelBuilder: TextMessageViewModelDefaultBuilder(),
                     interactionHandler: TextMessageHandler(baseHandler: self.baseMessageHandler)
                 )
             ],
-            SendingStatusModel.chatItemType: [SendingStatusPresenterBuilder()],
-            FromAvatarModel.chatItemType: [FromAvatarPresenterBuilder()]
+            SendingStatusModel.chatItemType: [SendingStatusPresenterBuilder()]
         ]
     }
     

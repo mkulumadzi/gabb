@@ -1,5 +1,5 @@
 //
-//  FromAvatarCollectionViewCell.swift
+//  FromNameCollectionViewCell.swift
 //  Gabb
 //
 //  Created by Evan Waters on 4/29/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FromAvatarCollectionViewCell: UICollectionViewCell {
+class FromNameCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var label: UILabel!
     

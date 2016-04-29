@@ -1,5 +1,5 @@
 //
-//  FromAvatarPresenter.swift
+//  FromNamePresenter.swift
 //  Gabb
 //
 //  Created by Evan Waters on 4/29/16.
@@ -11,13 +11,13 @@ import UIKit
 import Chatto
 import ChattoAdditions
 
-class FromAvatarModel: ChatItemProtocol {
+class FromNameModel: ChatItemProtocol {
     let uid: String
     static var chatItemType: ChatItemType {
-        return "decoration-avatar"
+        return "decoration-Name"
     }
     
-    var type: String { return FromAvatarModel.chatItemType }
+    var type: String { return FromNameModel.chatItemType }
     let from: GabbUser
     
     init (uid: String, from: GabbUser) {
@@ -26,52 +26,52 @@ class FromAvatarModel: ChatItemProtocol {
     }
 }
 
-public class FromAvatarPresenterBuilder: ChatItemPresenterBuilderProtocol {
+public class FromNamePresenterBuilder: ChatItemPresenterBuilderProtocol {
     
     public func canHandleChatItem(chatItem: ChatItemProtocol) -> Bool {
-        return chatItem is FromAvatarModel ? true : false
+        return chatItem is FromNameModel ? true : false
     }
     
     public func createPresenterWithChatItem(chatItem: ChatItemProtocol) -> ChatItemPresenterProtocol {
         assert(self.canHandleChatItem(chatItem))
-        return FromAvatarPresenter(
-            fromAvatarModel: chatItem as! FromAvatarModel
+        return FromNamePresenter(
+            fromNameModel: chatItem as! FromNameModel
         )
     }
     
     public var presenterType: ChatItemPresenterProtocol.Type {
-        return FromAvatarPresenter.self
+        return FromNamePresenter.self
     }
 }
 
-class FromAvatarPresenter: ChatItemPresenterProtocol {
+class FromNamePresenter: ChatItemPresenterProtocol {
     
-    let fromAvatarModel: FromAvatarModel
-    init (fromAvatarModel: FromAvatarModel) {
-        self.fromAvatarModel = fromAvatarModel
+    let fromNameModel: FromNameModel
+    init (fromNameModel: FromNameModel) {
+        self.fromNameModel = fromNameModel
     }
     
     static func registerCells(collectionView: UICollectionView) {
-        collectionView.registerNib(UINib(nibName: "FromAvatarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FromAvatarCollectionViewCell")
+        collectionView.registerNib(UINib(nibName: "FromNameCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FromNameCollectionViewCell")
     }
     
     func dequeueCell(collectionView collectionView: UICollectionView, indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FromAvatarCollectionViewCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FromNameCollectionViewCell", forIndexPath: indexPath)
         return cell
     }
     
     func configureCell(cell: UICollectionViewCell, decorationAttributes: ChatItemDecorationAttributesProtocol?) {
-        guard let fromAvatarCell = cell as? FromAvatarCollectionViewCell else {
-            assert(false, "expecting from avatar cell")
+        guard let fromNameCell = cell as? FromNameCollectionViewCell else {
+            assert(false, "expecting from Name cell")
             return
         }
         
         let attrs = [
-            NSFontAttributeName : UIFont.systemFontOfSize(12.0),
-            NSForegroundColorAttributeName: UIColor.blackColor()
+            NSFontAttributeName : UIFont.systemFontOfSize(10.0),
+            NSForegroundColorAttributeName: UIColor.gabbDarkGreyColor()
         ]
-        fromAvatarCell.text = NSAttributedString(
-            string: "EW",
+        fromNameCell.text = NSAttributedString(
+            string: "Kristen Ulwelling",
             attributes: attrs)
     }
     
