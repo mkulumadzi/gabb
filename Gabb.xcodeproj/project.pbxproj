@@ -496,6 +496,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					D240F4041CA5EC0100B1AE57 = {
@@ -805,7 +808,7 @@
 				);
 				INFOPLIST_FILE = Gabb/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.Gabb;
+				PRODUCT_BUNDLE_IDENTIFIER = io.gabb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Gabb/Gabb-Bridging-Header.h";
 			};
@@ -824,7 +827,7 @@
 				);
 				INFOPLIST_FILE = Gabb/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.gabb.Gabb;
+				PRODUCT_BUNDLE_IDENTIFIER = io.gabb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Gabb/Gabb-Bridging-Header.h";
 			};
