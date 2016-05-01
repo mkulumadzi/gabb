@@ -81,6 +81,8 @@ class LoginService {
                     let token = json["access_token"].stringValue
                     saveLoginToUserDefaults(token)
                     
+                    LoginService.registerDeviceToken()
+                    
                     completion(error: nil, result: "Success")
                 case .Failure(let error):
                     if response.response != nil {
@@ -130,6 +132,21 @@ class LoginService {
             else {
                 let json = JSON(result!)
                 completion(error: nil, result: json)
+            }
+        })
+    }
+    
+    class func registerDeviceToken() {
+        guard let currentUser = currentUser, deviceToken = deviceToken else {
+            return
+        }
+        let parameters = ["device_token": deviceToken as String]
+        let updatePersonURL = "http://gabb.herokuapp.com/person/id/\(currentUser.id)"
+        let headers = RestService.headersForJsonRequestWithLoggedInUser()
+
+        RestService.postRequest(updatePersonURL, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
+            if error != nil {
+                print(error)
             }
         })
     }

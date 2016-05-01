@@ -8,6 +8,8 @@
 
 import UIKit
 
+var deviceToken:String!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [UIUserNotificationType.Sound, UIUserNotificationType.Alert, UIUserNotificationType.Badge], categories: nil))
+        application.registerForRemoteNotifications()
+        
         return true
     }
 
@@ -39,6 +44,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    // MARK: Adding functions for notifications
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken token:NSData) {
+        
+        let tokenChars = UnsafePointer<CChar>(token.bytes)
+        var tokenString = ""
+        
+        for i in 0 ..< token.length {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        
+        deviceToken = tokenString
+        print(deviceToken)
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationWithError error: NSError) {
+        print("We couldn't register for remote notifications...")
+        print("\(error), \(error.localizedDescription)")
+    }
+    
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void ) {
+        completionHandler(UIBackgroundFetchResult.NewData)
+    }
+
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject: AnyObject], comletionHandler completionHandler: () -> Void ) {
     }
 
 

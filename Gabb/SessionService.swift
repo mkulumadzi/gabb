@@ -13,7 +13,7 @@ class SessionService : RestService {
 
     class func startSession(gabbPlayer: GabbPlayer) {
         let url = "https://gabb.herokuapp.com/session/start"
-        let headers = RestService.headersForJsonRequeestWithLoggedInUser()
+        let headers = RestService.headersForJsonRequestWithLoggedInUser()
         let parameters = SessionService.parametersForSession(gabbPlayer)
         
         RestService.postRequest(url, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
@@ -27,7 +27,7 @@ class SessionService : RestService {
     
     class func stopSession(gabbPlayer: GabbPlayer) {
         let url = "https://gabb.herokuapp.com/session/stop"
-        let headers = RestService.headersForJsonRequeestWithLoggedInUser()
+        let headers = RestService.headersForJsonRequestWithLoggedInUser()
         let parameters = SessionService.parametersForSession(gabbPlayer)
         RestService.postRequest(url, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
             if let error = error {
@@ -41,7 +41,7 @@ class SessionService : RestService {
     class func getLastSessionForEpisode(episodeURL: String, completion: (result: NSDictionary?) -> Void) {
         let episodeHash = episodeURL.toHash()
         let url = "https://gabb.herokuapp.com/session/last?episode_hash=\(episodeHash)"
-        let headers = RestService.headersForJsonRequeestWithLoggedInUser()
+        let headers = RestService.headersForJsonRequestWithLoggedInUser()
         self.getRequest(url, headers: headers, completion: { (error, result) -> Void in
             if let lastSession = result as? NSDictionary {
                 completion(result: lastSession)
@@ -53,7 +53,7 @@ class SessionService : RestService {
     
     class func getRecentSessions(completion: (result: [NSDictionary]?) -> Void) {
         let url = "https://gabb.herokuapp.com/sessions?limit=3"
-        let headers = RestService.headersForJsonRequeestWithLoggedInUser()
+        let headers = RestService.headersForJsonRequestWithLoggedInUser()
         self.getRequest(url, headers: headers, completion: {(error, result) -> Void in
             if let sessions = result as? [NSDictionary] {
                 completion(result: sessions)
