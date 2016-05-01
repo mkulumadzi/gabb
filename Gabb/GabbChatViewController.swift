@@ -9,6 +9,7 @@
 import UIKit
 import Chatto
 import ChattoAdditions
+import SwiftyJSON
 
 class GabbChatViewController: ChatViewController {
     
@@ -27,6 +28,9 @@ class GabbChatViewController: ChatViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.chatItemsDecorator = ChatItemsDecorator()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GabbChatViewController.notificationReceived), name: "ReceivedNotification", object: nil)
+        
     }
     
     var chatInputPresenter: ChatInputBarPresenter!
@@ -61,6 +65,17 @@ class GabbChatViewController: ChatViewController {
         var items = [ChatInputItemProtocol]()
         items.append(self.createTextInputItem())
         return items
+    }
+    
+    func notificationReceived(localNotification: NSNotification) {
+        print(localNotification.userInfo)
+        if let userInfo = localNotification.userInfo {
+            let notification = JSON(userInfo)
+            let podcast = JSON(dataSource.podcast)
+            if notification["podcast_id"].intValue == podcast["podcast_id"].intValue {
+                print(notification["uri"].stringValue)
+            }
+        }
     }
     
     private func createTextInputItem() -> TextChatInputItem {

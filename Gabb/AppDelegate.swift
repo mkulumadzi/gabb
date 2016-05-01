@@ -68,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void ) {
+        NSNotificationCenter.defaultCenter().postNotificationName("ReceivedNotification", object: self, userInfo: userInfo)
         completionHandler(UIBackgroundFetchResult.NewData)
     }
 
