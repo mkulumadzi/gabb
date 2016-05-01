@@ -18,11 +18,11 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     
     var podcast:NSDictionary!
     
-    var chats:[NSMutableDictionary]!
+    var chats:[NSDictionary]!
     
     var slidingWindow: SlidingDataSource<ChatItemProtocol>!
     
-    init(podcast: NSDictionary!, chats: [NSMutableDictionary]!) {
+    init(podcast: NSDictionary!, chats: [NSDictionary]!) {
         
         self.podcast = podcast
         self.chats = chats
@@ -34,7 +34,7 @@ class GabbChatDataSource: ChatDataSourceProtocol {
         }
     }
     
-    func createTextMessageModel(chat: NSMutableDictionary) -> TextMessageModel {
+    func createTextMessageModel(chat: NSDictionary) -> TextMessageModel {
         let json = JSON(chat)
         let fromPerson = GabbUser.initWithDictionary(json["from_person"])
         let uid = json["_id"]["$oid"].stringValue
@@ -108,10 +108,16 @@ class GabbChatDataSource: ChatDataSourceProtocol {
     
     func addTextMessage(text: String) {
         let message = createOutgoingTextMessage(text)
-        self.nextMessageId += 1
-        self.messageSender.sendTextMessage(message)
-        self.slidingWindow.insertItem(message, position: .Bottom)
-        self.delegate?.chatDataSourceDidUpdate(self)
+        nextMessageId += 1
+        messageSender.sendTextMessage(message)
+        slidingWindow.insertItem(message, position: .Bottom)
+        delegate?.chatDataSourceDidUpdate(self)
+    }
+    
+    func addIncomingMessage(chat: NSDictionary){
+        let message = createTextMessageModel(chat)
+        slidingWindow.insertItem(message, position: .Bottom)
+        delegate?.chatDataSourceDidUpdate(self)
     }
     
     func adjustNumberOfMessages(preferredMaxCount preferredMaxCount: Int?, focusPosition: Double, completion:(didAdjust: Bool) -> Void) {

@@ -73,9 +73,24 @@ class GabbChatViewController: ChatViewController {
             let notification = JSON(userInfo)
             let podcast = JSON(dataSource.podcast)
             if notification["podcast_id"].intValue == podcast["podcast_id"].intValue {
-                print(notification["uri"].stringValue)
+                getNotificationAndUpdateView(notification["uri"].stringValue)
             }
         }
+    }
+    
+    func getNotificationAndUpdateView(uri: String?) {
+        guard let uri = uri else {
+            return
+        }
+        ChatService.getChat(uri, completion: { (error, result) -> Void in
+            if let error = error {
+                print (error)
+            } else if let chat = result as? NSDictionary {
+                self.dataSource.addIncomingMessage(chat)
+            } else {
+                print("Unexpected result: \(result)")
+            }
+        })
     }
     
     private func createTextInputItem() -> TextChatInputItem {

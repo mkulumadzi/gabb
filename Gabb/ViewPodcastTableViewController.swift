@@ -20,7 +20,7 @@ class ViewPodcastTableViewController: UITableViewController {
     var episodes = [NSDictionary]()
     
     // Using this so that we have some chats to send in the segue...
-    var chats:[NSMutableDictionary]!
+    var chats:[NSDictionary]!
     
     var navBarBackgroundImage:UIImage?
     var navBarShadowImage:UIImage?
@@ -177,7 +177,7 @@ class ViewPodcastTableViewController: UITableViewController {
                 if let chats = result {
                     self.chats = chats
                 } else {
-                    self.chats = [NSMutableDictionary]()
+                    self.chats = [NSDictionary]()
                 }
                 self.performSegueWithIdentifier(viewChat, sender: self)
             })
