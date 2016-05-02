@@ -173,12 +173,14 @@ class ViewPodcastTableViewController: UITableViewController {
     
     @IBAction func chatButtonTapped(sender: AnyObject) {
         if let _ = currentUser {
+            chatButton.enabled = false
             ChatService.getChatsForPodcast(self.podcast, completion: {(result) -> Void in
                 if let chats = result {
                     self.chats = chats
                 } else {
                     self.chats = [NSDictionary]()
                 }
+                self.chatButton.enabled = true
                 self.performSegueWithIdentifier(viewChat, sender: self)
             })
         }
