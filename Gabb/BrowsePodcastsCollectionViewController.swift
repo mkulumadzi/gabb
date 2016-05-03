@@ -19,6 +19,7 @@ private let episodeViewController = "episodeViewController"
 class BrowsePodcastsCollectionViewController: UICollectionViewController {
     
     var podcasts:[NSMutableDictionary]!
+    var categories:[NSMutableDictionary]!
     
     var continueListeningOptions = [NSDictionary]()
     

@@ -31,13 +31,14 @@ class InitializationViewController: UIViewController {
 
     @IBOutlet weak var logoLabel: UILabel!
     var podcasts = [NSMutableDictionary]()
+    var categories = [NSMutableDictionary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         formatView()
         configureAudioForBackgroundMode()
         checkLogin()
-        getPodcasts()
+        getPopularPodcasts()
     }
     
     func formatView() {
@@ -61,12 +62,24 @@ class InitializationViewController: UIViewController {
     
     // MARK: API
     
-    func getPodcasts() {
+    func getPopularPodcasts() {
         PodcastService.getPopularPodcasts({(podcastArray) -> Void in
             if let podcastArray = podcastArray {
                 for dict in podcastArray {
                     let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
                     self.podcasts.append(mutableCopy)
+                }
+                self.getPodcastCategories()
+            }
+        })
+    }
+    
+    func getPodcastCategories() {
+        PodcastService.getPodcastCategories({(categoryArray) -> Void in
+            if let categoryArray = categoryArray {
+                for dict in categoryArray {
+                    let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
+                    self.categories.append(mutableCopy)
                 }
                 self.performSegueWithIdentifier(browsePodcasts, sender: nil)
             }
@@ -80,6 +93,8 @@ class InitializationViewController: UIViewController {
             if let nav = segue.destinationViewController as? UINavigationController {
                 if let browseVc = nav.viewControllers.first as? BrowsePodcastsCollectionViewController {
                     browseVc.podcasts = self.podcasts
+                    browseVc.categories = self.categories
+                    print(self.categories)
                 }
             }
             

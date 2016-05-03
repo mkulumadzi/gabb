@@ -23,6 +23,20 @@ class PodcastService : RestService {
         })
     }
     
+    class func getPodcastCategories(completion: (result: [NSDictionary]?) -> Void) {
+        let url = "https://gabb.herokuapp.com/podcasts/categories"
+        self.getRequest(url, headers: nil, completion: { (error, result) -> Void in
+            
+            // For some reason Feedwrangler returns a key of "podcasts" that has an array of categories on this endpoint
+            if let podcastArray = self.getPodcastArrayFromResult(result) {
+                completion(result: podcastArray)
+            }
+            else {
+                completion(result: nil)
+            }
+        })
+    }
+    
     class func getPodcast(podcast_id: NSInteger, completion: (result: NSDictionary?) -> Void) {
         let url = "https://gabb.herokuapp.com/podcasts/show?podcast_id=\(podcast_id)"
         self.getRequest(url, headers: nil, completion: { (error, result) -> Void in

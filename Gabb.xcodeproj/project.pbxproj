@@ -31,6 +31,7 @@
 		D269F2451CD3F96900E360CC /* FromNamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2441CD3F96900E360CC /* FromNamePresenter.swift */; };
 		D269F2471CD3FA9200E360CC /* FromNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F2461CD3FA9200E360CC /* FromNameCollectionViewCell.swift */; };
 		D269F2491CD3FB0700E360CC /* FromNameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D269F2481CD3FB0700E360CC /* FromNameCollectionViewCell.xib */; };
+		D269F24B1CD8FDC200E360CC /* BrowsePodcastsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D269F24A1CD8FDC200E360CC /* BrowsePodcastsTableViewController.swift */; };
 		D277E2B61CC1C2C200B01899 /* ChatItemsDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2AD1CC1C2C200B01899 /* ChatItemsDecorator.swift */; };
 		D277E2BD1CC1C2C200B01899 /* SlidingDatasSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */; };
 		D277E2BE1CC1C2C200B01899 /* UserActionHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */; };
@@ -116,6 +117,7 @@
 		D269F2441CD3F96900E360CC /* FromNamePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromNamePresenter.swift; sourceTree = "<group>"; };
 		D269F2461CD3FA9200E360CC /* FromNameCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromNameCollectionViewCell.swift; sourceTree = "<group>"; };
 		D269F2481CD3FB0700E360CC /* FromNameCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FromNameCollectionViewCell.xib; sourceTree = "<group>"; };
+		D269F24A1CD8FDC200E360CC /* BrowsePodcastsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowsePodcastsTableViewController.swift; sourceTree = "<group>"; };
 		D277E2AD1CC1C2C200B01899 /* ChatItemsDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsDecorator.swift; sourceTree = "<group>"; };
 		D277E2B41CC1C2C200B01899 /* SlidingDatasSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingDatasSource.swift; sourceTree = "<group>"; };
 		D277E2B51CC1C2C200B01899 /* UserActionHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActionHandlers.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				D2BC4EA81CA8A950006A66AA /* PlayEpisodeTableViewController.swift */,
 				D2E4CD101CB9C4C600B59768 /* NowPlayingWidgetViewController.swift */,
 				D2F20A4F1CCC3E4C009E1BF2 /* ContinueListeningCollectionViewCell.swift */,
+				D269F24A1CD8FDC200E360CC /* BrowsePodcastsTableViewController.swift */,
 			);
 			name = Browse;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				D269F2451CD3F96900E360CC /* FromNamePresenter.swift in Sources */,
 				D269F2471CD3FA9200E360CC /* FromNameCollectionViewCell.swift in Sources */,
 				D277E2D21CC474A000B01899 /* GabbUser.swift in Sources */,
+				D269F24B1CD8FDC200E360CC /* BrowsePodcastsTableViewController.swift in Sources */,
 				D2F0BBA31CCAAC9100C1A64F /* GabbTextField.swift in Sources */,
 				D240F4241CA5F29200B1AE57 /* Colors.swift in Sources */,
 				D277E2C41CC1C30C00B01899 /* SendingStatusPresenter.swift in Sources */,
