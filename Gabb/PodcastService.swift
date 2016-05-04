@@ -11,8 +11,20 @@ import SwiftyJSON
 
 class PodcastService : RestService {
     
-    class func getPopularPodcasts(completion: (result: [NSDictionary]?) -> Void) {
-        let url = "https://gabb.herokuapp.com/podcasts/popular"
+//    class func getPopularPodcasts(completion: (result: [NSDictionary]?) -> Void) {
+//        let url = "https://gabb.herokuapp.com/podcasts/popular"
+//        self.getRequest(url, headers: nil, completion: { (error, result) -> Void in
+//            if let podcastArray = self.getPodcastArrayFromResult(result) {
+//                completion(result: podcastArray)
+//            }
+//            else {
+//                completion(result: nil)
+//            }
+//        })
+//    }
+    
+    class func getPodcastsForEndpoint(endpoint: String, completion: (result: [NSDictionary]?) -> Void) {
+        let url = "https://gabb.herokuapp.com/podcasts/\(endpoint)"
         self.getRequest(url, headers: nil, completion: { (error, result) -> Void in
             if let podcastArray = self.getPodcastArrayFromResult(result) {
                 completion(result: podcastArray)

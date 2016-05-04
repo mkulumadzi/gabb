@@ -31,7 +31,7 @@ var currentUser:GabbUser!
 class InitializationViewController: UIViewController {
 
     @IBOutlet weak var logoLabel: UILabel!
-    var podcastCollections = [NSMutableDictionary]()
+    var podcastGroups = [NSMutableDictionary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class InitializationViewController: UIViewController {
         let popular = NSMutableDictionary()
         popular.setValue("Popular", forKey: "title")
         popular.setValue("/popular", forKey: "podcasts_url")
-        podcastCollections.append(popular)
+        podcastGroups.append(popular)
     }
     
     // MARK: Check login
@@ -76,8 +76,8 @@ class InitializationViewController: UIViewController {
                 for dict in categoryArray {
                     let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
                     let json = JSON(mutableCopy)
-                    mutableCopy.setValue("/category\(json["category_id"].intValue)", forKey: "podcasts_url")
-                    self.podcastCollections.append(mutableCopy)
+                    mutableCopy.setValue("/category/\(json["category_id"].intValue)", forKey: "podcasts_url")
+                    self.podcastGroups.append(mutableCopy)
                 }
                 self.performSegueWithIdentifier(browsePodcasts, sender: nil)
             }
@@ -90,7 +90,7 @@ class InitializationViewController: UIViewController {
         if (segue.identifier == browsePodcasts) {
             if let nav = segue.destinationViewController as? UINavigationController {
                 if let browseVc = nav.viewControllers.first as? BrowsePodcastsTableViewController {
-                    browseVc.podcastCollections = self.podcastCollections
+                    browseVc.podcastGroups = self.podcastGroups
                 }
             }
             

@@ -132,7 +132,73 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q69-E4-3VX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="-367"/>
+            <point key="canvasLocation" x="-133" y="-353"/>
+        </scene>
+        <!--Podcast Group Collection View Controller-->
+        <scene sceneID="kQt-Yi-kcd">
+            <objects>
+                <collectionViewController id="9r4-CW-RX4" customClass="PodcastGroupCollectionViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="T9a-Jg-xGi">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="MSC-uO-xX6">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PodcastCell" id="Nvu-9N-mf2" customClass="PodcastCollectionViewCell" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="2" y="2" width="120" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hmj-1U-e5P">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Hmj-1U-e5P" secondAttribute="height" multiplier="1:1" id="VbC-a7-qnU"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="podcastTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yc-EB-bhG">
+                                            <rect key="frame" x="8" y="120" width="104" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="8Yc-EB-bhG" firstAttribute="top" secondItem="Hmj-1U-e5P" secondAttribute="bottom" id="34X-kf-fh4"/>
+                                    <constraint firstItem="Hmj-1U-e5P" firstAttribute="top" secondItem="Nvu-9N-mf2" secondAttribute="top" id="3bO-ht-t0Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hmj-1U-e5P" secondAttribute="trailing" id="3yf-ek-ou1"/>
+                                    <constraint firstItem="8Yc-EB-bhG" firstAttribute="leading" secondItem="Nvu-9N-mf2" secondAttribute="leadingMargin" id="AVu-lb-0Nl"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="8Yc-EB-bhG" secondAttribute="trailing" id="K15-CH-Hkt"/>
+                                    <constraint firstItem="Hmj-1U-e5P" firstAttribute="leading" secondItem="Nvu-9N-mf2" secondAttribute="leading" id="gBp-IA-zsQ"/>
+                                </constraints>
+                                <size key="customSize" width="120" height="150"/>
+                                <connections>
+                                    <outlet property="imageView" destination="Hmj-1U-e5P" id="aCQ-cd-2Nd"/>
+                                    <outlet property="titleLabel" destination="8Yc-EB-bhG" id="1rl-yq-u1J"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="9r4-CW-RX4" id="itZ-NU-SBq"/>
+                            <outlet property="delegate" destination="9r4-CW-RX4" id="Ya5-5I-iGg"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="2LI-YQ-kgU"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hUe-ah-tSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="663" y="-458"/>
         </scene>
         <!--Browse Podcasts Table View Controller-->
         <scene sceneID="6vz-BN-74n">
@@ -143,7 +209,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CollectionHeader" textLabel="xoo-mG-yZ2" style="IBUITableViewCellStyleDefault" id="nGy-WB-Eb3">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupHeader" textLabel="xoo-mG-yZ2" style="IBUITableViewCellStyleDefault" id="nGy-WB-Eb3">
                                 <rect key="frame" x="0.0" y="50" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGy-WB-Eb3" id="ZLH-77-2fc">
@@ -169,11 +235,12 @@
                     <navigationItem key="navigationItem" id="YQk-xH-VOh"/>
                     <connections>
                         <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="nQV-Q4-Ar9"/>
+                        <segue destination="9r4-CW-RX4" kind="show" identifier="ViewPodcastGroup" id="jbH-Ps-fKD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nK6-gd-uIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="465" y="307"/>
+            <point key="canvasLocation" x="-133" y="321"/>
         </scene>
         <!--Gabb Chat View Controller-->
         <scene sceneID="OrL-qZ-ltl">
@@ -290,7 +357,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGN-Ud-1GG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="307"/>
+            <point key="canvasLocation" x="1025" y="307"/>
         </scene>
         <!--Play Episode Table View Controller-->
         <scene sceneID="iHJ-wv-9im">
@@ -448,7 +515,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8M0-an-he2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1904" y="331"/>
+            <point key="canvasLocation" x="1996" y="325"/>
         </scene>
         <!--Now Playing Widget View Controller-->
         <scene sceneID="Emy-hC-Mwm">
@@ -583,11 +650,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zb4-Ym-T7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-244" y="307"/>
+            <point key="canvasLocation" x="-842" y="321"/>
         </scene>
     </scenes>
     <resources>
         <image name="chat" width="24" height="24"/>
         <image name="play" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2LI-YQ-kgU"/>
+    </inferredMetricsTieBreakers>
 </document>

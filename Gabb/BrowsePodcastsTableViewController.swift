@@ -9,12 +9,13 @@
 import UIKit
 import SwiftyJSON
 
-let collectionHeader = "CollectionHeader"
+private let groupHeader = "GroupHeader"
 private let viewPodcast = "ViewPodcast"
+private let viewPodcastGroup = "ViewPodcastGroup"
 
 class BrowsePodcastsTableViewController: UITableViewController {
     
-    var podcastCollections:[NSMutableDictionary]!
+    var podcastGroups:[NSMutableDictionary]!
     
     var continueListeningOptions = [NSDictionary]()
     
@@ -85,7 +86,7 @@ class BrowsePodcastsTableViewController: UITableViewController {
     }
     
     func addProfileButton() {
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "person"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(BrowsePodcastsCollectionViewController.viewProfile))
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "person"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(self.viewProfile))
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
@@ -101,7 +102,7 @@ class BrowsePodcastsTableViewController: UITableViewController {
 //        let continueListeningSection = continueListeningOptions.count > 0 ? 1 : 0
 //        let popularSection = popular.count > 0 ? 1 : 0
 //        return continueListeningSection + popularSection + categories.count
-        return podcastCollections.count
+        return podcastGroups.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,10 +111,17 @@ class BrowsePodcastsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(collectionHeader, forIndexPath: indexPath)
-        let collection = JSON(podcastCollections[indexPath.section])
-        cell.textLabel?.text = collection["title"].stringValue
+        let cell = tableView.dequeueReusableCellWithIdentifier(groupHeader, forIndexPath: indexPath)
+        let group = JSON(podcastGroups[indexPath.section])
+        cell.textLabel?.text = group["title"].stringValue
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            let podcastCollection = podcastGroups[indexPath.section]
+            self.performSegueWithIdentifier(viewPodcastGroup, sender: podcastCollection)
+        }
     }
     
     // MARK: - User actions
@@ -139,6 +147,12 @@ class BrowsePodcastsTableViewController: UITableViewController {
             if let vc = segue.destinationViewController as? ViewPodcastTableViewController {
                 if let cell = sender as? PodcastCollectionViewCell {
                     vc.podcast = cell.podcast
+                }
+            }
+        } else if segue.identifier == viewPodcastGroup {
+            if let vc = segue.destinationViewController as? PodcastGroupCollectionViewController {
+                if let group = sender as? NSMutableDictionary {
+                    vc.podcastGroup = group
                 }
             }
         }
