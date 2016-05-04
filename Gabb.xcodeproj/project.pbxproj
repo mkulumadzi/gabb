@@ -45,6 +45,7 @@
 		D277E2D61CC51B8A00B01899 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D277E2D51CC51B8A00B01899 /* LoginService.swift */; };
 		D277E2D91CC51E7500B01899 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D277E2D81CC51E7500B01899 /* KeychainWrapper.m */; };
 		D281A5AA1CD99188008F5792 /* PodcastGroupCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D281A5A91CD99188008F5792 /* PodcastGroupCollectionViewController.swift */; };
+		D281A5AC1CDA5714008F5792 /* PodcastCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D281A5AB1CDA5714008F5792 /* PodcastCollectionTableViewCell.swift */; };
 		D28264851CCAB06400D72FAE /* GabbTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28264841CCAB06400D72FAE /* GabbTextButton.swift */; };
 		D28264871CCACC1300D72FAE /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28264861CCACC1300D72FAE /* SessionService.swift */; };
 		D299D6201CC1A72900FEC7DF /* GabbChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */; };
@@ -133,6 +134,7 @@
 		D277E2D71CC51E7500B01899 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		D277E2D81CC51E7500B01899 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		D281A5A91CD99188008F5792 /* PodcastGroupCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastGroupCollectionViewController.swift; sourceTree = "<group>"; };
+		D281A5AB1CDA5714008F5792 /* PodcastCollectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		D28264841CCAB06400D72FAE /* GabbTextButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbTextButton.swift; sourceTree = "<group>"; };
 		D28264861CCACC1300D72FAE /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		D299D61F1CC1A72900FEC7DF /* GabbChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GabbChatDataSource.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				D2F20A4F1CCC3E4C009E1BF2 /* ContinueListeningCollectionViewCell.swift */,
 				D269F24A1CD8FDC200E360CC /* BrowsePodcastsTableViewController.swift */,
 				D281A5A91CD99188008F5792 /* PodcastGroupCollectionViewController.swift */,
+				D281A5AB1CDA5714008F5792 /* PodcastCollectionTableViewCell.swift */,
 			);
 			name = Browse;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				D2E4CD111CB9C4C600B59768 /* NowPlayingWidgetViewController.swift in Sources */,
 				D269F2421CD3F0AE00E360CC /* GabbMessageModel.swift in Sources */,
 				D240F4271CA6062E00B1AE57 /* Fonts.swift in Sources */,
+				D281A5AC1CDA5714008F5792 /* PodcastCollectionTableViewCell.swift in Sources */,
 				D2151F6F1CC9266100F1B261 /* LoginViewController.swift in Sources */,
 				D277E2D91CC51E7500B01899 /* KeychainWrapper.m in Sources */,
 				D240F3F71CA5EC0000B1AE57 /* InitializationViewController.swift in Sources */,

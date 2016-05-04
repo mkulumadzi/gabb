@@ -20,8 +20,6 @@ class PodcastCollectionViewCell: UICollectionViewCell {
         }
         titleLabel.textColor = UIColor.gabbDarkGreyColor()
         titleLabel.font = UIFont.systemFontOfSize(15.0)
-//        titleLabel.backgroundColor = UIColor.gabbBlackColor()
-//        titleLabel.alpha = 0.8
         super.layoutSubviews()
     }
     

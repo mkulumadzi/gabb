@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 
 private let groupHeader = "GroupHeader"
+private let podcastCollectionCell = "PodcastCollectionCell"
 private let viewPodcast = "ViewPodcast"
 private let viewPodcastGroup = "ViewPodcastGroup"
 
@@ -27,8 +28,10 @@ class BrowsePodcastsTableViewController: UITableViewController {
         navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
         navBarShadowImage = navigationController?.navigationBar.shadowImage
         
+        tableView.estimatedRowHeight = 200.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
 //        getPodastImages()
-        getRecentSessions()
         
     }
     
@@ -59,32 +62,6 @@ class BrowsePodcastsTableViewController: UITableViewController {
         }
     }
     
-    func getRecentSessions() {
-        SessionService.getRecentSessions({(result) -> Void in
-            if let sessions = result {
-                self.enableContinueListeningForSessions(sessions)
-            }
-        })
-    }
-    
-    // This is real hacky and we should just make the server do it instead...
-    func enableContinueListeningForSessions(sessions: [NSDictionary]) {
-        for session in sessions {
-            let sessionJSON = JSON(session)
-            let episode:NSDictionary = ["title": sessionJSON["title"].stringValue, "audio_url": sessionJSON["episode_url"].stringValue]
-            PodcastService.getPodcast(sessionJSON["podcast_id"].intValue, completion: { (result) -> Void in
-                if let result = result {
-                    let podcastJSON = JSON(result)["podcast"]
-                    let podcast:NSDictionary = ["podcast_id": podcastJSON["podcast_id"].intValue, "title": podcastJSON["title"].stringValue, "image_url": podcastJSON["image_url"].stringValue]
-                    let listeningOption:NSDictionary = ["podcast": podcast, "episode": episode]
-                    self.continueListeningOptions.append(listeningOption)
-//                    self.collectionView?.reloadData()
-                    print(self.continueListeningOptions)
-                }
-            })
-        }
-    }
-    
     func addProfileButton() {
         let rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "person"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(self.viewProfile))
         navigationItem.rightBarButtonItem = rightBarButtonItem
@@ -97,23 +74,49 @@ class BrowsePodcastsTableViewController: UITableViewController {
 
 
     // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        let continueListeningSection = continueListeningOptions.count > 0 ? 1 : 0
-//        let popularSection = popular.count > 0 ? 1 : 0
-//        return continueListeningSection + popularSection + categories.count
         return podcastGroups.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            return self.tableView(tableView, headerCellForIndexPath: indexPath)
+        } else {
+            return self.tableView(tableView, podcastCollectionCellForIndexPath: indexPath)
+        }
+    }
+    
+    func tableView(tableVeiw: UITableView, headerCellForIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(groupHeader, forIndexPath: indexPath)
         let group = JSON(podcastGroups[indexPath.section])
         cell.textLabel?.text = group["title"].stringValue
+        return cell
+    }
+    
+    func tableView(tableVeiw: UITableView, podcastCollectionCellForIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(podcastCollectionCell, forIndexPath: indexPath) as! PodcastCollectionTableViewCell
+        let group = JSON(podcastGroups[indexPath.section])
+        cell.podcastGroup = group
+        cell.podcastCollectionView.delegate = cell
+        cell.podcastCollectionView.dataSource = cell
+        cell.podcastCollectionViewHeight.constant = thumbnailSize.height + 34 // Clean this up
+        if cell.shouldGetPodcasts == true {
+            cell.shouldGetPodcasts = false
+            cell.getPodcasts()
+        }
         return cell
     }
     
