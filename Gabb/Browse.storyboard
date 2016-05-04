@@ -192,6 +192,9 @@
                             <outlet property="delegate" destination="9r4-CW-RX4" id="Ya5-5I-iGg"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="d1E-xW-cZw">
+                        <barButtonItem key="backBarButtonItem" title=" " id="qBy-3M-rum"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="2LI-YQ-kgU"/>
                     </connections>
@@ -232,7 +235,9 @@
                             <outlet property="delegate" destination="D7e-0l-RkQ" id="tve-q5-pTV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="YQk-xH-VOh"/>
+                    <navigationItem key="navigationItem" id="YQk-xH-VOh">
+                        <barButtonItem key="backBarButtonItem" title=" " id="1b5-oW-NF9"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="nQV-Q4-Ar9"/>
                         <segue destination="9r4-CW-RX4" kind="show" identifier="ViewPodcastGroup" id="jbH-Ps-fKD"/>
@@ -336,7 +341,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="W15-Nt-eyB">
-                        <barButtonItem key="backBarButtonItem" title="Episodes" id="1y5-91-t8y"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="1y5-91-t8y"/>
                         <barButtonItem key="rightBarButtonItem" style="done" id="5fg-q2-SFq">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SUH-TI-AYw" userLabel="chatButton">
                                 <rect key="frame" x="540" y="10" width="40" height="24"/>

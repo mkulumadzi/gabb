@@ -26,17 +26,18 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
         navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
         navBarShadowImage = navigationController?.navigationBar.shadowImage
         
+        formatView()
         getPodcasts()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        formatView()
     }
     
     func formatView() {
-        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.logoSmall(), NSForegroundColorAttributeName : UIColor.gabbRedColor()]
-        navigationItem.title = "Gabb"
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.systemFontOfSize(20.0), NSForegroundColorAttributeName : UIColor.gabbRedColor()]
+        let json = JSON(podcastGroup)
+        navigationItem.title = json["title"].stringValue
         
         navigationController?.navigationBar.tintColor = UIColor.gabbRedColor()
         navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
