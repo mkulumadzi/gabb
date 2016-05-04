@@ -14,7 +14,7 @@ private let podcastCollectionCell = "PodcastCollectionCell"
 private let viewPodcast = "ViewPodcast"
 private let viewPodcastGroup = "ViewPodcastGroup"
 
-class BrowsePodcastsTableViewController: UITableViewController {
+class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectionTableViewCellDelegate {
     
     var podcastGroups:[NSMutableDictionary]!
     
@@ -117,6 +117,7 @@ class BrowsePodcastsTableViewController: UITableViewController {
             cell.shouldGetPodcasts = false
             cell.getPodcasts()
         }
+        cell.delegate = self
         return cell
     }
     
@@ -128,6 +129,10 @@ class BrowsePodcastsTableViewController: UITableViewController {
     }
     
     // MARK: - User actions
+    
+    func podcastSelected(cell: PodcastCollectionTableViewCell) {
+        performSegueWithIdentifier(viewPodcast, sender: cell)
+    }
     
     func viewProfile() {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
@@ -148,7 +153,7 @@ class BrowsePodcastsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == viewPodcast {
             if let vc = segue.destinationViewController as? ViewPodcastTableViewController {
-                if let cell = sender as? PodcastCollectionViewCell {
+                if let cell = sender as? PodcastCollectionTableViewCell {
                     vc.podcast = cell.podcast
                 }
             }

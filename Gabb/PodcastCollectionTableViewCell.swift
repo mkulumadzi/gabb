@@ -11,6 +11,10 @@ import SwiftyJSON
 
 private let podcastCell = "PodcastCell"
 
+protocol PodcastCollectionTableViewCellDelegate {
+    func podcastSelected(cell: PodcastCollectionTableViewCell)
+}
+
 class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     @IBOutlet weak var podcastCollectionView: UICollectionView!
@@ -18,6 +22,10 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
     
     var podcastGroup:JSON!
     var podcasts = [NSMutableDictionary]()
+    var podcast:NSMutableDictionary!
+    
+    var delegate:PodcastCollectionTableViewCellDelegate?
+    
     var shouldGetPodcasts = true
     
     func getPodcasts() {
@@ -82,6 +90,7 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PodcastCollectionViewCell
-        print(cell.podcast)
+        self.podcast = cell.podcast
+        delegate?.podcastSelected(self)
     }
 }
