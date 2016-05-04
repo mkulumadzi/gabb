@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import SwiftyJSON
 
 private let browsePodcasts = "BrowsePodcasts"
 
@@ -30,21 +31,28 @@ var currentUser:GabbUser!
 class InitializationViewController: UIViewController {
 
     @IBOutlet weak var logoLabel: UILabel!
-    var podcasts = [NSMutableDictionary]()
-    var categories = [NSMutableDictionary]()
+    var podcastCollections = [NSMutableDictionary]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         formatView()
+        initializeView()
         configureAudioForBackgroundMode()
         checkLogin()
-        getPopularPodcasts()
+        getPodcastCategories()
     }
     
     func formatView() {
         self.view.backgroundColor = UIColor.gabbRedColor()
         logoLabel.font = UIFont.logoLarge()
         logoLabel.textColor = UIColor.whiteColor()
+    }
+    
+    func initializeView() {
+        let popular = NSMutableDictionary()
+        popular.setValue("Popular", forKey: "title")
+        popular.setValue("/popular", forKey: "podcasts_url")
+        podcastCollections.append(popular)
     }
     
     // MARK: Check login
@@ -62,24 +70,14 @@ class InitializationViewController: UIViewController {
     
     // MARK: API
     
-    func getPopularPodcasts() {
-        PodcastService.getPopularPodcasts({(podcastArray) -> Void in
-            if let podcastArray = podcastArray {
-                for dict in podcastArray {
-                    let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
-                    self.podcasts.append(mutableCopy)
-                }
-                self.getPodcastCategories()
-            }
-        })
-    }
-    
     func getPodcastCategories() {
         PodcastService.getPodcastCategories({(categoryArray) -> Void in
             if let categoryArray = categoryArray {
                 for dict in categoryArray {
                     let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
-                    self.categories.append(mutableCopy)
+                    let json = JSON(mutableCopy)
+                    mutableCopy.setValue("/category\(json["category_id"].intValue)", forKey: "podcasts_url")
+                    self.podcastCollections.append(mutableCopy)
                 }
                 self.performSegueWithIdentifier(browsePodcasts, sender: nil)
             }
@@ -91,10 +89,8 @@ class InitializationViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == browsePodcasts) {
             if let nav = segue.destinationViewController as? UINavigationController {
-                if let browseVc = nav.viewControllers.first as? BrowsePodcastsCollectionViewController {
-                    browseVc.podcasts = self.podcasts
-                    browseVc.categories = self.categories
-                    print(self.categories)
+                if let browseVc = nav.viewControllers.first as? BrowsePodcastsTableViewController {
+                    browseVc.podcastCollections = self.podcastCollections
                 }
             }
             

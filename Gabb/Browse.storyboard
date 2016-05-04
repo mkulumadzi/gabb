@@ -12,7 +12,7 @@
             <objects>
                 <collectionViewController id="TIk-NJ-Q3f" customClass="BrowsePodcastsCollectionViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="DWM-7h-yXi">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="eIr-6H-S5Z">
@@ -129,13 +129,51 @@
                     <navigationItem key="navigationItem" id="xCA-7r-aIK">
                         <barButtonItem key="backBarButtonItem" title="Browse" id="jvo-dX-IqJ"/>
                     </navigationItem>
-                    <connections>
-                        <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="CPa-gN-ZIL"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q69-E4-3VX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="441" y="307"/>
+            <point key="canvasLocation" x="465" y="-367"/>
+        </scene>
+        <!--Browse Podcasts Table View Controller-->
+        <scene sceneID="6vz-BN-74n">
+            <objects>
+                <tableViewController id="D7e-0l-RkQ" customClass="BrowsePodcastsTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="DZX-tt-wGT">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CollectionHeader" textLabel="xoo-mG-yZ2" style="IBUITableViewCellStyleDefault" id="nGy-WB-Eb3">
+                                <rect key="frame" x="0.0" y="50" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGy-WB-Eb3" id="ZLH-77-2fc">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xoo-mG-yZ2">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="D7e-0l-RkQ" id="gpT-pr-HL3"/>
+                            <outlet property="delegate" destination="D7e-0l-RkQ" id="tve-q5-pTV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="YQk-xH-VOh"/>
+                    <connections>
+                        <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="nQV-Q4-Ar9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nK6-gd-uIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="465" y="307"/>
         </scene>
         <!--Gabb Chat View Controller-->
         <scene sceneID="OrL-qZ-ltl">
@@ -540,7 +578,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="TIk-NJ-Q3f" kind="relationship" relationship="rootViewController" id="ASl-yN-1ul"/>
+                        <segue destination="D7e-0l-RkQ" kind="relationship" relationship="rootViewController" id="MN2-oh-c0X"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zb4-Ym-T7m" userLabel="First Responder" sceneMemberID="firstResponder"/>

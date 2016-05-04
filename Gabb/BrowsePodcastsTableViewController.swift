@@ -9,10 +9,12 @@
 import UIKit
 import SwiftyJSON
 
+let collectionHeader = "CollectionHeader"
+private let viewPodcast = "ViewPodcast"
+
 class BrowsePodcastsTableViewController: UITableViewController {
     
-    var popular:[NSMutableDictionary]!
-    var categories:[NSMutableDictionary]!
+    var podcastCollections:[NSMutableDictionary]!
     
     var continueListeningOptions = [NSDictionary]()
     
@@ -96,69 +98,51 @@ class BrowsePodcastsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        let continueListeningSection = continueListeningOptions.count > 0 ? 1 : 0
-        let popularSection = popular.count > 0 ? 1 : 0
-        return continueListeningSection + popularSection + categories.count
+//        let continueListeningSection = continueListeningOptions.count > 0 ? 1 : 0
+//        let popularSection = popular.count > 0 ? 1 : 0
+//        return continueListeningSection + popularSection + categories.count
+        return podcastCollections.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier(collectionHeader, forIndexPath: indexPath)
+        let collection = JSON(podcastCollections[indexPath.section])
+        cell.textLabel?.text = collection["title"].stringValue
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    // MARK: - User actions
+    
+    func viewProfile() {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        if let vc = storyboard.instantiateInitialViewController() {
+            presentViewController(vc, animated: true, completion: nil)
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func login() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        if let vc = storyboard.instantiateInitialViewController() {
+            presentViewController(vc, animated: true, completion: nil)
+        }
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Segues
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == viewPodcast {
+            if let vc = segue.destinationViewController as? ViewPodcastTableViewController {
+                if let cell = sender as? PodcastCollectionViewCell {
+                    vc.podcast = cell.podcast
+                }
+            }
+        }
     }
-    */
+
 
 }
