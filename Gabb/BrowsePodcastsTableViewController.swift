@@ -91,17 +91,40 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
 
     // MARK: - Table view data source
     
+    func shouldShowSection(section: Int) -> Bool {
+        let group = podcastGroups[section]
+        if let podcasts = group["podcasts"] as? [NSMutableDictionary] {
+            if podcasts.count > 0 {
+                return true
+            }
+        }
+        return false
+    }
+    
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.0
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1.0
+        if shouldShowSection(section) == true {
+            return 1.0
+        }
+        return 0.0
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if shouldShowSection(indexPath.section) == true {
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCellWithIdentifier(borderCell)
-        return cell
+        if shouldShowSection(section) == true {
+            let cell = tableView.dequeueReusableCellWithIdentifier(borderCell)
+            return cell
+        }
+        return nil
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
