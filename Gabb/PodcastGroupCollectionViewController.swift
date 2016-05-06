@@ -61,21 +61,18 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
                     self.podcasts.append(mutableCopy)
                 }
                 weakSelf?.collectionView?.reloadData()
-                weakSelf?.getPodcastImages()
             }
         })
     }
     
-    func getPodcastImages() {
-        for podcast in podcasts {
-            if let imageURL = podcast.valueForKey("image_url") as? String {
-                FileService.getThumbnailImageForURL(imageURL, completion: {(image) -> Void in
-                    if let image = image {
-                        podcast.setValue(image, forKey: "imageThumb")
-                        self.collectionView?.reloadData()
-                    }
-                })
-            }
+    func getPodcastImage(cell: PodcastCollectionViewCell) {
+        if let imageURL = cell.podcast.valueForKey("image_url") as? String {
+            FileService.getLargeThumbnailImageForURL(imageURL, completion: {(image) -> Void in
+                if let image = image {
+                    cell.podcast.setValue(image, forKey: "imageThumb")
+                    cell.imageView.image = image
+                }
+            })
         }
     }
     
@@ -103,13 +100,14 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
             cell.imageView.image = image
         } else if (cell.podcast["image_url"] as? String) != nil {
             cell.imageView.image = nil
+            self.getPodcastImage(cell)
         }
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
-        let size = CGSizeMake(thumbnailSize.width, thumbnailSize.height + 30.0)
+        let size = CGSizeMake(largeThumbnailSize.width, largeThumbnailSize.height + 50.0)
         return size
     }
     

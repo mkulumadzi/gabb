@@ -19,6 +19,11 @@ var thumbnailSize: CGSize {
     return CGSize(width: x, height: x)
 }
 
+var largeThumbnailSize: CGSize {
+    let x = (screenSize.width - 24) / 2
+    return CGSize(width: x, height: x)
+}
+
 var fullSize: CGSize {
     let x = screenSize.width
     return CGSize(width: x, height: x)
