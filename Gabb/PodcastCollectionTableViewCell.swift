@@ -26,21 +26,6 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
     
     var delegate:PodcastCollectionTableViewCellDelegate?
     
-    var shouldGetPodcasts = true
-    
-    func getPodcasts() {
-        weak var weakSelf = self
-        PodcastService.getPodcastsForEndpoint(podcastGroup["podcasts_url"].stringValue, completion: {(podcastArray) -> Void in
-            if let podcastArray = podcastArray {
-                for dict in podcastArray {
-                    let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
-                    self.podcasts.append(mutableCopy)
-                }
-                weakSelf?.podcastCollectionView?.reloadData()
-            }
-        })
-    }
-    
     func getPodcastImageForCell(cell: PodcastCollectionViewCell) {
         if let imageURL = cell.podcast.valueForKey("image_url") as? String {
             print("Getting podcast image at \(imageURL)")
@@ -76,6 +61,8 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
         } else if (cell.podcast["image_url"] as? String) != nil {
             cell.imageView.image = nil
             self.getPodcastImageForCell(cell)
+        } else {
+            cell.imageView.image = nil
         }
         
         return cell

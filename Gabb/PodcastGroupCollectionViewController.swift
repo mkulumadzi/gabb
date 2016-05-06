@@ -14,7 +14,7 @@ private let viewPodcast = "ViewPodcast"
 
 class PodcastGroupCollectionViewController: UICollectionViewController {
     
-    var podcastGroup:NSMutableDictionary!
+    var podcastGroup:JSON!
     var podcasts = [NSMutableDictionary]()
     
     var navBarBackgroundImage:UIImage?
@@ -27,7 +27,10 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
         navBarShadowImage = navigationController?.navigationBar.shadowImage
         
         formatView()
-        getPodcasts()
+        
+        if podcasts.count == 0 {
+            getPodcasts()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -36,8 +39,7 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
     
     func formatView() {
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.systemFontOfSize(20.0), NSForegroundColorAttributeName : UIColor.gabbRedColor()]
-        let json = JSON(podcastGroup)
-        navigationItem.title = json["title"].stringValue
+        navigationItem.title = podcastGroup["title"].stringValue
         
         navigationController?.navigationBar.tintColor = UIColor.gabbRedColor()
         navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
@@ -53,8 +55,7 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
     
     func getPodcasts() {
         weak var weakSelf = self
-        let group = JSON(podcastGroup)
-        PodcastService.getPodcastsForEndpoint(group["podcasts_url"].stringValue, completion: {(podcastArray) -> Void in
+        PodcastService.getPodcastsForEndpoint(podcastGroup["podcasts_url"].stringValue, completion: {(podcastArray) -> Void in
             if let podcastArray = podcastArray {
                 for dict in podcastArray {
                     let mutableCopy = dict.mutableCopy() as! NSMutableDictionary

@@ -19,8 +19,6 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
     
     var podcastGroups:[NSMutableDictionary]!
     
-    var continueListeningOptions = [NSDictionary]()
-    
     var navBarBackgroundImage:UIImage?
     var navBarShadowImage:UIImage?
 
@@ -36,6 +34,7 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        getPodcasts()
         formatView()
         if let _ = currentUser {
             addProfileButton()
@@ -58,6 +57,24 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
         }
         if let shadowImage = navBarShadowImage {
             navigationController?.navigationBar.shadowImage = shadowImage
+        }
+    }
+    
+    func getPodcasts() {
+        weak var weakSelf = self
+        for group in podcastGroups {
+            let json = JSON(group)
+            PodcastService.getPodcastsForEndpoint(json["podcasts_url"].stringValue, completion: {(podcastArray) -> Void in
+                var podcasts = [NSMutableDictionary]()
+                if let podcastArray = podcastArray {
+                    for dict in podcastArray {
+                        let mutableCopy = dict.mutableCopy() as! NSMutableDictionary
+                        podcasts.append(mutableCopy)
+                    }
+                }
+                group.setValue(podcasts, forKey: "podcasts")
+                weakSelf?.tableView.reloadData()
+            })
         }
     }
     
@@ -105,6 +122,7 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
     
     func tableView(tableVeiw: UITableView, headerCellForIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(groupHeader, forIndexPath: indexPath)
+        
         let group = JSON(podcastGroups[indexPath.section])
         cell.textLabel?.text = group["title"].stringValue
         return cell
@@ -117,18 +135,21 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
         cell.podcastCollectionView.delegate = cell
         cell.podcastCollectionView.dataSource = cell
         cell.podcastCollectionViewHeight.constant = thumbnailSize.height + 48 // Clean this up
-        if cell.shouldGetPodcasts == true {
-            cell.shouldGetPodcasts = false
-            cell.getPodcasts()
+        
+        if let podcasts = podcastGroups[indexPath.section]["podcasts"] as? [NSMutableDictionary] {
+            cell.podcasts = podcasts
+            cell.podcastCollectionView?.reloadData()
         }
+        
         cell.delegate = self
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
-            let podcastCollection = podcastGroups[indexPath.section]
-            self.performSegueWithIdentifier(viewPodcastGroup, sender: podcastCollection)
+            let collectionIndexPath = NSIndexPath(forRow: 1, inSection: indexPath.section)
+            let cell = tableView.cellForRowAtIndexPath(collectionIndexPath)
+            self.performSegueWithIdentifier(viewPodcastGroup, sender: cell)
         }
     }
     
@@ -163,8 +184,9 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
             }
         } else if segue.identifier == viewPodcastGroup {
             if let vc = segue.destinationViewController as? PodcastGroupCollectionViewController {
-                if let group = sender as? NSMutableDictionary {
-                    vc.podcastGroup = group
+                if let cell = sender as? PodcastCollectionTableViewCell {
+                    vc.podcastGroup = cell.podcastGroup
+                    vc.podcasts = cell.podcasts
                 }
             }
         }
