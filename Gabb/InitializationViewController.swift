@@ -54,6 +54,11 @@ class InitializationViewController: UIViewController {
     }
     
     func initializeView() {
+        let listening = NSMutableDictionary()
+        listening.setValue("Continue Listening", forKey: "title")
+        listening.setValue("/listening", forKey: "podcasts_url")
+        podcastGroups.append(listening)
+        
         let popular = NSMutableDictionary()
         popular.setValue("Popular", forKey: "title")
         popular.setValue("/popular", forKey: "podcasts_url")

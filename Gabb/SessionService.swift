@@ -72,9 +72,11 @@ class SessionService : RestService {
         let episodeTitle = episodeJSON["title"].stringValue
         
         let podcastJSON = JSON(gabbPlayer.podcast)
-        let podcastId = podcastJSON["podcast_id"].intValue
+        let podcastDictionary:[String: AnyObject] = ["title": podcastJSON["title"].stringValue, "image_url": podcastJSON["image_url"].stringValue, "feed_url": podcastJSON["feed_url"].stringValue, "podcast_id": podcastJSON["podcast_id"].intValue]
         
-        let parameters:[String: AnyObject] = ["podcast_id": podcastId, "title": episodeTitle, "episode_url": episodeURL, "episode_hash": episodeHash, "time_value": NSInteger(gabbPlayer.player.currentTime().value), "time_scale": NSInteger(gabbPlayer.player.currentTime().timescale)]
+        let parameters:[String: AnyObject] = ["podcast": podcastDictionary, "title": episodeTitle, "episode_url": episodeURL, "episode_hash": episodeHash, "time_value": NSInteger(gabbPlayer.player.currentTime().value), "time_scale": NSInteger(gabbPlayer.player.currentTime().timescale)]
+        
+        print(parameters)
         
         return parameters
     }
