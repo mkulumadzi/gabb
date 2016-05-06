@@ -37,22 +37,19 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
                     self.podcasts.append(mutableCopy)
                 }
                 weakSelf?.podcastCollectionView?.reloadData()
-                weakSelf?.getPodcastImages()
             }
         })
     }
     
-    func getPodcastImages() {
-        weak var weakSelf = self
-        for podcast in podcasts {
-            if let imageURL = podcast.valueForKey("image_url") as? String {
-                FileService.getThumbnailImageForURL(imageURL, completion: {(image) -> Void in
-                    if let image = image {
-                        podcast.setValue(image, forKey: "imageThumb")
-                        weakSelf?.podcastCollectionView?.reloadData()
-                    }
-                })
-            }
+    func getPodcastImageForCell(cell: PodcastCollectionViewCell) {
+        if let imageURL = cell.podcast.valueForKey("image_url") as? String {
+            print("Getting podcast image at \(imageURL)")
+            FileService.getThumbnailImageForURL(imageURL, completion: {(image) -> Void in
+                if let image = image {
+                    cell.podcast.setValue(image, forKey: "imageThumb")
+                    cell.imageView.image = image
+                }
+            })
         }
     }
     
@@ -78,6 +75,7 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
             cell.imageView.image = image
         } else if (cell.podcast["image_url"] as? String) != nil {
             cell.imageView.image = nil
+            self.getPodcastImageForCell(cell)
         }
         
         return cell

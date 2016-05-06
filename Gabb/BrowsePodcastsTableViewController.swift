@@ -31,8 +31,6 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
         tableView.estimatedRowHeight = 200.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-//        getPodastImages()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
