@@ -207,20 +207,29 @@
         <scene sceneID="6vz-BN-74n">
             <objects>
                 <tableViewController id="D7e-0l-RkQ" customClass="BrowsePodcastsTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="DZX-tt-wGT">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="12" id="DZX-tt-wGT">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BorderCell" rowHeight="1" id="d9f-mE-r4r">
+                                <rect key="frame" x="0.0" y="50" width="600" height="1"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d9f-mE-r4r" id="ZLY-a0-SMG">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupHeader" textLabel="xoo-mG-yZ2" style="IBUITableViewCellStyleDefault" id="nGy-WB-Eb3">
-                                <rect key="frame" x="0.0" y="50" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="51" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGy-WB-Eb3" id="ZLH-77-2fc">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xoo-mG-yZ2">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="550" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -228,29 +237,30 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PodcastCollectionCell" rowHeight="155" id="Zpf-go-fvA" customClass="PodcastCollectionTableViewCell" customModule="Gabb" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="600" height="155"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PodcastCollectionCell" rowHeight="169" id="Zpf-go-fvA" customClass="PodcastCollectionTableViewCell" customModule="Gabb" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="95" width="600" height="169"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zpf-go-fvA" id="dnW-Az-gfX">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mzg-XT-0pT">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="154" id="f6i-IE-fNt"/>
+                                                <constraint firstAttribute="height" constant="169" id="f6i-IE-fNt"/>
                                             </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="6oE-6B-CJB">
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="6oE-6B-CJB">
                                                 <size key="itemSize" width="50" height="50"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="2" minY="2" maxX="2" maxY="2"/>
+                                                <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PodcastCell" id="nqz-Tz-zNL" customClass="PodcastCollectionViewCell" customModule="Gabb" customModuleProvider="target">
-                                                    <rect key="frame" x="2" y="2" width="120" height="150"/>
+                                                    <rect key="frame" x="8" y="10" width="120" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
@@ -297,6 +307,7 @@
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Mzg-XT-0pT" secondAttribute="bottom" id="w1c-cL-d2m"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <connections>
                                     <outlet property="podcastCollectionView" destination="Mzg-XT-0pT" id="s5d-ko-F2Y"/>
                                     <outlet property="podcastCollectionViewHeight" destination="f6i-IE-fNt" id="CHV-3Q-Aly"/>

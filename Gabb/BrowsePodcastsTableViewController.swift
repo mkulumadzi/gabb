@@ -13,6 +13,7 @@ private let groupHeader = "GroupHeader"
 private let podcastCollectionCell = "PodcastCollectionCell"
 private let viewPodcast = "ViewPodcast"
 private let viewPodcastGroup = "ViewPodcastGroup"
+private let borderCell = "BorderCell"
 
 class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectionTableViewCellDelegate {
     
@@ -74,11 +75,16 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        return 0.0
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return 1.0
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCellWithIdentifier(borderCell)
+        return cell
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -110,7 +116,7 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
         cell.podcastGroup = group
         cell.podcastCollectionView.delegate = cell
         cell.podcastCollectionView.dataSource = cell
-        cell.podcastCollectionViewHeight.constant = thumbnailSize.height + 34 // Clean this up
+        cell.podcastCollectionViewHeight.constant = thumbnailSize.height + 48 // Clean this up
         if cell.shouldGetPodcasts == true {
             cell.shouldGetPodcasts = false
             cell.getPodcasts()
