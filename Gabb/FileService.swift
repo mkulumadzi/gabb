@@ -59,6 +59,22 @@ class FileService {
         }
     }
     
+    class func getSearchThumbnailImageForURL(imageURL:String, completion: (result: UIImage?) -> Void) {
+        if let image = self.getImageFromDirectory(imageURL) {
+            let thumbImage = image.af_imageScaledToSize(searchImageSize)
+            completion(result: thumbImage)
+        }
+        else {
+            RestService.downloadImage(imageURL, completion: {(image) -> Void in
+                if let image = image {
+                    self.saveImageToDirectory(image, imageURL: imageURL)
+                    let thumbImage = image.af_imageScaledToSize(searchImageSize)
+                    completion(result: thumbImage)
+                }
+            })
+        }
+    }
+    
     class func saveImageToDirectory(image: UIImage, imageURL: String) -> Bool {
         let path = convertFileNameToNSURL(imageURL)
         let imageData = UIImageJPEGRepresentation(image, 1.0)!

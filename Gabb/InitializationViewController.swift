@@ -14,6 +14,10 @@ private let browsePodcasts = "BrowsePodcasts"
 
 let screenSize: CGRect = UIScreen.mainScreen().bounds
 
+var searchImageSize: CGSize {
+    return CGSize(width: 30.0, height: 30.0)
+}
+
 var thumbnailSize: CGSize {
     let x = (screenSize.width - 8) / 3
     return CGSize(width: x, height: x)

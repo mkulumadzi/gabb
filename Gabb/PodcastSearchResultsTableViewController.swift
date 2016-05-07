@@ -56,9 +56,32 @@ class PodcastSearchResultsTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(searchResult, forIndexPath: indexPath)
-        let podcast = JSON(podcasts[indexPath.row])
-        cell.textLabel?.text = podcast["title"].stringValue
+        let podcast = podcasts[indexPath.row]
+        let json = JSON(podcast)
+        cell.textLabel?.text = json["title"].stringValue
+        
+        if let image = podcast["imageThumb"] as? UIImage {
+            cell.imageView?.image = image
+        } else if (podcast["image_url"] as? String) != nil {
+            cell.imageView?.image = nil
+            self.getPodcastImageForCell(cell, podcast: podcast)
+        } else {
+            cell.imageView?.image = UIImage(named: "image-placeholder")
+        }
+        
         return cell
+    }
+    
+    func getPodcastImageForCell(cell: UITableViewCell, podcast:NSMutableDictionary) {
+        if let imageURL = podcast.valueForKey("image_url") as? String {
+            print("Getting podcast image at \(imageURL)")
+            FileService.getSearchThumbnailImageForURL(imageURL, completion: {(image) -> Void in
+                if let image = image {
+                    podcast.setValue(image, forKey: "imageThumb")
+                    cell.imageView?.image = image
+                }
+            })
+        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
