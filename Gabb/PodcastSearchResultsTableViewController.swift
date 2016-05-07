@@ -73,12 +73,14 @@ class PodcastSearchResultsTableViewController: UITableViewController {
     }
     
     func getPodcastImageForCell(cell: UITableViewCell, podcast:NSMutableDictionary) {
+        weak var weakSelf = self
         if let imageURL = podcast.valueForKey("image_url") as? String {
             print("Getting podcast image at \(imageURL)")
             FileService.getSearchThumbnailImageForURL(imageURL, completion: {(image) -> Void in
                 if let image = image {
                     podcast.setValue(image, forKey: "imageThumb")
                     cell.imageView?.image = image
+                    weakSelf?.tableView.reloadData()
                 }
             })
         }
