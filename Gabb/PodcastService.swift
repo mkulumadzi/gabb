@@ -62,6 +62,18 @@ class PodcastService : RestService {
         })
     }
     
+    class func searchPodcasts(searchTerm: String, completion: (result: [NSDictionary]?) -> Void) {
+        let url = "https://gabb.herokuapp.com/podcasts/search?search_term=\(searchTerm)"
+        self.getRequest(url, headers: nil, completion: { (error, result) -> Void in
+            if let podcastArray = self.getPodcastArrayFromResult(result) {
+                completion(result: podcastArray)
+            }
+            else {
+                completion(result: nil)
+            }
+        })
+    }
+    
     private class func getPodcastArrayFromResult(result: AnyObject?) -> [NSDictionary]? {
         if let dictionary = result as? NSDictionary {
             if let podcastArray = dictionary.valueForKey("podcasts") as? [NSDictionary] {

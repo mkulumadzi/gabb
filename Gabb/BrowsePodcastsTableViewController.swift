@@ -14,14 +14,18 @@ private let podcastCollectionCell = "PodcastCollectionCell"
 private let viewPodcast = "ViewPodcast"
 private let viewPodcastGroup = "ViewPodcastGroup"
 private let borderCell = "BorderCell"
+private let searchResults = "PodcastSearchResults"
 
-class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectionTableViewCellDelegate {
+class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectionTableViewCellDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, PodcastSearchResultsDelegate {
     
     var podcastGroups:[NSMutableDictionary]!
+    var podcastSelected:NSMutableDictionary!
     
     var navBarBackgroundImage:UIImage?
     var navBarShadowImage:UIImage?
-
+    
+    var searchController:UISearchController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
@@ -36,15 +40,23 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
         super.viewDidAppear(animated)
         getPodcasts()
         formatView()
+    }
+    
+    func formatView() {
+        showDefaultNavBar()
+    }
+    
+    func showDefaultNavBar() {
+        addSearchButton()
+        
         if let _ = currentUser {
             addProfileButton()
         }
         else {
             addLogoutButton()
         }
-    }
-    
-    func formatView() {
+        
+        navigationItem.titleView = nil
         navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.logoSmall(), NSForegroundColorAttributeName : UIColor.gabbRedColor()]
         navigationItem.title = "Gabb"
         
@@ -84,8 +96,13 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
     }
     
     func addLogoutButton() {
-        let rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .Done, target: self, action: #selector(BrowsePodcastsCollectionViewController.login))
+        let rightBarButtonItem = UIBarButtonItem(title: "Log In", style: .Done, target: self, action: #selector(self.login))
         navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    func addSearchButton() {
+        let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(self.search))
+        navigationItem.leftBarButtonItem = leftBarButtonItem
     }
 
 
@@ -179,7 +196,8 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
     // MARK: - User actions
     
     func podcastSelected(cell: PodcastCollectionTableViewCell) {
-        performSegueWithIdentifier(viewPodcast, sender: cell)
+        podcastSelected = cell.podcast
+        performSegueWithIdentifier(viewPodcast, sender: nil)
     }
     
     func viewProfile() {
@@ -195,15 +213,60 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
             presentViewController(vc, animated: true, completion: nil)
         }
     }
+    
+    // MARK: - Search
+    
+    func search() {
+        print("Let's search!")
+        let searchResultsController = storyboard?.instantiateViewControllerWithIdentifier(searchResults) as! PodcastSearchResultsTableViewController
+        searchResultsController.delegate = self
+        
+        searchController = UISearchController(searchResultsController: searchResultsController)
+        searchController.delegate = self
+        
+        let searchBar = searchController.searchBar
+        searchBar.delegate = self
+        searchBar.becomeFirstResponder()
+        
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.titleView = searchBar
+        definesPresentationContext = true
+        
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        presentViewController(searchController, animated: true, completion: {})
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        guard let searchResultsController = searchController.searchResultsController as? PodcastSearchResultsTableViewController else {
+            return
+        }
+        if let searchTerm = searchController.searchBar.text {
+            searchResultsController.searchPodcasts(searchTerm)
+        }
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        showDefaultNavBar()
+    }
+    
+    func podcastSelectedFromSearchResults(vc: PodcastSearchResultsTableViewController) {
+        podcastSelected = vc.podcastSelected
+        weak var weakSelf = self
+        searchController.dismissViewControllerAnimated(true, completion: ({(nil) -> Void in
+            weakSelf?.showDefaultNavBar()
+            weakSelf?.performSegueWithIdentifier(viewPodcast, sender: nil)
+        }))
+    }
 
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == viewPodcast {
             if let vc = segue.destinationViewController as? ViewPodcastTableViewController {
-                if let cell = sender as? PodcastCollectionTableViewCell {
-                    vc.podcast = cell.podcast
-                }
+                vc.podcast = podcastSelected
             }
         } else if segue.identifier == viewPodcastGroup {
             if let vc = segue.destinationViewController as? PodcastGroupCollectionViewController {
