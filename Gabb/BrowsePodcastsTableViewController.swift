@@ -26,6 +26,8 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
     
     var searchController:UISearchController!
     
+    var nowPlayingView:UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
@@ -40,6 +42,7 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
         super.viewDidAppear(animated)
         getPodcasts()
         formatView()
+//        addNowPlayingWidget()
     }
     
     func formatView() {
@@ -103,6 +106,28 @@ class BrowsePodcastsTableViewController: UITableViewController, PodcastCollectio
     func addSearchButton() {
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(self.search))
         navigationItem.leftBarButtonItem = leftBarButtonItem
+    }
+    
+    func addNowPlayingWidget() {
+        guard let gabber = gabber else {
+            return
+        }
+        if gabber.playing {
+            let widgetContainer = UIView(frame: CGRect(x: 0, y: screenSize.height - 60, width: screenSize.width, height: 60))
+            widgetContainer.backgroundColor = UIColor.lightGrayColor()
+            
+            if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
+                widget.view.frame = CGRectMake(0,0, screenSize.width, 60)
+                gabber.delegate = widget
+                self.embedViewController(widget, intoView: widgetContainer)
+                
+                self.nowPlayingView = widgetContainer
+                view.addSubview(nowPlayingView)
+                
+            }
+            
+            print(widgetContainer)
+        }
     }
 
 
