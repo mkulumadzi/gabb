@@ -66,17 +66,19 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
         })
     }
     
-    func getPodcastImage(cell: PodcastCollectionViewCell) {
-        if let imageURL = cell.podcast.valueForKey("image_url") as? String {
+    func getPodcastImage(indexPath: NSIndexPath) {
+        let podcast = podcasts[indexPath.row]
+        weak var weakSelf = self
+        if let imageURL = podcast.valueForKey("image_url") as? String {
+            print("Getting podcast image at \(imageURL)")
             FileService.getLargeThumbnailImageForURL(imageURL, completion: {(image) -> Void in
                 if let image = image {
-                    cell.podcast.setValue(image, forKey: "imageThumb")
-                    cell.imageView.image = image
+                    podcast.setValue(image, forKey: "imageThumb")
+                    weakSelf?.collectionView?.reloadItemsAtIndexPaths([indexPath])
                 }
             })
         }
     }
-    
     
     // MARK: UICollectionViewDataSource
 
@@ -97,11 +99,11 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
         cell.titleLabel.text = podcast["title"].stringValue
         
         cell.podcast = podcasts[indexPath.row]
+        cell.imageView.image = nil
         if let image = cell.podcast["imageThumb"] as? UIImage {
             cell.imageView.image = image
         } else if (cell.podcast["image_url"] as? String) != nil {
-            cell.imageView.image = nil
-            self.getPodcastImage(cell)
+            self.getPodcastImage(indexPath)
         }
         
         return cell
