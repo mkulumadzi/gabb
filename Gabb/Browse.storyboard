@@ -114,141 +114,6 @@
             </objects>
             <point key="canvasLocation" x="-133" y="-404"/>
         </scene>
-        <!--Browse Podcasts Table View Controller-->
-        <scene sceneID="6vz-BN-74n">
-            <objects>
-                <tableViewController id="D7e-0l-RkQ" customClass="BrowsePodcastsTableViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="DZX-tt-wGT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BorderCell" rowHeight="1" id="d9f-mE-r4r">
-                                <rect key="frame" x="0.0" y="50" width="600" height="1"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d9f-mE-r4r" id="ZLY-a0-SMG">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupHeader" textLabel="xoo-mG-yZ2" style="IBUITableViewCellStyleDefault" id="nGy-WB-Eb3">
-                                <rect key="frame" x="0.0" y="51" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nGy-WB-Eb3" id="ZLH-77-2fc">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xoo-mG-yZ2">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PodcastCollectionCell" rowHeight="169" id="Zpf-go-fvA" customClass="PodcastCollectionTableViewCell" customModule="Gabb" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="95" width="600" height="169"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zpf-go-fvA" id="dnW-Az-gfX">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mzg-XT-0pT">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="169" id="f6i-IE-fNt"/>
-                                            </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="6oE-6B-CJB">
-                                                <size key="itemSize" width="50" height="50"/>
-                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="8" minY="8" maxX="8" maxY="8"/>
-                                            </collectionViewFlowLayout>
-                                            <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PodcastCell" id="nqz-Tz-zNL" customClass="PodcastCollectionViewCell" customModule="Gabb" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="10" width="120" height="150"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GuB-V7-xqt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="119"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="GuB-V7-xqt" secondAttribute="height" multiplier="1:1" constant="1" id="oob-aJ-lUK"/>
-                                                                </constraints>
-                                                            </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eur-qe-XNZ">
-                                                                <rect key="frame" x="8" y="119" width="104" height="23"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    </view>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstItem="Eur-qe-XNZ" firstAttribute="top" secondItem="GuB-V7-xqt" secondAttribute="bottom" id="0GT-zj-BBV"/>
-                                                        <constraint firstItem="GuB-V7-xqt" firstAttribute="top" secondItem="nqz-Tz-zNL" secondAttribute="top" id="1YB-9w-iAZ"/>
-                                                        <constraint firstItem="Eur-qe-XNZ" firstAttribute="leading" secondItem="nqz-Tz-zNL" secondAttribute="leadingMargin" id="Jjp-g0-Gm0"/>
-                                                        <constraint firstAttribute="trailing" secondItem="GuB-V7-xqt" secondAttribute="trailing" id="KCd-nD-afV"/>
-                                                        <constraint firstItem="GuB-V7-xqt" firstAttribute="leading" secondItem="nqz-Tz-zNL" secondAttribute="leading" id="mAI-72-ZUs"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="Eur-qe-XNZ" secondAttribute="trailing" id="oVf-BJ-Mfq"/>
-                                                        <constraint firstItem="Eur-qe-XNZ" firstAttribute="bottom" secondItem="nqz-Tz-zNL" secondAttribute="bottomMargin" id="xlT-4W-QIX"/>
-                                                    </constraints>
-                                                    <size key="customSize" width="120" height="150"/>
-                                                    <connections>
-                                                        <outlet property="imageView" destination="GuB-V7-xqt" id="uxu-fi-iWT"/>
-                                                        <outlet property="titleLabel" destination="Eur-qe-XNZ" id="aDM-Fy-dXJ"/>
-                                                    </connections>
-                                                </collectionViewCell>
-                                            </cells>
-                                        </collectionView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Mzg-XT-0pT" firstAttribute="top" secondItem="dnW-Az-gfX" secondAttribute="top" id="4eG-02-yTx"/>
-                                        <constraint firstItem="Mzg-XT-0pT" firstAttribute="leading" secondItem="dnW-Az-gfX" secondAttribute="leading" id="ZEi-5b-DBQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="Mzg-XT-0pT" secondAttribute="trailing" id="p25-Ds-105"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Mzg-XT-0pT" secondAttribute="bottom" id="w1c-cL-d2m"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <connections>
-                                    <outlet property="podcastCollectionView" destination="Mzg-XT-0pT" id="s5d-ko-F2Y"/>
-                                    <outlet property="podcastCollectionViewHeight" destination="f6i-IE-fNt" id="CHV-3Q-Aly"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="D7e-0l-RkQ" id="gpT-pr-HL3"/>
-                            <outlet property="delegate" destination="D7e-0l-RkQ" id="tve-q5-pTV"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="YQk-xH-VOh">
-                        <barButtonItem key="backBarButtonItem" title=" " id="1b5-oW-NF9"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="HUE-XD-vQi" id="UeE-ky-aL0"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nK6-gd-uIo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="HUE-XD-vQi">
-                    <connections>
-                        <outlet property="delegate" destination="D7e-0l-RkQ" id="LgS-QD-mKS"/>
-                        <outlet property="searchContentsController" destination="D7e-0l-RkQ" id="aAa-xS-pwi"/>
-                        <outlet property="searchResultsDataSource" destination="D7e-0l-RkQ" id="1pd-QL-blh"/>
-                        <outlet property="searchResultsDelegate" destination="D7e-0l-RkQ" id="43D-qW-V2M"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="-842" y="-404"/>
-        </scene>
         <!--Browse Podcasts View Controller-->
         <scene sceneID="J23-Dk-Pqs">
             <objects>
@@ -262,7 +127,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="jqa-6e-QcA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="476"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BorderCell" rowHeight="1" id="avH-ua-s1H">
@@ -372,18 +237,30 @@
                                     <outlet property="delegate" destination="bOq-Xy-5kN" id="zL1-Ny-emK"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvg-lS-v5l">
+                                <rect key="frame" x="0.0" y="476" width="600" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="UYs-iG-gc9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hvg-lS-v5l" firstAttribute="top" secondItem="jqa-6e-QcA" secondAttribute="bottom" id="2IA-Ne-Cju"/>
+                            <constraint firstAttribute="trailing" secondItem="hvg-lS-v5l" secondAttribute="trailing" id="XvZ-dj-ff0"/>
                             <constraint firstItem="jqa-6e-QcA" firstAttribute="top" secondItem="VAj-jh-gbB" secondAttribute="bottom" id="XxC-U7-zxY"/>
+                            <constraint firstItem="hvg-lS-v5l" firstAttribute="leading" secondItem="5et-Ac-JYm" secondAttribute="leading" id="YJO-Pf-inm"/>
                             <constraint firstItem="jqa-6e-QcA" firstAttribute="leading" secondItem="5et-Ac-JYm" secondAttribute="leading" id="Zlf-e7-WyD"/>
-                            <constraint firstItem="TcD-NT-bg0" firstAttribute="top" secondItem="jqa-6e-QcA" secondAttribute="bottom" id="qSy-FH-hjS"/>
+                            <constraint firstItem="TcD-NT-bg0" firstAttribute="top" secondItem="hvg-lS-v5l" secondAttribute="bottom" id="qC2-Og-gUE"/>
                             <constraint firstAttribute="trailing" secondItem="jqa-6e-QcA" secondAttribute="trailing" id="qfA-bJ-RLY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p9P-YF-wru"/>
                     <connections>
                         <outlet property="tableView" destination="jqa-6e-QcA" id="tpQ-y7-CZG"/>
+                        <outlet property="widgetContainer" destination="hvg-lS-v5l" id="Kqj-ZX-Zdz"/>
+                        <outlet property="widgetHeight" destination="UYs-iG-gc9" id="NtL-9T-83y"/>
                         <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="nlp-B9-ay8"/>
                         <segue destination="9r4-CW-RX4" kind="show" identifier="ViewPodcastGroup" id="Pqc-6M-lG3"/>
                     </connections>

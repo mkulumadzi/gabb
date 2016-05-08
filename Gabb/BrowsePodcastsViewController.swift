@@ -27,11 +27,15 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
     var searchController:UISearchController!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var widgetContainer: UIView!
+    @IBOutlet weak var widgetHeight: NSLayoutConstraint!
 
-    var nowPlayingView:UIView!
+    var nowPlayingWidget:NowPlayingWidgetViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
         navBarShadowImage = navigationController?.navigationBar.shadowImage
         
@@ -40,16 +44,11 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
         
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         getPodcasts()
         formatView()
-        //        addNowPlayingWidget()
+        toggleNowPlayingWidget()
     }
     
     func formatView() {
@@ -127,25 +126,29 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
         navigationItem.leftBarButtonItem = leftBarButtonItem
     }
     
-    func addNowPlayingWidget() {
+    func toggleNowPlayingWidget() {
         guard let gabber = gabber else {
+            widgetHeight.constant = 0
             return
         }
-        if gabber.playing {
-            let widgetContainer = UIView(frame: CGRect(x: 0, y: screenSize.height - 60, width: screenSize.width, height: 60))
-            widgetContainer.backgroundColor = UIColor.lightGrayColor()
-            
+        widgetHeight.constant = 60
+        if nowPlayingWidget == nil {
             if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
-                widget.view.frame = CGRectMake(0,0, screenSize.width, 60)
-                gabber.delegate = widget
-                self.embedViewController(widget, intoView: widgetContainer)
-                
-                self.nowPlayingView = widgetContainer
-                view.addSubview(nowPlayingView)
-                
+                nowPlayingWidget = widget
+                nowPlayingWidget.view.frame = CGRectMake(0,0, screenSize.width, 60)
+                gabber.delegate = nowPlayingWidget
+                self.embedViewController(nowPlayingWidget, intoView: widgetContainer)
             }
-            
-            print(widgetContainer)
+        } else {
+            gabber.delegate = nowPlayingWidget
+        }
+    }
+    
+    func addNowPlayingWidget() {
+        if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
+            nowPlayingWidget = widget
+            nowPlayingWidget.view.frame = CGRectMake(0,0, screenSize.width, 60)
+            self.embedViewController(widget, intoView: widgetContainer)
         }
     }
     
@@ -172,18 +175,6 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
         }
         return 0.0
     }
-    
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        if shouldShowSection(indexPath.section) == true {
-//            switch indexPath.row {
-//            case 0:
-//                return 44.0
-//            default:
-//                return 169.0
-//            }
-//        }
-//        return 0
-//    }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if shouldShowSection(section) == true {
