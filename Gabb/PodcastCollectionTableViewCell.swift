@@ -34,6 +34,7 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
             FileService.getThumbnailImageForURL(imageURL, completion: {(image) -> Void in
                 if let image = image {
                     podcast.setValue(image, forKey: "imageThumb")
+//                    weakSelf?.podcastCollectionView.reloadData()
                     weakSelf?.podcastCollectionView.reloadItemsAtIndexPaths([indexPath])
                 }
             })

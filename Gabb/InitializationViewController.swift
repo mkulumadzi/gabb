@@ -103,7 +103,7 @@ class InitializationViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == browsePodcasts) {
             if let nav = segue.destinationViewController as? UINavigationController {
-                if let browseVc = nav.viewControllers.first as? BrowsePodcastsTableViewController {
+                if let browseVc = nav.viewControllers.first as? BrowsePodcastsViewController {
                     browseVc.podcastGroups = self.podcastGroups
                 }
             }
