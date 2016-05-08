@@ -26,13 +26,15 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
     
     var delegate:PodcastCollectionTableViewCellDelegate?
     
-    func getPodcastImageForCell(cell: PodcastCollectionViewCell) {
-        if let imageURL = cell.podcast.valueForKey("image_url") as? String {
+    func getPodcastImage(indexPath: NSIndexPath) {
+        let podcast = podcasts[indexPath.row]
+        weak var weakSelf = self
+        if let imageURL = podcast.valueForKey("image_url") as? String {
             print("Getting podcast image at \(imageURL)")
             FileService.getThumbnailImageForURL(imageURL, completion: {(image) -> Void in
                 if let image = image {
-                    cell.podcast.setValue(image, forKey: "imageThumb")
-                    cell.imageView.image = image
+                    podcast.setValue(image, forKey: "imageThumb")
+                    weakSelf?.podcastCollectionView.reloadItemsAtIndexPaths([indexPath])
                 }
             })
         }
@@ -56,13 +58,11 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
         cell.titleLabel.text = podcast["title"].stringValue
         
         cell.podcast = podcasts[indexPath.row]
+        cell.imageView.image = nil
         if let image = cell.podcast["imageThumb"] as? UIImage {
             cell.imageView.image = image
         } else if (cell.podcast["image_url"] as? String) != nil {
-            cell.imageView.image = nil
-            self.getPodcastImageForCell(cell)
-        } else {
-            cell.imageView.image = nil
+            self.getPodcastImage(indexPath)
         }
         
         return cell

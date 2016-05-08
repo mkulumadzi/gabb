@@ -51,7 +51,11 @@ class PodcastSearchResultsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return podcasts.count
+        if podcasts.count < 10 { // API doesn't allow limits; enforcing one here.
+            return podcasts.count
+        } else {
+            return 10
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -59,31 +63,7 @@ class PodcastSearchResultsTableViewController: UITableViewController {
         let podcast = podcasts[indexPath.row]
         let json = JSON(podcast)
         cell.textLabel?.text = json["title"].stringValue
-        
-        if let image = podcast["imageThumb"] as? UIImage {
-            cell.imageView?.image = image
-        } else if (podcast["image_url"] as? String) != nil {
-            cell.imageView?.image = nil
-            self.getPodcastImageForCell(cell, podcast: podcast)
-        } else {
-            cell.imageView?.image = UIImage(named: "image-placeholder")
-        }
-        
         return cell
-    }
-    
-    func getPodcastImageForCell(cell: UITableViewCell, podcast:NSMutableDictionary) {
-        weak var weakSelf = self
-        if let imageURL = podcast.valueForKey("image_url") as? String {
-            print("Getting podcast image at \(imageURL)")
-            FileService.getSearchThumbnailImageForURL(imageURL, completion: {(image) -> Void in
-                if let image = image {
-                    podcast.setValue(image, forKey: "imageThumb")
-                    cell.imageView?.image = image
-                    weakSelf?.tableView.reloadData()
-                }
-            })
-        }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
