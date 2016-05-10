@@ -51,6 +51,13 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
         return podcasts.count
     }
     
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        let podcast = podcasts[indexPath.row]
+        if podcast["imageThumb"] == nil {
+            getPodcastImage(indexPath)
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(podcastCell, forIndexPath: indexPath) as! PodcastCollectionViewCell
         
@@ -62,9 +69,11 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
         cell.imageView.image = nil
         if let image = cell.podcast["imageThumb"] as? UIImage {
             cell.imageView.image = image
-        } else if (cell.podcast["image_url"] as? String) != nil {
-            self.getPodcastImage(indexPath)
         }
+        
+//        else if (cell.podcast["image_url"] as? String) != nil {
+//            self.getPodcastImage(indexPath)
+//        }
         
         return cell
     }

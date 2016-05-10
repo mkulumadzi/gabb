@@ -74,6 +74,7 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
             FileService.getLargeThumbnailImageForURL(imageURL, completion: {(image) -> Void in
                 if let image = image {
                     podcast.setValue(image, forKey: "imageThumb")
+//                    weakSelf?.collectionView?.reloadData()
                     weakSelf?.collectionView?.reloadItemsAtIndexPaths([indexPath])
                 }
             })
@@ -90,6 +91,13 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return podcasts.count
     }
+    
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        let podcast = podcasts[indexPath.row]
+        if podcast["imageThumb"] == nil {
+            getPodcastImage(indexPath)
+        }
+    }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(podcastCell, forIndexPath: indexPath) as! PodcastCollectionViewCell
@@ -102,8 +110,6 @@ class PodcastGroupCollectionViewController: UICollectionViewController {
         cell.imageView.image = nil
         if let image = cell.podcast["imageThumb"] as? UIImage {
             cell.imageView.image = image
-        } else if (cell.podcast["image_url"] as? String) != nil {
-            self.getPodcastImage(indexPath)
         }
         
         return cell

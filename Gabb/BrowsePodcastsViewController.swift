@@ -39,7 +39,7 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
         navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
         navBarShadowImage = navigationController?.navigationBar.shadowImage
         
-        tableView.estimatedRowHeight = 200.0
+        tableView.estimatedRowHeight = thumbnailSize.height + 48
         tableView.rowHeight = UITableViewAutomaticDimension
         
     }
@@ -208,6 +208,13 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(podcastCollectionCell, forIndexPath: indexPath) as! PodcastCollectionTableViewCell
+            cell.podcastCollectionViewHeight.constant = thumbnailSize.height + 48 // Clean this up
+        }
+    }
+    
     func tableView(tableVeiw: UITableView, podcastCollectionCellForIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let podcasts = podcastGroups[indexPath.section]["podcasts"] as? [NSMutableDictionary] else {
             return UITableViewCell()
@@ -218,7 +225,6 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
         cell.podcastGroup = group
         cell.podcastCollectionView.delegate = cell
         cell.podcastCollectionView.dataSource = cell
-        cell.podcastCollectionViewHeight.constant = thumbnailSize.height + 48 // Clean this up
         
         cell.podcasts = podcasts
         cell.podcastCollectionView?.reloadData()
