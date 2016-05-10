@@ -31,6 +31,7 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hmj-1U-e5P">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Hmj-1U-e5P" secondAttribute="height" multiplier="1:1" id="VbC-a7-qnU"/>
                                             </constraints>
@@ -186,6 +187,7 @@
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GaF-Km-NYc">
                                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="119"/>
+                                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="GaF-Km-NYc" secondAttribute="height" multiplier="1:1" constant="1" id="BHZ-5g-Dnx"/>
                                                                         </constraints>
@@ -685,6 +687,6 @@
         <image name="play" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nlp-B9-ay8"/>
+        <segue reference="2LI-YQ-kgU"/>
     </inferredMetricsTieBreakers>
 </document>
