@@ -66,9 +66,10 @@ class PodcastCollectionTableViewCell: UITableViewCell, UICollectionViewDelegate,
         cell.titleLabel.text = podcast["title"].stringValue
         
         cell.podcast = podcasts[indexPath.row]
-        cell.imageView.image = nil
         if let image = cell.podcast["imageThumb"] as? UIImage {
             cell.imageView.image = image
+        } else {
+            cell.imageView.image = nil
         }
         
 //        else if (cell.podcast["image_url"] as? String) != nil {
