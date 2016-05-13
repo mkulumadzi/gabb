@@ -79,16 +79,21 @@ class MainViewController: UIViewController {
         guard let gabber = gabber, nowPlayingWidget = nowPlayingWidget else {
             return
         }
+        
         gabber.delegate = nowPlayingWidget
         nowPlayingWidget.formatView()
-        showNowPlayingWidget()
+        
+        if nowPlayingWidgetHeight.constant == 0 {
+            showNowPlayingWidget()
+        }
     }
     
     func showNowPlayingWidget() {
-        nowPlayingWidgetHeight.constant = 60
         weak var weakSelf = self
+        nowPlayingWidgetHeight.constant = 60
         UIView.animateWithDuration(0.5, animations: {
             weakSelf?.view.layoutIfNeeded()
+            weakSelf?.mainViewContainer.layoutIfNeeded()
         })
     }
     

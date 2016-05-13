@@ -32,9 +32,13 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
-        formatView()
-        checkGabberStatus()
         super.viewDidLoad()
+        formatView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        checkGabberStatus()
     }
     
     func formatView() {
@@ -108,6 +112,10 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             return
         }
         if gabber.audioUrl == episode["audio_url"] as? String {
+            if let main = navigationController?.parentViewController as? MainViewController {
+                main.hideNowPlayingWidget()
+            }
+            
             gabber.delegate = self
             if gabber.playing {
                 showPauseButton()
@@ -298,7 +306,6 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        print("Disapearring...")
         if let main = navigationController?.parentViewController as? MainViewController {
             main.toggleNowPlayingWidget()
         }
