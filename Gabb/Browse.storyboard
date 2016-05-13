@@ -493,7 +493,7 @@
         <!--Play Episode View Controller-->
         <scene sceneID="sGf-Lw-fts">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="GPR-e8-LlX" customClass="PlayEpisodeViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="episodeViewController" automaticallyAdjustsScrollViewInsets="NO" id="GPR-e8-LlX" customClass="PlayEpisodeViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jn1-WV-RLQ"/>
                         <viewControllerLayoutGuide type="bottom" id="PCw-lC-DqP"/>
@@ -591,6 +591,9 @@
                             <constraint firstAttribute="trailing" secondItem="hWZ-rW-591" secondAttribute="trailing" id="vHy-Mc-xnK"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DDN-Jh-I30">
+                        <barButtonItem key="backBarButtonItem" title=" " id="aUN-2V-53F"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1000"/>
                     <connections>

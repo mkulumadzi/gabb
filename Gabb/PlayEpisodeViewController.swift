@@ -43,6 +43,8 @@ class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
     
     func formatView() {
         
+        self.edgesForExtendedLayout = .Top
+        
         activityIndicator.startAnimating()
         playButton.hidden = true
         

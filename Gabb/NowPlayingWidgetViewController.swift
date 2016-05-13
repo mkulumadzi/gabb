@@ -68,14 +68,15 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     }
     
     @IBAction func overlayButtonTapped(sender: AnyObject) {
-        guard let parent = parentViewController else {
+        guard let main = parentViewController as? MainViewController else {
             return
         }
-        let vc = fetchViewController(browseStoryboard, storyboardIdentifier: episodeViewController) as! PlayEpisodeViewController
-        vc.podcast = gabber.podcast
-        vc.episode = gabber.episode
-        vc.presentedModally = true
-        parent.showViewController(vc, sender: parent)
+        if let vc = fetchViewController(browseStoryboard, storyboardIdentifier: episodeViewController) as? PlayEpisodeViewController {
+            vc.podcast = gabber.podcast
+            vc.episode = gabber.episode
+            vc.presentedModally = true
+            main.mainNavController.showViewController(vc, sender: main)
+        }
     }
     
     // MARK: - Delegate methods
