@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -37,19 +37,56 @@
                     </view>
                     <connections>
                         <outlet property="logoLabel" destination="C8x-oy-aET" id="84H-Ds-Gh3"/>
-                        <segue destination="2ki-hg-hgI" kind="show" identifier="BrowsePodcasts" id="DYr-we-TeH"/>
+                        <segue destination="6Fb-Mt-Yrk" kind="presentation" identifier="ShowMainView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="ySN-JA-yQ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Browse-->
-        <scene sceneID="3I0-p9-PsR">
+        <!--Main View Controller-->
+        <scene sceneID="kyo-XO-8yY">
             <objects>
-                <viewControllerPlaceholder storyboardName="Browse" id="2ki-hg-hgI" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XYu-Vq-B7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="6Fb-Mt-Yrk" customClass="MainViewController" customModule="Gabb" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YPm-pb-bjh"/>
+                        <viewControllerLayoutGuide type="bottom" id="rMH-Mt-Kba"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2bt-Tx-5hf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywc-eS-XNU" userLabel="NowPlayingWidgetContainer">
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="vOr-Mw-iDq"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbH-jU-RfO" userLabel="MainViewContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="540"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CbH-jU-RfO" firstAttribute="top" secondItem="YPm-pb-bjh" secondAttribute="bottom" constant="-20" id="Crc-HX-P4w"/>
+                            <constraint firstItem="Ywc-eS-XNU" firstAttribute="leading" secondItem="2bt-Tx-5hf" secondAttribute="leading" id="KVp-mz-Yea"/>
+                            <constraint firstItem="rMH-Mt-Kba" firstAttribute="top" secondItem="Ywc-eS-XNU" secondAttribute="bottom" id="NJS-Zc-8Ts"/>
+                            <constraint firstItem="Ywc-eS-XNU" firstAttribute="top" secondItem="CbH-jU-RfO" secondAttribute="bottom" id="dou-Tx-Mw9"/>
+                            <constraint firstItem="CbH-jU-RfO" firstAttribute="leading" secondItem="2bt-Tx-5hf" secondAttribute="leading" id="fLf-kG-k1u"/>
+                            <constraint firstAttribute="trailing" secondItem="Ywc-eS-XNU" secondAttribute="trailing" id="ffn-z0-Zc6"/>
+                            <constraint firstAttribute="trailing" secondItem="CbH-jU-RfO" secondAttribute="trailing" id="wep-Tv-HBP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainViewContainer" destination="CbH-jU-RfO" id="arS-fD-sRW"/>
+                        <outlet property="nowPlayingWidgetContainer" destination="Ywc-eS-XNU" id="qOh-fB-GX4"/>
+                        <outlet property="nowPlayingWidgetHeight" destination="vOr-Mw-iDq" id="KGR-Yc-JcD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xYP-Mq-Ks2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822.5" y="294"/>
+            <point key="canvasLocation" x="1156" y="269"/>
         </scene>
     </scenes>
 </document>

@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import SwiftyJSON
 
-private let browsePodcasts = "BrowsePodcasts"
+private let showMainView = "ShowMainView"
 
 let screenSize: CGRect = UIScreen.mainScreen().bounds
 
@@ -93,7 +93,7 @@ class InitializationViewController: UIViewController {
                     mutableCopy.setValue("/category/\(json["category_id"].intValue)", forKey: "podcasts_url")
                     self.podcastGroups.append(mutableCopy)
                 }
-                self.performSegueWithIdentifier(browsePodcasts, sender: nil)
+                self.performSegueWithIdentifier(showMainView, sender: nil)
             }
         })
     }
@@ -101,11 +101,9 @@ class InitializationViewController: UIViewController {
     // MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == browsePodcasts) {
-            if let nav = segue.destinationViewController as? UINavigationController {
-                if let browseVc = nav.viewControllers.first as? BrowsePodcastsViewController {
-                    browseVc.podcastGroups = self.podcastGroups
-                }
+        if (segue.identifier == showMainView) {
+            if let vc = segue.destinationViewController as? MainViewController {
+                vc.podcastGroups = self.podcastGroups
             }
             
         }
