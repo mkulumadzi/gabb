@@ -74,6 +74,7 @@ class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
         progressBar.enabled = false
         
         playButton.enabled = false
+        playButton.imageView?.contentMode = .ScaleAspectFit
         
         edgesForExtendedLayout = .Top
         extendedLayoutIncludesOpaqueBars = true
@@ -175,19 +176,24 @@ class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
         if !gabber.playing && gabbQueue == nil {
             gabber.play()
         } else if !gabber.playing && gabbQueue != nil {
-            gabber = gabbQueue
-            gabbQueue = nil
-            gabber.play()
+            playItemInQueue()
         }
         else if gabber.playing && gabbQueue != nil {
             gabber.pause()
-            gabber = gabbQueue
-            gabbQueue = nil
-            gabber.play()
+            playItemInQueue()
         }
         else {
             gabber.pause()
         }
+    }
+    
+    private func playItemInQueue() {
+        gabber = gabbQueue
+        gabbQueue = nil
+        if let main = navigationController?.parentViewController as? MainViewController {
+            main.hideNowPlayingWidget()
+        }
+        gabber.play()
     }
     
     /*
@@ -247,13 +253,13 @@ class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
     // MARK: - Private
     
     private func showPlayButton() {
-        if let playImage = UIImage(named: "play") {
+        if let playImage = UIImage(named: "play-large") {
             playButton.setImage(playImage, forState: .Normal)
         }
     }
     
     private func showPauseButton() {
-        if let pauseImage = UIImage(named: "pause") {
+        if let pauseImage = UIImage(named: "pause-large") {
             playButton.setImage(pauseImage, forState: .Normal)
         }
     }

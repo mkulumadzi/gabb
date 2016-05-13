@@ -526,7 +526,7 @@
                                     <constraint firstAttribute="height" constant="40" id="gw5-Fe-VXA"/>
                                     <constraint firstAttribute="width" constant="40" id="xCQ-DL-B9P"/>
                                 </constraints>
-                                <state key="normal" image="play"/>
+                                <state key="normal" image="play-large"/>
                                 <connections>
                                     <action selector="playButtonTapped:" destination="GPR-e8-LlX" eventType="touchUpInside" id="mQp-9z-vec"/>
                                 </connections>
@@ -636,6 +636,7 @@
     <resources>
         <image name="chat" width="24" height="24"/>
         <image name="play" width="24" height="24"/>
+        <image name="play-large" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nlp-B9-ay8"/>
