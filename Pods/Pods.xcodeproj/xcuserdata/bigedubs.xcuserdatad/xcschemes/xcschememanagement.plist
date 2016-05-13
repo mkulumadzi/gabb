@@ -19,11 +19,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ChattoAdditions.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>JWTDecode.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,6 +42,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0289D893A61CC2101AFDD0E71B3C0A66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>05094CC4A047119F7ADC14EE74C4881C</key>
 		<dict>
 			<key>primary</key>
@@ -57,12 +57,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1BAE7BCEDB0AA0920F66D51590E9C3AA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>33936C0DFCB5DF488B50F8DBF41EA6DC</key>
+		<key>64C2671314359F7AC76D45A32FAF05FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -73,21 +68,6 @@
 			<true/>
 		</dict>
 		<key>7AF7E2DF8892E014AE5FCDF57A214D19</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7B3DDAFC9E3AAA3D7E76390935A8682D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7DD08A69500CBF4A4EFFEEE3FF9E3C54</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>805EAEC29080BB2BC995D41831CE2486</key>
 		<dict>
 			<key>primary</key>
 			<true/>
