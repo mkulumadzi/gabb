@@ -636,7 +636,7 @@
     <resources>
         <image name="chat" width="24" height="24"/>
         <image name="play" width="24" height="24"/>
-        <image name="play-large" width="72" height="72"/>
+        <image name="play-large" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nlp-B9-ay8"/>

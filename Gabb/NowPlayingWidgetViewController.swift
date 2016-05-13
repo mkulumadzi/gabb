@@ -75,6 +75,7 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
             vc.podcast = gabber.podcast
             vc.episode = gabber.episode
             vc.presentedModally = true
+            vc.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
             main.mainNavController.showViewController(vc, sender: main)
         }
     }

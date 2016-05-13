@@ -13,6 +13,9 @@ import SwiftyJSON
 
 class GabbChatViewController: ChatViewController {
     
+    var navBarBackgroundImage:UIImage?
+    var navBarShadowImage:UIImage?
+    
     var messageSender: GabbChatSender!
     
     var dataSource: GabbChatDataSource! {
@@ -30,6 +33,25 @@ class GabbChatViewController: ChatViewController {
         super.chatItemsDecorator = ChatItemsDecorator()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GabbChatViewController.notificationReceived), name: "ReceivedNotification", object: nil)
+        
+        navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
+        navBarShadowImage = navigationController?.navigationBar.shadowImage
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.tintColor = UIColor.gabbRedColor()
+        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        
+        navigationController?.navigationBar.translucent = false
+        if let backgroundImage = navBarBackgroundImage {
+            navigationController?.navigationBar.setBackgroundImage(backgroundImage, forBarMetrics: .Default)
+        }
+        if let shadowImage = navBarShadowImage {
+            navigationController?.navigationBar.shadowImage = shadowImage
+        }
         
     }
     
