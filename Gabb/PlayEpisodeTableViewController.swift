@@ -175,7 +175,8 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch (indexPath.row) {
         case 0:
-            return imageCellHeight()
+            return screenSize.height - (66.0 + 96.0)
+//            return imageCellHeight()
         case 1:
             return 66.0
         case 2:
@@ -185,41 +186,43 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         }
     }
     
-    func imageCellHeight() -> CGFloat {
-        if shouldShowNowPlayingWidget() {
-            return screenSize.height - (66.0 + 96.0 + 60.0)
-        }
-        else {
-            return screenSize.height - (66.0 + 96.0)
-        }
-    }
+//    func imageCellHeight() -> CGFloat {
+//        
+//        if shouldShowNowPlayingWidget() {
+//            return screenSize.height - (66.0 + 96.0 + 60.0)
+//        }
+//        else {
+//            return screenSize.height - (66.0 + 96.0)
+//        }
+//    }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if shouldShowNowPlayingWidget() {
-            return 60.0
-        }
-        else {
-            return 0.0
-        }
+//        if shouldShowNowPlayingWidget() {
+//            return 60.0
+//        }
+//        else {
+//            return 0.0
+//        }
+        return 0.0
     }
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if shouldShowNowPlayingWidget() {
-            let widgetContainer = UIView(frame: CGRectMake(0, 0, screenSize.width, 60))
-            widgetContainer.backgroundColor = UIColor.lightGrayColor()
-            
-            if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
-                widget.view.frame = CGRectMake(0,0, screenSize.width, 60)
-                gabber.delegate = widget
-                self.embedViewController(widget, intoView: widgetContainer)
-            }
-            
-            return widgetContainer
-        }
-        else {
-            return nil
-        }
-    }
+//    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        if shouldShowNowPlayingWidget() {
+//            let widgetContainer = UIView(frame: CGRectMake(0, 0, screenSize.width, 60))
+//            widgetContainer.backgroundColor = UIColor.lightGrayColor()
+//            
+//            if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
+//                widget.view.frame = CGRectMake(0,0, screenSize.width, 60)
+//                gabber.delegate = widget
+//                self.embedViewController(widget, intoView: widgetContainer)
+//            }
+//            
+//            return widgetContainer
+//        }
+//        else {
+//            return nil
+//        }
+//    }
     
     // MARK: - User Actions
     
@@ -293,6 +296,14 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         showPlayButton()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("Disapearring...")
+        if let main = navigationController?.parentViewController as? MainViewController {
+            main.toggleNowPlayingWidget()
+        }
+    }
+    
     // MARK: - Private
     
     private func showPlayButton() {
@@ -307,16 +318,16 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         }
     }
     
-    private func shouldShowNowPlayingWidget() -> Bool {
-        guard let gabber = gabber, audioUrl = episode.valueForKey("audio_url") as? String else {
-            return false
-        }
-        if gabber.playing && gabber.audioUrl != audioUrl {
-            return true
-        }
-        else {
-            return false
-        }
-    }
+//    private func shouldShowNowPlayingWidget() -> Bool {
+//        guard let gabber = gabber, audioUrl = episode.valueForKey("audio_url") as? String else {
+//            return false
+//        }
+//        if gabber.playing && gabber.audioUrl != audioUrl {
+//            return true
+//        }
+//        else {
+//            return false
+//        }
+//    }
 
 }

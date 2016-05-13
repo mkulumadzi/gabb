@@ -17,9 +17,14 @@ class MainViewController: UIViewController {
     var podcastGroups = [NSMutableDictionary]()
     
     var mainNavController:UINavigationController!
+    var nowPlayingWidget:NowPlayingWidgetViewController!
     
     override func viewWillAppear(animated: Bool) {
         addMainNavController()
+        addNowPlayingWidget()
+        if gabber == nil {
+            nowPlayingWidgetHeight.constant = 0
+        }
     }
     
     override func viewDidLoad() {
@@ -49,6 +54,50 @@ class MainViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func addNowPlayingWidget() {
+        if nowPlayingWidget == nil {
+             if let vc = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
+                
+                nowPlayingWidget = vc
+                embedViewController(vc, intoView: nowPlayingWidgetContainer)
+                
+                let top = NSLayoutConstraint(item: vc.view, attribute: .Top, relatedBy: .Equal, toItem: nowPlayingWidgetContainer, attribute: .Top, multiplier: 1.0, constant: 0.0)
+                let height = NSLayoutConstraint(item: vc.view, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 60.0)
+                let leading = NSLayoutConstraint(item: vc.view, attribute: .Leading, relatedBy: .Equal, toItem: nowPlayingWidgetContainer, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+                let trailing = NSLayoutConstraint(item: vc.view, attribute: .Trailing, relatedBy: .Equal, toItem: nowPlayingWidgetContainer, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+                
+                vc.view.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activateConstraints([top, height, leading, trailing])
+                
+            }
+        }
+    }
+    
+    func toggleNowPlayingWidget() {
+        guard let gabber = gabber, nowPlayingWidget = nowPlayingWidget else {
+            return
+        }
+        gabber.delegate = nowPlayingWidget
+        nowPlayingWidget.formatView()
+        showNowPlayingWidget()
+    }
+    
+    func showNowPlayingWidget() {
+        nowPlayingWidgetHeight.constant = 60
+        weak var weakSelf = self
+        UIView.animateWithDuration(0.5, animations: {
+            weakSelf?.view.layoutIfNeeded()
+        })
+    }
+    
+    func hideNowPlayingWidget() {
+        nowPlayingWidgetHeight.constant = 0
+        weak var weakSelf = self
+        UIView.animateWithDuration(0.5, animations: {
+            weakSelf?.view.layoutIfNeeded()
+        })
     }
     
 

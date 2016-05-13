@@ -14,7 +14,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="T9a-Jg-xGi">
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="MSC-uO-xX6">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -39,7 +39,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="podcastTitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Yc-EB-bhG">
                                             <rect key="frame" x="8" y="200" width="184" height="42"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -98,7 +98,7 @@
                                             <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -128,8 +128,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="jqa-6e-QcA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="476"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BorderCell" rowHeight="1" id="avH-ua-s1H">
                                         <rect key="frame" x="0.0" y="50" width="600" height="1"/>
@@ -151,12 +151,12 @@
                                                     <rect key="frame" x="15" y="0.0" width="550" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PodcastCollectionCell" rowHeight="169" id="Xmm-lc-Zfb" customClass="PodcastCollectionTableViewCell" customModule="Gabb" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="95" width="600" height="169"/>
@@ -167,7 +167,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fEg-CQ-TJ7">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="169"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="169" id="hCA-gx-imw"/>
                                                     </constraints>
@@ -195,7 +195,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6E-b7-pVb">
                                                                         <rect key="frame" x="8" y="119" width="104" height="23"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -227,7 +227,7 @@
                                                 <constraint firstItem="fEg-CQ-TJ7" firstAttribute="top" secondItem="mVA-N5-ya6" secondAttribute="top" id="iui-wK-5k5"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="podcastCollectionView" destination="fEg-CQ-TJ7" id="bJw-xd-qsG"/>
                                             <outlet property="podcastCollectionViewHeight" destination="hCA-gx-imw" id="Bx8-JJ-xrm"/>
@@ -239,30 +239,18 @@
                                     <outlet property="delegate" destination="bOq-Xy-5kN" id="zL1-Ny-emK"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvg-lS-v5l">
-                                <rect key="frame" x="0.0" y="476" width="600" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="UYs-iG-gc9"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hvg-lS-v5l" firstAttribute="top" secondItem="jqa-6e-QcA" secondAttribute="bottom" id="2IA-Ne-Cju"/>
-                            <constraint firstAttribute="trailing" secondItem="hvg-lS-v5l" secondAttribute="trailing" id="XvZ-dj-ff0"/>
+                            <constraint firstItem="TcD-NT-bg0" firstAttribute="top" secondItem="jqa-6e-QcA" secondAttribute="bottom" id="4zn-l7-fUt"/>
                             <constraint firstItem="jqa-6e-QcA" firstAttribute="top" secondItem="VAj-jh-gbB" secondAttribute="bottom" id="XxC-U7-zxY"/>
-                            <constraint firstItem="hvg-lS-v5l" firstAttribute="leading" secondItem="5et-Ac-JYm" secondAttribute="leading" id="YJO-Pf-inm"/>
                             <constraint firstItem="jqa-6e-QcA" firstAttribute="leading" secondItem="5et-Ac-JYm" secondAttribute="leading" id="Zlf-e7-WyD"/>
-                            <constraint firstItem="TcD-NT-bg0" firstAttribute="top" secondItem="hvg-lS-v5l" secondAttribute="bottom" id="qC2-Og-gUE"/>
                             <constraint firstAttribute="trailing" secondItem="jqa-6e-QcA" secondAttribute="trailing" id="qfA-bJ-RLY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p9P-YF-wru"/>
                     <connections>
                         <outlet property="tableView" destination="jqa-6e-QcA" id="tpQ-y7-CZG"/>
-                        <outlet property="widgetContainer" destination="hvg-lS-v5l" id="Kqj-ZX-Zdz"/>
-                        <outlet property="widgetHeight" destination="UYs-iG-gc9" id="NtL-9T-83y"/>
                         <segue destination="hIz-vF-BGh" kind="show" identifier="ViewPodcast" id="nlp-B9-ay8"/>
                         <segue destination="9r4-CW-RX4" kind="show" identifier="ViewPodcastGroup" id="Pqc-6M-lG3"/>
                     </connections>
@@ -687,6 +675,6 @@
         <image name="play" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2LI-YQ-kgU"/>
+        <segue reference="nlp-B9-ay8"/>
     </inferredMetricsTieBreakers>
 </document>
