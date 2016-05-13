@@ -26,7 +26,9 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        formatView()
+        if let _ = gabber {
+            formatView()
+        }
     }
     
     func formatView() {

@@ -46,9 +46,12 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        if nowPlayingWidget == nil {
+            addNowPlayingWidget()
+        }
         getPodcasts()
         formatView()
-        toggleNowPlayingWidget()
+        showNowPlayingWidget()
     }
     
     func formatView() {
@@ -126,29 +129,23 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
         navigationItem.leftBarButtonItem = leftBarButtonItem
     }
     
-    func toggleNowPlayingWidget() {
-        guard let gabber = gabber else {
+    func showNowPlayingWidget() {
+        guard let gabber = gabber, nowPlayingWidget = nowPlayingWidget else {
+            // Hide the widget if nothing is playing
             widgetHeight.constant = 0
             return
         }
         widgetHeight.constant = 60
-        if nowPlayingWidget == nil {
-            if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
-                nowPlayingWidget = widget
-                nowPlayingWidget.view.frame = CGRectMake(0,0, screenSize.width, 60)
-                gabber.delegate = nowPlayingWidget
-                self.embedViewController(nowPlayingWidget, intoView: widgetContainer)
-            }
-        } else {
-            gabber.delegate = nowPlayingWidget
-        }
+        gabber.delegate = nowPlayingWidget
     }
     
     func addNowPlayingWidget() {
+        
         if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
             nowPlayingWidget = widget
             nowPlayingWidget.view.frame = CGRectMake(0,0, screenSize.width, 60)
             self.embedViewController(widget, intoView: widgetContainer)
+            widgetHeight.constant = 0
         }
     }
     
