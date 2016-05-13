@@ -71,7 +71,7 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
         guard let parent = parentViewController else {
             return
         }
-        let vc = fetchViewController(browseStoryboard, storyboardIdentifier: episodeViewController) as! PlayEpisodeTableViewController
+        let vc = fetchViewController(browseStoryboard, storyboardIdentifier: episodeViewController) as! PlayEpisodeViewController
         vc.podcast = gabber.podcast
         vc.episode = gabber.episode
         vc.presentedModally = true

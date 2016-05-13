@@ -187,7 +187,7 @@ class ViewPodcastTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == playEpisode {
             if let indexPath = sender as? NSIndexPath {
-                let vc = segue.destinationViewController as! PlayEpisodeTableViewController
+                let vc = segue.destinationViewController as! PlayEpisodeViewController
                 vc.podcast = podcast
                 vc.episode = episodes[indexPath.row]
             }

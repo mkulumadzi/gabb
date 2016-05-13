@@ -1,8 +1,8 @@
 //
-//  PlayEpisodeTableViewController.swift
+//  PlayEpisodeViewController.swift
 //  Gabb
 //
-//  Created by Evan Waters on 3/27/16.
+//  Created by Evan Waters on 5/13/16.
 //  Copyright © 2016 Evan Waters. All rights reserved.
 //
 
@@ -14,8 +14,8 @@ private let noState = -1
 private let wasPlaying = 0
 private let wasNotPlaying = 1
 
-class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate {
-    
+class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
+
     var podcast:NSDictionary!
     var episode:NSDictionary!
     var presentedModally:Bool = false
@@ -88,7 +88,6 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        tableView.tableHeaderView = UIView(frame: CGRectMake(0,0,screenSize.width,0.1))
     }
     
     // This is redundant - doing this on the 'browse' screen too.
@@ -104,7 +103,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
      If player is not playing, initialize it
      If player is playing this episode, start updating the view
      If player is playing another episode, initialize the view but do not start playing
-    */
+     */
     
     func checkGabberStatus() {
         guard let gabber = gabber else {
@@ -164,73 +163,6 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
         activityIndicator.hidden = true
         activityIndicator.stopAnimating()
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    // I freaking hate autolayout and table views. In any case, can't get the image cell to size correctly (it keeps setting the height to be 600), so setting the row heights manually for now.
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch (indexPath.row) {
-        case 0:
-            return screenSize.height - (66.0 + 96.0)
-//            return imageCellHeight()
-        case 1:
-            return 66.0
-        case 2:
-            return 96.0
-        default:
-            return 66.0
-        }
-    }
-    
-//    func imageCellHeight() -> CGFloat {
-//        
-//        if shouldShowNowPlayingWidget() {
-//            return screenSize.height - (66.0 + 96.0 + 60.0)
-//        }
-//        else {
-//            return screenSize.height - (66.0 + 96.0)
-//        }
-//    }
-    
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if shouldShowNowPlayingWidget() {
-//            return 60.0
-//        }
-//        else {
-//            return 0.0
-//        }
-        return 0.0
-    }
-    
-//    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        if shouldShowNowPlayingWidget() {
-//            let widgetContainer = UIView(frame: CGRectMake(0, 0, screenSize.width, 60))
-//            widgetContainer.backgroundColor = UIColor.lightGrayColor()
-//            
-//            if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
-//                widget.view.frame = CGRectMake(0,0, screenSize.width, 60)
-//                gabber.delegate = widget
-//                self.embedViewController(widget, intoView: widgetContainer)
-//            }
-//            
-//            return widgetContainer
-//        }
-//        else {
-//            return nil
-//        }
-//    }
     
     // MARK: - User Actions
     
@@ -259,7 +191,7 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     /*
      If this is the first time this function was called, pause the player (if necessary) and records its state (playing or not playing)
      Set the time labels based on the position of the slider.
-    */
+     */
     
     @IBAction func sliderValueChanged(sender: AnyObject) {
         if gabber.playing {
@@ -297,7 +229,6 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
     
     func played() {
         showPauseButton()
-        tableView.reloadData()
     }
     
     func paused() {
@@ -324,17 +255,5 @@ class PlayEpisodeTableViewController: UITableViewController, GabbPlayerDelegate 
             playButton.setImage(pauseImage, forState: .Normal)
         }
     }
-    
-//    private func shouldShowNowPlayingWidget() -> Bool {
-//        guard let gabber = gabber, audioUrl = episode.valueForKey("audio_url") as? String else {
-//            return false
-//        }
-//        if gabber.playing && gabber.audioUrl != audioUrl {
-//            return true
-//        }
-//        else {
-//            return false
-//        }
-//    }
 
 }
