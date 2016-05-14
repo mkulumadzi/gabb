@@ -28,11 +28,6 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var tableView: UITableView!
     
-//    @IBOutlet weak var widgetContainer: UIView!
-//    @IBOutlet weak var widgetHeight: NSLayoutConstraint!
-//
-//    var nowPlayingWidget:NowPlayingWidgetViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,12 +41,8 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        if nowPlayingWidget == nil {
-//            addNowPlayingWidget()
-//        }
         getPodcasts()
         formatView()
-//        showNowPlayingWidget()
     }
     
     func formatView() {
@@ -128,26 +119,6 @@ class BrowsePodcastsViewController: UIViewController, UITableViewDelegate, UITab
         let leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), landscapeImagePhone: nil, style: .Done, target: self, action: #selector(self.search))
         navigationItem.leftBarButtonItem = leftBarButtonItem
     }
-    
-//    func showNowPlayingWidget() {
-//        guard let gabber = gabber, nowPlayingWidget = nowPlayingWidget else {
-//            // Hide the widget if nothing is playing
-//            widgetHeight.constant = 0
-//            return
-//        }
-//        widgetHeight.constant = 60
-//        gabber.delegate = nowPlayingWidget
-//    }
-//    
-//    func addNowPlayingWidget() {
-//        
-//        if let widget = fetchViewController("Browse", storyboardIdentifier: "nowPlayingWidget") as? NowPlayingWidgetViewController {
-//            nowPlayingWidget = widget
-//            nowPlayingWidget.view.frame = CGRectMake(0,0, screenSize.width, 60)
-//            self.embedViewController(widget, intoView: widgetContainer)
-//            widgetHeight.constant = 0
-//        }
-//    }
     
     
     // MARK: - Table view data source

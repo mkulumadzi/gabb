@@ -50,15 +50,21 @@ class PodcastService : RestService {
         })
     }
     
-    class func getEpisodesForPodcast(podcast_id: NSInteger, completion: (result: [NSDictionary]?) -> Void) {
-        let url = "https://gabb.herokuapp.com/podcasts/show?podcast_id=\(podcast_id)"
-        self.getRequest(url, headers: nil, completion: { (error, result) -> Void in
-            if let episodeArray = self.getEpisodeArrayFromResult(result) {
-                completion(result: episodeArray)
-            }
-            else {
+    class func getPodcastDetails(podcast_id: NSInteger, completion: (result: NSMutableDictionary?) -> Void) {
+        let url = "https://gabb.herokuapp.com/podcast/id/\(podcast_id)"
+        let headers = RestService.headersForJsonRequestWithLoggedInUser()
+        self.getRequest(url, headers: headers, completion: { (error, result) -> Void in
+            if let podcast = result as? NSMutableDictionary {
+                completion(result: podcast)
+            } else {
                 completion(result: nil)
             }
+//            if let episodeArray = self.getEpisodeArrayFromResult(result) {
+//                completion(result: episodeArray)
+//            }
+//            else {
+//                completion(result: nil)
+//            }
         })
     }
     
@@ -76,22 +82,31 @@ class PodcastService : RestService {
     
     private class func getPodcastArrayFromResult(result: AnyObject?) -> [NSDictionary]? {
         if let dictionary = result as? NSDictionary {
-            if let podcastArray = dictionary.valueForKey("podcasts") as? [NSDictionary] {
+            if let result = dictionary.valueForKey("podcasts") as? [NSDictionary] {
+                var podcastArray = [NSDictionary]()
+                
+                // Hacky solution of filtering out the podcasts that come back with names like '404 Not Found'
+                for podcast in result {
+                    let json = JSON(podcast)
+                    let title = json["title"].stringValue
+                    if title.rangeOfString("400") == nil && title.rangeOfString("401") == nil && title.rangeOfString("403") == nil && title.rangeOfString("404") == nil {
+                        podcastArray.append(podcast)
+                    }
+                }
+                
                 return podcastArray
             }
         }
         return nil
     }
     
-    private class func getEpisodeArrayFromResult(result: AnyObject?) -> [NSDictionary]? {
-        if let dictionary = result as? NSDictionary {
-            if let podcast = dictionary.valueForKey("podcast") as? NSDictionary {
-                if let episodeArray = podcast.valueForKey("recent_episodes") as? [NSDictionary] {
-                    return episodeArray
-                }
-            }
-        }
-        return nil
-    }
+//    private class func getEpisodeArrayFromResult(result: AnyObject?) -> [NSDictionary]? {
+//        if let podcast = result as? NSDictionary {
+//            if let episodeArray = podcast.valueForKey("recent_episodes") as? [NSDictionary] {
+//                return episodeArray
+//            }
+//        }
+//        return nil
+//    }
     
 }
