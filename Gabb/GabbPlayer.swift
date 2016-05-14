@@ -45,6 +45,7 @@ class GabbPlayer: NSObject {
                 self.player = AVPlayer(URL: url)
                 self.asset = AVURLAsset(URL: url, options: nil)
                 self.audioPlaying = false
+//                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didFinishPlaying), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player)
             }
         }
         
@@ -99,6 +100,10 @@ class GabbPlayer: NSObject {
         player.pause()
         delegate?.paused()
         updater.invalidate()
+    }
+    
+    func didFinishPlaying() {
+        print("Finished!")
     }
     
     func updateDelegate() {
