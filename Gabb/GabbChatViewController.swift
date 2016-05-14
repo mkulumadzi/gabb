@@ -34,6 +34,7 @@ class GabbChatViewController: ChatViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GabbChatViewController.notificationReceived), name: "ReceivedNotification", object: nil)
         
+        navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.systemFontOfSize(20.0), NSForegroundColorAttributeName : UIColor.gabbRedColor()]
         navBarBackgroundImage = navigationController?.navigationBar.backgroundImageForBarMetrics(.Default)
         navBarShadowImage = navigationController?.navigationBar.shadowImage
         

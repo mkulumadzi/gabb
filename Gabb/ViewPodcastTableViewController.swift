@@ -243,6 +243,10 @@ class ViewPodcastTableViewController: UITableViewController {
             let chatController = segue.destinationViewController as! GabbChatViewController
             chatController.dataSource = GabbChatDataSource(podcast: self.podcast, chats: chats)
             chatController.messageSender = chatController.dataSource.messageSender
+            
+            if let title = podcast["title"] as? String {
+                chatController.navigationItem.title = title
+            }
         }
     }
 
