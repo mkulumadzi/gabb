@@ -14,6 +14,7 @@ protocol GabbPlayerDelegate {
     func gabbPlayerUpdated()
     func played()
     func paused()
+    func finished()
 }
 
 class GabbPlayer: NSObject {
@@ -104,6 +105,7 @@ class GabbPlayer: NSObject {
     
     func didFinishPlaying() {
         if currentUser != nil { SessionService.finishSession(self) }
+        delegate?.finished()
     }
     
     func updateDelegate() {

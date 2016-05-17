@@ -97,6 +97,11 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
         showPlayButton()
     }
     
+    func finished() {
+        print(self.parentViewController)
+        print(self.presentingViewController)
+    }
+    
     // MARK: - Private
     
     private func showPlayButton() {

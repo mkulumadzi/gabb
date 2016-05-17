@@ -243,6 +243,10 @@ class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
         showPlayButton()
     }
     
+    func finished() {
+        print("Gotta figure out what to do with this vc...")
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         if let main = navigationController?.parentViewController as? MainViewController {
