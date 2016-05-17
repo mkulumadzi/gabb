@@ -83,6 +83,9 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     // MARK: - Delegate methods
     
     func gabbPlayerUpdated() {
+        guard let gabber = gabber else {
+            return
+        }
         playTime.text = gabber.playTime
         progressBar.setValue(gabber.episodeProgress, animated: true)
     }
@@ -98,8 +101,10 @@ class NowPlayingWidgetViewController: UIViewController, GabbPlayerDelegate {
     }
     
     func finished() {
-        print(self.parentViewController)
-        print(self.presentingViewController)
+        gabber = nil
+        if let main = self.parentViewController as? MainViewController {
+            main.hideNowPlayingWidget()
+        }
     }
     
     // MARK: - Private

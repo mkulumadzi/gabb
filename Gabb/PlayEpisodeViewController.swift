@@ -231,6 +231,9 @@ class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
     // MARK: - Delegate methods
     
     func gabbPlayerUpdated() {
+        guard let gabber = gabber else {
+            return
+        }
         playTime.text = gabber.playTime
         progressBar.setValue(gabber.episodeProgress, animated: true)
     }
@@ -244,7 +247,8 @@ class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
     }
     
     func finished() {
-        print("Gotta figure out what to do with this vc...")
+        gabber = nil
+        navigationController?.popViewControllerAnimated(true)
     }
     
     override func viewWillDisappear(animated: Bool) {
