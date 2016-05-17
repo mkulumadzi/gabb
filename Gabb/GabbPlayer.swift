@@ -45,7 +45,7 @@ class GabbPlayer: NSObject {
                 self.player = AVPlayer(URL: url)
                 self.asset = AVURLAsset(URL: url, options: nil)
                 self.audioPlaying = false
-//                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didFinishPlaying), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.didFinishPlaying), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.player.currentItem)
             }
         }
         
@@ -103,7 +103,7 @@ class GabbPlayer: NSObject {
     }
     
     func didFinishPlaying() {
-        print("Finished!")
+        if currentUser != nil { SessionService.finishSession(self) }
     }
     
     func updateDelegate() {

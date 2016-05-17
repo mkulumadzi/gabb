@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 private let podcastHeaderCell = "PodcastHeader"
 private let podcastEpisodeCell = "PodcastEpisode"
@@ -190,10 +191,18 @@ class ViewPodcastTableViewController: UITableViewController {
             cell.textLabel?.numberOfLines = 0
         }
         
-        if let _ = episode["last_session"] as? NSDictionary {
-            if let image = UIImage(named: "half-full") {
-                cell.imageView?.image = image.imageWithRenderingMode(.AlwaysTemplate)
-                cell.imageView?.tintColor = UIColor.gabbDarkGreyColor()
+        if let session = episode["last_session"] as? NSDictionary {
+            let json = JSON(session)
+            if json["finished"].boolValue == true {
+                if let image = UIImage(named: "empty") {
+                    cell.imageView?.image = image.imageWithRenderingMode(.AlwaysTemplate)
+                    cell.imageView?.tintColor = UIColor.gabbDarkGreyColor()
+                }
+            } else {
+                if let image = UIImage(named: "half-full") {
+                    cell.imageView?.image = image.imageWithRenderingMode(.AlwaysTemplate)
+                    cell.imageView?.tintColor = UIColor.gabbDarkGreyColor()
+                }
             }
         } else {
             if let image = UIImage(named: "full") {

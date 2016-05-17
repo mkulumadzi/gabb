@@ -38,6 +38,19 @@ class SessionService : RestService {
         })
     }
     
+    class func finishSession(gabbPlayer: GabbPlayer) {
+        let url = "https://gabb.herokuapp.com/session/finish"
+        let headers = RestService.headersForJsonRequestWithLoggedInUser()
+        let parameters = SessionService.parametersForSession(gabbPlayer)
+        RestService.postRequest(url, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
+            if let error = error {
+                print (error)
+            } else if let result = result {
+                print(result)
+            }
+        })
+    }
+    
     class func getLastSessionForEpisode(episodeURL: String, completion: (result: NSDictionary?) -> Void) {
         let episodeHash = episodeURL.toHash()
         let url = "https://gabb.herokuapp.com/session/last?episode_hash=\(episodeHash)"
