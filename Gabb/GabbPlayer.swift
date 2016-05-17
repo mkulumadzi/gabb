@@ -118,7 +118,7 @@ class GabbPlayer: NSObject {
                 let json = JSON(result)
                 let stopTimeScale = json["stop_time_scale"].int32Value
                 let stopTimeValue = json["stop_time_value"].int64Value
-                if stopTimeScale > 0 && stopTimeValue > 0 {
+                if stopTimeScale > 0 && stopTimeValue > 0 && json["finished"].boolValue == false {
                     let stopTime = CMTime(value: stopTimeValue, timescale: stopTimeScale)
                     self.player.seekToTime(stopTime)
                     completionHandler()
