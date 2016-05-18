@@ -52,6 +52,7 @@ class LoginService {
                 else {
                     if let dictionary = result as? NSDictionary {
                         currentUser = GabbUser.initWithDictionary(JSON(dictionary))
+                        LoginService.registerDeviceToken()
                     }
                     completion(error: nil, result: "Success")
                 }
