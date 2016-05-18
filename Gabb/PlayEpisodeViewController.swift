@@ -253,10 +253,12 @@ class PlayEpisodeViewController: UIViewController, GabbPlayerDelegate {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        if let player = gabber.player {
-            if NSInteger(player.currentTime().value) > 0 {
-                if let main = navigationController?.parentViewController as? MainViewController {
-                    main.toggleNowPlayingWidget()
+        if let gabber = gabber {
+            if let player = gabber.player {
+                if NSInteger(player.currentTime().value) > 0 {
+                    if let main = navigationController?.parentViewController as? MainViewController {
+                        main.toggleNowPlayingWidget()
+                    }
                 }
             }
         }
